@@ -1,0 +1,43 @@
+{
+  "name": "newsfeed-app",
+  "version": "1.0.0",
+  "description": "Newsfeed App is a modern RSS feed that allows you to view all headlines from different news sources and link to the original articles/news on those sources.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack ./src/app.js ./dist/app.bundle.js -p",
+    "prod": "webpack ./src/app.js ./dist/app.bundle.js -p --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vynessa/newsfeed-app.git"
+  },
+  "keywords": [
+    "newsfeed",
+    "react",
+    "system",
+    "learning",
+    "solution",
+    "api",
+    "node.js",
+    "express",
+    "webpack",
+    "gulp",
+    "ecmascript6",
+    "SASS"
+  ],
+  "author": "Vanessa Ejikeme",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vynessa/newsfeed-app/issues"
+  },
+  "homepage": "https://github.com/Vynessa/newsfeed-app#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "webpack": "^2.6.0"
+  }
+}
