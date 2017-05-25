@@ -1,4 +1,4 @@
-// Place your settings in this file to overwrite default and user settings.
+// File workspace settings to overwrite vscode default and user settings.
 {
     "files.exclude": {
         "**/.git": true,
