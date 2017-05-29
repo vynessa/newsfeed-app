@@ -2,17 +2,22 @@
   "root": true,
   "extends": "airbnb-base",
   "plugins": [
-        "import"
+        "import", "react"
     ],
   "env": {
     "node": true,
     "es6": true,
     "mocha": true
-    // "jquery": true
   },
-  // "globals": {
-  //   "document": true
-  // },
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "globals": {
+    "document": true
+  },
   "rules": {
     "one-var": 0,
     "one-var-declaration-per-line": 0,

@@ -4,8 +4,8 @@
   "description": "Newsfeed App is a modern RSS feed that allows you to view all headlines from different news sources and link to the original articles/news on those sources.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack ./src/app.js ./dist/app.bundle.js -p",
-    "prod": "webpack ./src/app.js ./dist/app.bundle.js -p --watch"
+    "babel": "babel",
+    "webpack": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -46,5 +46,16 @@
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "webpack": "^2.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "es6-promise": "^4.1.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "webpack": "^2.6.1"
   }
 }
