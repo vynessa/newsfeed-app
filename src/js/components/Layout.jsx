@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Nav from './Nav.jsx';
 import Footer from './Footer.jsx';
@@ -8,7 +7,7 @@ import Footer from './Footer.jsx';
  * @function
  * @param
  */
-class Layout extends React.Component {
+export default class Layout extends React.Component {
   render() {
     return (
       <div>
@@ -19,6 +18,4 @@ class Layout extends React.Component {
   }
 }
 
-const app = document.getElementById('app');
 
-ReactDOM.render(<Layout/>, app);

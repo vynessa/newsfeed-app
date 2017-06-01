@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 module.exports = {
-  entry: './src/js/components/Layout.jsx',
+  entry: './src/js/client.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'client.min.js'
