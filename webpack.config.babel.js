@@ -2,19 +2,28 @@ import path from 'path';
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-module.exports = {
+const config = {
+  devtool: 'eval-source-map',
   entry: './src/js/client.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'client.min.js'
+    path: __dirname,
+    // path: path.join(__dirname, 'dist'),
+    filename: 'dist/client.min.js',
+    publicPath: 'dist'
+
   },
+  // devServer: {
+  //   contentBase: '/src',
+  //   compress: true,
+  //   port: 9000
+  // },
   watch: true,
   module: {
     loaders: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules|bower_components/,
+        exclude: /node_modules/,
         query: {
           presets: ['es2015', 'react']
         }
@@ -35,3 +44,5 @@ module.exports = {
     })
   ]
 };
+
+export default config;

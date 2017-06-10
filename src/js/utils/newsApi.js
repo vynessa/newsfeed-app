@@ -7,13 +7,13 @@ import axios from 'axios';
 class NewsApi {
   /**
    * Gets all news sources
-   * @function
+   * @method
    * @param {string} apiUrl
    * @returns {object} sources
    */
   static getSources() {
     const apiUrl = 'https://newsapi.org/v1/sources';
-    axios.get(apiUrl)
+    return axios.get(apiUrl)
       .then((response) => {
         return response.data.sources;
       })
@@ -23,13 +23,13 @@ class NewsApi {
   }
   /**
    * Get articles for every news source, sorted by either the latest or top headlines
-   * @function
+   * @method
    * @param {string} source
    * @param {string} apiKey
    * @param {string} sortBy
    * @returns {object} articles
    */
-  static getHeadlines(source, sortBy) {
+  static getArticles(source, apiKey = 'b3af0273f37245359b9131db78464ad4', sortBy) {
     const apiUrl = 'https://newsapi.org/v1/articles?source=';
     const newLink = `${apiUrl}${source}&apiKey=${apiKey}`;
     axios.get(newLink)
