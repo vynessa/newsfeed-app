@@ -3,9 +3,9 @@ import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 
 const CHANGE_EVENT = 'change';
-let sources = {};
+let articles = {};
 
-const SourcesStore = Object.assign({}, EventEmitter.prototype, {
+const ArticlesStore = Object.assign({}, EventEmitter.prototype, {
   addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   },
@@ -16,22 +16,22 @@ const SourcesStore = Object.assign({}, EventEmitter.prototype, {
     this.emit(CHANGE_EVENT);
   },
   getAll() {
-    return sources;
+    return articles;
   }
 });
 
 AppDispatcher.register((action) => {
   switch (action.type) {
-    case constants.sources:
-      sources = action.sources;
-      SourcesStore.emitChange();
+    case constants.articles:
+      articles = action.articles;
+      ArticlesStore.emitChange();
       break;
-    case constants.sourcesError:
-      sources = action.sourcesError;
-      SourcesStore.emitChange();
+    case constants.articlesError:
+      articles = action.articlesError;
+      ArticlesStore.emitChange();
       break;
     default:
   }
 });
 
-export default SourcesStore;
+export default ArticlesStore;

@@ -1,22 +1,22 @@
 import path from 'path';
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/js/client.js',
+  entry: './src/js/app.js',
   output: {
-    path: __dirname,
-    // path: path.join(__dirname, 'dist'),
-    filename: 'dist/client.min.js',
-    publicPath: 'dist'
-
+    // path: 'dist',
+    path: path.join(__dirname, 'dist'),
+    filename: 'app.min.js'
   },
-  // devServer: {
-  //   contentBase: '/src',
-  //   compress: true,
-  //   port: 9000
-  // },
+  devServer: {
+    publicPath: '/',
+    contentBase: './src',
+    compress: true,
+    port: 8080
+  },
   watch: true,
   module: {
     loaders: [
@@ -38,6 +38,15 @@ const config = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'News Feed App',
+      // minify: {
+      //   collapseWhitespace: true
+      // },
+      hash: true,
+      template: './src/index.html',
+    }),
+
     new ExtractTextPlugin({
       filename: './public/css/main.css',
       allChunks: true

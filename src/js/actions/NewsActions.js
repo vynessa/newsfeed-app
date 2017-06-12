@@ -1,10 +1,10 @@
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
-import { getSources, getArticles } from '../utils/newsApi';
+import NewsApi from '../utils/newsApi';
 
-export default {
-  allSources: () => {
-    return getSources().then((sources) => {
+const NewsActions = {
+  allSources() {
+    return NewsApi.getSources().then((sources) => {
       AppDispatcher.dispatch({
         type: constants.sources,
         sources
@@ -17,8 +17,8 @@ export default {
     });
   },
 
-  allArticles: () => {
-    return getArticles().then((articles) => {
+  allArticles() {
+    return NewsApi.getArticles().then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles
@@ -32,3 +32,4 @@ export default {
   }
 };
 
+export default NewsActions;

@@ -2,6 +2,7 @@ import React from 'react';
 
 import NavBar from './NavBar.jsx';
 import Sources from './Sources.jsx';
+import Articles from './Articles.jsx';
 import Footer from './Footer.jsx';
 
 /**
@@ -16,7 +17,7 @@ export default class App extends React.Component {
     return (
       <div>
         <NavBar/>
-        <Sources/>
+        <div className='row'><Sources/></div>
         <Footer/>
       </div>
     );

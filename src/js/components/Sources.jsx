@@ -1,6 +1,6 @@
 import React from 'react';
-
-import { allSources, allArticles } from '../actions/NewsActions';
+import { Col, Card } from 'react-materialize';
+import NewsActions from '../actions/NewsActions';
 import SourcesStore from '../stores/SourcesStore';
 
 /**
@@ -14,49 +14,46 @@ export default class Sources extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sources: SourcesStore.getAll()
+      sources: []
     };
+    this.onChange = this.onChange.bind(this);
   }
   /**
    *
    */
   componentWillMount() {
-    SourcesStore.on('change', () => {
-      this.setState({
-        sources: SourcesStore.getAll()
-      });
+    NewsActions.allSources();
+    SourcesStore.addChangeListener(this.onChange);
+  }
+
+  componentWillUnmount() {
+    SourcesStore.removeChangeListener(this.onChange);
+  }
+
+  onChange() {
+    this.setState({
+      sources: SourcesStore.getAll()
     });
   }
   /**
    *
    */
   render() {
-    const sources = this.state.sources.map((source) => {
+    // console.log(`sources: ${this.state.sources}`);
+    // console.log('Girl');
+
+    let sources = this.state.sources.map((source, index) => {
+      // console.log(source);
       return (
-        <div>{source}</div>
+          <Col key={`Col-${index}`} m={4} s={12}>
+            <Card key={`Card-${index}`} className='teal darken-1' textClassName='white-text' title={source.name} actions={[<a href='#'>This is a link</a>]}>{source.description}
+            </Card>
+          </Col>
       );
     });
 
     return (
-      <div className={sources}>
-        <div className="row">
-          <div className="col s12 m7">
-            <div className="card small">
-              <div className="card-image">
-                <img src="../public/img/whats-new.jpg" />
-                <span className="card-title">Card Title</span>
-              </div>
-              <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-              </div>
-              <div className="card-action">
-                <a href="#">This is a link</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="source">{sources}</div>
     );
   }
 }

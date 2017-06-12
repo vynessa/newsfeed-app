@@ -13,9 +13,14 @@
 }*/
 
 footer {
-    color: green
+  color: green
 }
 .nav-wrapper {
-    background-color: #623b19
+  background-color: #623b19
+}
+
+.row {
+  margin: 0 auto;
+  width: 1000px;
 }
 
