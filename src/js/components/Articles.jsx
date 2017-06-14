@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Input } from 'react-materialize';
 import NewsActions from '../actions/NewsActions';
 import ArticlesStore from '../stores/ArticlesStore';
 
@@ -13,7 +14,7 @@ export default class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: ArticlesStore.getAll()
+      articles: []
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -34,32 +35,31 @@ export default class Articles extends React.Component {
   }
   onChange() {
     this.setState({
-      sources: ArticlesStore.getAll()
+      articles: ArticlesStore.getAll()
     });
   }
   /**
    *
    */
   render() {
-    // console.log(`sources: ${this.state.sources}`);
-    // console.log('Girl');
+    console.log(`articles: ${this.state.articles}`);
 
-    let articles = this.state.sources.map((article, index) => {
-      // console.log(source);
+    const articles = this.state.articles.map((article, index) => {
+      console.log(article);
       return (
         <div key={index}>
           <div className="row">
-            <div className="col s12 m7">
+            <div className="col s12 m4">
               <div className="card small">
                 <div className="card-image">
-                  <img src="../public/img/whats-new.jpg" />
-                  <span className="card-title">{articles.name}</span>
+                  <img src={article.urlToImage} />
+                  <span className="card-title">{article.name}</span>
                 </div>
                 <div className="card-content">
-                  <p>{articles.description}</p>
+                  <p>{article.description}</p>
                 </div>
                 <div className="card-action">
-                  <a href="#">Click to view Articles</a>
+                  <a href={article.url}>Click to view full article</a>
                 </div>
               </div>
             </div>
@@ -69,7 +69,15 @@ export default class Articles extends React.Component {
     });
 
     return (
-      <div className="source">{articles}</div>
+      <div>
+        <Row>
+          <Input s={12} type='select' label="Sort Articles By:" defaultValue='1'>
+            <option value='1'>Top</option>
+            <option value='2'>latest</option>
+          </Input>
+        </Row>
+        <div className="source">{articles}</div>
+      </div>
     );
   }
 }

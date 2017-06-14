@@ -9,7 +9,7 @@ export default class Categories extends React.Component {
         <li><a href="collapsible.html">Fashion</a></li>
         <li><a href="collapsible.html">Games</a></li>
         <li><a href="collapsible.html">Politics</a></li>
-        <li><a className="waves-effect waves-light btn green" href="#modal1">Logout</a></li>
+        <li><a className="waves-effect waves-light btn teal" href="#modal1">Logout</a></li>
       </div>
     );
   }

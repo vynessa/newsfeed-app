@@ -1,4 +1,5 @@
 import React from 'react';
+import css from '../../../public/css/main.scss';
 import Categories from './Categories.jsx';
 /**
  * @function
@@ -11,7 +12,7 @@ export default class NavBar extends React.Component {
         <nav className="brown">
           <div className="nav-wrapper">
             <a href="index.html" className="brand-logo">News App</a>
-            <a href="#" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
+            <a href="index.html" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
               <Categories/>
             </ul>

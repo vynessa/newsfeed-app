@@ -29,11 +29,11 @@ class NewsApi {
    * @param {string} sortBy
    * @returns {object} articles
    */
-  static getArticles(source) {
+  static getArticles(source, sortBy = 'latest') {
     const apiUrl = 'https://newsapi.org/v1/articles?source=';
     const apiKey = 'b3af0273f37245359b9131db78464ad4';
-    const newLink = `${apiUrl}${source}&apiKey=${apiKey}`;
-    axios.get(newLink)
+    const newLink = `${apiUrl}${source}&sortBy=${sortBy}&apiKey=${apiKey}`;
+    return axios.get(newLink)
       .then((response) => {
         return response.data.articles;
       })
@@ -42,7 +42,5 @@ class NewsApi {
       });
   }
 }
-console.log(NewsApi.getSources());
-console.log(NewsApi.getArticles('the-next-web'));
 
 export default NewsApi;

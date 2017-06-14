@@ -1,5 +1,6 @@
 import React from 'react';
-import { Col, Card } from 'react-materialize';
+import { Col, Card, Row, Input } from 'react-materialize';
+import css from '../../../public/css/main.scss';
 import NewsActions from '../actions/NewsActions';
 import SourcesStore from '../stores/SourcesStore';
 
@@ -14,7 +15,8 @@ export default class Sources extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sources: []
+      sources: [],
+      search: ''
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -35,25 +37,41 @@ export default class Sources extends React.Component {
       sources: SourcesStore.getAll()
     });
   }
+
+  updateSearch(e) {
+    this.setState({
+      search: e.target.value.substr(0, 30)
+    });
+  }
   /**
    *
    */
   render() {
-    // console.log(`sources: ${this.state.sources}`);
-    // console.log('Girl');
+    const filteredSearch = this.state.sources.filter((source) => {
+      return source.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+    });
 
-    let sources = this.state.sources.map((source, index) => {
-      // console.log(source);
+    const sources = filteredSearch.map((source, index) => {
+      // console.log(Object.keys(sources.length));
       return (
+        <div className='row'>
           <Col key={`Col-${index}`} m={4} s={12}>
-            <Card key={`Card-${index}`} className='teal darken-1' textClassName='white-text' title={source.name} actions={[<a href='#'>This is a link</a>]}>{source.description}
+            <Card key={`Card-${index}`} className='teal darken-1' textClassName='white-text' title={source.name} actions={[<a href='#'>View headlines</a>]}>{source.description}
             </Card>
           </Col>
+        </div>
       );
     });
 
     return (
-      <div className="source">{sources}</div>
+      <div>
+        <Row>
+          <Input s={3} label="Search Sources"
+                  value={this.state.search}
+                  onChange={this.updateSearch.bind(this)}/>
+        </Row>
+        <div className="source">{sources}</div>
+      </div>
     );
   }
 }

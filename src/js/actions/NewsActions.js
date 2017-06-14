@@ -18,7 +18,7 @@ const NewsActions = {
   },
 
   allArticles() {
-    return NewsApi.getArticles().then((articles) => {
+    return NewsApi.getArticles('the-next-web').then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles
