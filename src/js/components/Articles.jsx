@@ -22,11 +22,6 @@ export default class Articles extends React.Component {
    *
    */
   componentWillMount() {
-    // SourcesStore.on('change', () => {
-    //   this.setState({
-    //     sources: SourcesStore.getAll()
-    //   });
-    // });
     NewsActions.allArticles();
     ArticlesStore.addChangeListener(this.onChange);
   }
@@ -42,8 +37,6 @@ export default class Articles extends React.Component {
    *
    */
   render() {
-    console.log(`articles: ${this.state.articles}`);
-
     const articles = this.state.articles.map((article, index) => {
       console.log(article);
       return (
@@ -59,7 +52,7 @@ export default class Articles extends React.Component {
                   <p>{article.description}</p>
                 </div>
                 <div className="card-action">
-                  <a href={article.url}>Click to view full article</a>
+                  <a href={article.url}>View full article</a>
                 </div>
               </div>
             </div>
@@ -70,8 +63,9 @@ export default class Articles extends React.Component {
 
     return (
       <div>
+        <div><h1>The Next Web</h1></div>
         <Row>
-          <Input s={12} type='select' label="Sort Articles By:" defaultValue='1'>
+          <Input m={3} s={12} type='select' label="Sort Articles By:" defaultValue='1'>
             <option value='1'>Top</option>
             <option value='2'>latest</option>
           </Input>

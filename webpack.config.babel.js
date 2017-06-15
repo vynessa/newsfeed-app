@@ -7,7 +7,6 @@ const config = {
   devtool: 'eval-source-map',
   entry: './src/js/client.jsx',
   output: {
-    // path: 'dist',
     path: path.join(__dirname, 'dist'),
     filename: 'app.min.js'
   },

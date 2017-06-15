@@ -25,7 +25,6 @@ class NewsApi {
    * Get articles for every news source, sorted by either the latest or top headlines
    * @method
    * @param {string} source
-   * @param {string} apiKey
    * @param {string} sortBy
    * @returns {object} articles
    */

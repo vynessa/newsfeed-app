@@ -6,12 +6,9 @@ engines:
         - javascript
   eslint:
     enabled: true
-    config:
-      languages:
-        JavaScript: true
 ratings:
   paths:
-      - "src/js"
+      - "src/**.js"
 exclude_paths:
 - "dist"
 - .gitignore
