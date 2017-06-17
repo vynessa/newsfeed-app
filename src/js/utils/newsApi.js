@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 /**
  * API class
  * @class
@@ -11,7 +10,18 @@ class NewsApi {
    * @param {string} apiUrl
    * @returns {object} sources
    */
-  static getSources() {
+  static getSources(category) {
+    if (category) {
+      // con
+      const apiUrl = `https://newsapi.org/v1/sources?category=${category}`;
+      return axios.get(apiUrl)
+        .then((response) => {
+          return response.data.sources;
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
     const apiUrl = 'https://newsapi.org/v1/sources';
     return axios.get(apiUrl)
       .then((response) => {

@@ -7,21 +7,18 @@ import css from '../../public/css/main.scss';
 import App from './components/App.jsx';
 import Sources from './components/Sources.jsx';
 import Articles from './components/Articles.jsx';
-import Template from './components/Template.jsx';
 
 const app = document.getElementById('app');
 
 const routes = (
-    <Route exact path="/" component={Template}>
-        <IndexRoute component={App} />
-        
+    <Route path="/" component={App}>
         <Route path="articles" component={Articles} />
     </Route >
 );
 
 class Approutes extends React.Component {
     render() {
-        return <Router routes={routes} history={browserHistory} />
+        return <Router routes={routes} history={browserHistory} />;
     }
 }
 

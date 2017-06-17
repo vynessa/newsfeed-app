@@ -5,7 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/js/client.jsx',
+  entry: './src/js/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'app.min.js'
@@ -14,7 +14,8 @@ const config = {
     publicPath: '/',
     contentBase: './src',
     compress: true,
-    port: 8080
+    port: 8080,
+    historyApiFallback: true
   },
   watch: true,
   module: {

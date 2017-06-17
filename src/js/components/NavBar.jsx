@@ -1,6 +1,6 @@
 import React from 'react';
 import css from '../../../public/css/main.scss';
-import Categories from './Categories.jsx';
+
 /**
  * @function
  * @param
@@ -14,10 +14,10 @@ export default class NavBar extends React.Component {
             <a href="index.html" className="brand-logo">News App</a>
             <a href="index.html" data-activates="mobile-demo" className="button-collapse"><i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
-              <Categories/>
+              <li><a className="waves-effect waves-light btn teal" href="#modal1">Logout</a></li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
-              <Categories/>
+              <li><a className="waves-effect waves-light btn teal" href="#modal1">Logout</a></li>
             </ul>
           </div>
         </nav>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import NavBar from './NavBar.jsx';
-// import Sources from './Sources.jsx';
+import Sources from './Sources.jsx';
 import Articles from './Articles.jsx';
 import Footer from './Footer.jsx';
 
@@ -16,9 +16,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar/>
-        <Articles/>
-        <Footer/>
+        <Sources/>
       </div>
     );
   }

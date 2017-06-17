@@ -29,6 +29,20 @@ const NewsActions = {
         });
       });
     });
+  },
+
+  category(param) {
+    return NewsApi.getSources(param).then((sources) => {
+      AppDispatcher.dispatch({
+        type: constants.sources,
+        sources
+      }, (err) => {
+        AppDispatcher.dispatch({
+          type: constants.sourcesError,
+          err
+        });
+      });
+    });
   }
 };
 

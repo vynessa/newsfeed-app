@@ -1,25 +1,32 @@
-footer {
-  color: green
-}
+$color-brown: #623b19;
+
 .nav-wrapper {
-  background-color: #623b19
+  background-color: $color-brown; 
+}
+// .btn {
+//   color: #ffd4b1;
+// }
+.row {
+  margin: 0 auto;
+  width: 1000px; 
 }
 
-// .row {
-//   margin: 0 auto;
-//   width: 1000px;
-// }
+.search-content {
+  align-content: center;
+}
 
 #app {
-  font-family: 'Lato', sans-serif;
-  // font-weight: bold;
+  font-family: 'Lato', sans-serif; 
 }
 
-nav .brand-logo {
-	margin-left: 20px;
+.card-content {
+  height: 280px; 
 }
 
-nav form {
-	margin-left: 180px;
-	width: 300px;
+.card.small {
+    height: 410px;
+}
+
+footer {
+  color: green; 
 }
