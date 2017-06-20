@@ -1,57 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
-import NewsActions from '../actions/NewsActions';
-import ArticlesStore from '../stores/ArticlesStore';
 
 /**
  * @class
  * @param
  */
-export default class ArticlesList extends React.Component {
-  /**
-   *
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      sortsBy: []
-    };
-    this.onChange = this.onChange.bind(this);
-  }
-  /**
-   *
-   */
-  componentDidMount() {
-    NewsActions.allArticles();
-    ArticlesStore.addChangeListener(this.onChange);
-  }
-  /**
-   * 
-   */
-  componentWillUnmount() {
-    ArticlesStore.removeChangeListener(this.onChange);
-  }
-  /**
-   * 
-   */
-  onChange() {
-    this.setState({
-      articles: ArticlesStore.getAll()
-    });
-  }
+class ArticlesList extends React.Component {
   /**
    *
    */
   render() {
-    const articles = this.state.articles.map((article) => {
+    const articles = this.props.articles.map((article, index) => {
       return (
-        <Col key={article.id} m={6} s={12}>
-          <Card className='small'
-            header={<CardTitle image={article.urlToImage}>{article.name}</CardTitle>}
-            actions={[<a className="btn brown" target="_blank" rel="noopener" href={article.url}>View full article</a>]}>
+        <Col key={index} m={6} s={12}>
+          <Card key ={article.author}
+            className='small hoverable'
+            header={<CardTitle image={article.urlToImage}>{article.title}</CardTitle>}
+            actions={[
+              <a className="btn"
+                target="_blank"
+                rel="noopener"
+                href={article.url}>
+                View full article
+              </a>
+            ]}>
             {article.description}
+            <br/>
+            <br/>
+            <div>Author: {article.author}</div>
+            <div>Published On: {article.publishedAt}</div>
           </Card>
         </Col>
       );
@@ -71,3 +49,5 @@ export default class ArticlesList extends React.Component {
     );
   }
 }
+
+export default ArticlesList;

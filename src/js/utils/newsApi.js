@@ -12,7 +12,6 @@ class NewsApi {
    */
   static getSources(category) {
     if (category) {
-      // con
       const apiUrl = `https://newsapi.org/v1/sources?category=${category}`;
       return axios.get(apiUrl)
         .then((response) => {
@@ -38,7 +37,7 @@ class NewsApi {
    * @param {string} sortBy
    * @returns {object} articles
    */
-  static getArticles(source, sortBy = 'latest') {
+  static getArticles(source, sortBy) {
     const apiUrl = 'https://newsapi.org/v1/articles?source=';
     const apiKey = 'b3af0273f37245359b9131db78464ad4';
     const newLink = `${apiUrl}${source}&sortBy=${sortBy}&apiKey=${apiKey}`;

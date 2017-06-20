@@ -5,7 +5,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/js/index.js',
+  entry: './src/js/client.jsx',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'app.min.js'
@@ -29,6 +29,13 @@ const config = {
         }
       },
       {
+        test: /\.(jpg|png|svg)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+        },
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -41,7 +48,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'News Feed App',
-      hash: true,
+      // hash: true,
       template: './src/index.html',
     }),
 

@@ -5,9 +5,9 @@ import css from '../../public/css/main.scss';
 import Client from './client.jsx';
 
 
-import App from './components/App.jsx';
-import Sources from './components/Sources.jsx';
-import Articles from './components/Articles.jsx';
+// import App from './components/App.jsx';
+// import Sources from './components/Sources.jsx';
+// import Articles from './components/Articles.jsx';
 
 const app = document.getElementById('app');
 

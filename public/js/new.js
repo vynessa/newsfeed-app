@@ -1,6 +1,6 @@
 $(() => {
   // $('.dropdown-button').dropdown();
-  // $('.slider').slider();
+  $('.slider').slider();
   $('.button-collapse').sideNav();
   // $('.modal').modal();
 });

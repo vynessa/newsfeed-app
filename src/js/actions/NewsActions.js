@@ -17,28 +17,28 @@ const NewsActions = {
     });
   },
 
-  allArticles() {
-    return NewsApi.getArticles('the-next-web').then((articles) => {
-      AppDispatcher.dispatch({
-        type: constants.articles,
-        articles
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.articlesError,
-          err
-        });
-      });
-    });
-  },
-
-  category(param) {
-    return NewsApi.getSources(param).then((sources) => {
+  categories(category) {
+    return NewsApi.getSources(category).then((sources) => {
       AppDispatcher.dispatch({
         type: constants.sources,
         sources
       }, (err) => {
         AppDispatcher.dispatch({
           type: constants.sourcesError,
+          err
+        });
+      });
+    });
+  },
+
+  allArticles() {
+    return NewsApi.getArticles(source, sortBy).then((articles) => {
+      AppDispatcher.dispatch({
+        type: constants.articles,
+        articles
+      }, (err) => {
+        AppDispatcher.dispatch({
+          type: constants.articlesError,
           err
         });
       });
