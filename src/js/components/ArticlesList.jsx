@@ -11,7 +11,14 @@ class ArticlesList extends React.Component {
    *
    */
   render() {
-    const articles = this.props.articles.map((article, index) => {
+    let result = [];
+    let sortByAvailable = [];
+    if (this.props.articles !== undefined &&
+      this.props.articles.articles !== undefined) {
+      result = this.props.articles.articles;
+      sortByAvailable = this.props.articles.sortBy;
+    }
+    const articles = result.map((article, index) => {
       return (
         <Col key={index} m={6} s={12}>
           <Card key ={article.author}
@@ -40,8 +47,9 @@ class ArticlesList extends React.Component {
         <h1>The Next Web</h1>
         <Row>
           <Input m={3} s={12} type="select" label="Sort Articles By:" defaultValue='1'>
-            <option value="1">Top</option>
-            <option value="2">Latest</option>
+            {sortByAvailable.map((tag) => {
+              return <option>{tag}</option>;
+            })}
           </Input>
         </Row>
         <div className="row">{articles}</div>

@@ -25,7 +25,7 @@ class Sources extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
-    this.articleClick = this.articleClick.bind(this);
+    this.btnClick = this.btnClick.bind(this);
   }
   /**
    *
@@ -60,13 +60,10 @@ class Sources extends React.Component {
   /**
    *
    */
-  articleClick(event) {
-    this.setState({
-      article: event.target.value
-    });
-    // browserHistory.push('/articles');
-
+  btnClick(id, sortBysAvailable) {
+    NewsActions.allArticles(id, sortBysAvailable);
   }
+
   /**
    *
    * @param {*} event
@@ -80,13 +77,15 @@ class Sources extends React.Component {
    *
    */
   render() {
+    console.log(this.state);
     return (
       <div className="sources">
         <SourcesList
           sources={this.state.sources}
+          sortBysAvailable={this.state.sortBysAvailable}
           search={this.state.search}
           updateSearch={this.updateSearch}
-          articleClick={this.articleClick}
+          btnClick={this.btnClick}
           handleCategory={this.handleCategory} />
       </div>
     );

@@ -31,11 +31,14 @@ const NewsActions = {
     });
   },
 
-  allArticles() {
-    return NewsApi.getArticles(source, sortBy).then((articles) => {
+  allArticles(source, sortBy) {
+    return NewsApi.getArticles(source, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
-        articles
+        articles: {
+          articles,
+          sortBy
+        },
       }, (err) => {
         AppDispatcher.dispatch({
           type: constants.articlesError,

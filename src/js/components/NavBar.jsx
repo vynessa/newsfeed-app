@@ -21,7 +21,7 @@ export default class NavBar extends React.Component {
       <div className="navbar-fixed">
         <nav className="brown">
           <div className="nav-wrapper">
-            <a href="index.html" className="brand-logo">News App</a>
+            <a href="index.html" className="brand-logo">e-Feeds</a>
             <a href="index.html"
               data-activates="mobile-demo"
               className="button-collapse">

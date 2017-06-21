@@ -39,7 +39,8 @@ class SourcesList extends React.Component {
               textClassName='white-text'
               title={source.name}
               actions={[<Link to='articles'
-                onClick={this.props.articleClick}>View headlines</Link>]}>
+              className='btn'
+              onClick={() => this.props.btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
               {source.description}
             </Card>
           </Col>

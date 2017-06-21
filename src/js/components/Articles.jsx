@@ -15,8 +15,7 @@ class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
-      sortsBy: []
+      articles: []
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -24,7 +23,9 @@ class Articles extends React.Component {
    *
    */
   componentDidMount() {
-    NewsActions.allArticles();
+    // const id = 'al-jazeera-english';
+    // const sort = 'top';
+    // NewsActions.allArticles(id, sort);
     ArticlesStore.addChangeListener(this.onChange);
   }
   /**
@@ -36,16 +37,16 @@ class Articles extends React.Component {
   /**
    * 
    */
-  onChange(event) {
-    const value = event.target.value;
+  onChange() {
     this.setState({
-      articles: ArticlesStore.getAll()
+      articles: ArticlesStore.getAll(),
     });
   }
   /**
    *
    */
   render() {
+    console.log('state', this.state);
     return (
       <ArticlesList
         articles={this.state.articles} />
