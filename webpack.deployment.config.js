@@ -53,7 +53,6 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'News Feed App',
-      // hash: true,
       template: './src/index.html',
     }),
 
