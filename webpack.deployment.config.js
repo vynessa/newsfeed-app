@@ -21,7 +21,6 @@ const config = {
     port: 8080,
     historyApiFallback: true
   },
-  watch: true,
   module: {
     loaders: [
       {

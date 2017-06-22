@@ -1,6 +1,8 @@
+console.log('wazz habhgjr');
+
 const Server = require('../server.js'),
   webpack = require('webpack'),
-  port = (process.env.PORT || 8080),
+  port = (process.env.PORT || 8000),
   app = Server.app();
 
 let config;

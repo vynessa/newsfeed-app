@@ -1,8 +1,8 @@
 const path = require('path'),
   express = require('express'),
-  port = process.env.PORT || 3000,
   app = express();
 
+console.log('hbvcfdzhf');
 module.exports = {
   app: () => {
     // const app = express();
@@ -17,5 +17,5 @@ module.exports = {
   }
 };
 
-app.listen(port);
-console.log(`server started on port ${port}`);
+// app.listen(port);
+// console.log(`server started on port ${port}`);
