@@ -18,4 +18,4 @@ module.exports = {
 };
 
 app.listen(port);
-console.log(`server started on port${port}`);
+console.log(`server started on port ${port}`);

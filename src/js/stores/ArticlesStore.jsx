@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants';
+import constants from '../constants/constants.jsx';
 
 const CHANGE_EVENT = 'change';
 let articles = {};

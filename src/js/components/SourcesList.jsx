@@ -22,6 +22,7 @@ class SourcesList extends React.Component {
      * @param {object} source
      * @returns
      */
+    // console.log(this.props.sources);
     const filteredSearch = this.props.sources.filter((source) => {
       return source.name.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1;
     });
@@ -32,14 +33,16 @@ class SourcesList extends React.Component {
      * @returns
      */
     const renderSources = filteredSearch.map((source) => {
+      // console.log(source.sortBysAvailable);
       return (
         <div>
           <Col m={4} s={12}>
             <Card key={source.id} className='teal'
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to='articles'
+              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
               className='btn'
+              value={[source.name, source.id]}
               onClick={() => this.props.btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
               {source.description}
             </Card>

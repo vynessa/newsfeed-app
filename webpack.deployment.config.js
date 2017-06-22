@@ -1,7 +1,11 @@
-import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+// import path from 'path';
+// import webpack from 'webpack';
+// import HtmlWebpackPlugin from 'html-webpack-plugin';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
+const path = require('path'),
+  webpack = require('webpack'),
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   devtool: 'eval-source-map',
@@ -60,4 +64,4 @@ const config = {
   ]
 };
 
-export default config;
+module.exports = config;

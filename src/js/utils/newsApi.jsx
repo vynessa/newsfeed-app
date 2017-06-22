@@ -21,7 +21,7 @@ class NewsApi {
           return error;
         });
     }
-    const apiUrl = 'https://newsapi.org/v1/sources';
+    const apiUrl = 'https://newsapi.org/v1/sources?language=en';
     return axios.get(apiUrl)
       .then((response) => {
         return response.data.sources;
@@ -40,7 +40,18 @@ class NewsApi {
   static getArticles(source, sortBy) {
     const apiUrl = 'https://newsapi.org/v1/articles?source=';
     const apiKey = 'b3af0273f37245359b9131db78464ad4';
-    const newLink = `${apiUrl}${source}&sortBy=${sortBy}&apiKey=${apiKey}`;
+
+    if (sortBy) {
+      const newLink = `${apiUrl}${source}&sortBy=${sortBy}&apiKey=${apiKey}`;
+      return axios.get(newLink)
+        .then((response) => {
+          return response.data.articles;
+        })
+        .catch((error) => {
+          return error;
+        });
+    }
+    const newLink = `${apiUrl}${source}&apiKey=${apiKey}`;
     return axios.get(newLink)
       .then((response) => {
         return response.data.articles;

@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants';
-import NewsApi from '../utils/newsApi';
+import constants from '../constants/constants.jsx';
+import NewsApi from '../utils/newsApi.jsx';
 
 const NewsActions = {
   allSources() {
@@ -31,13 +31,17 @@ const NewsActions = {
     });
   },
 
+  // getSource() {
+  //   l
+  // },
+
   allArticles(source, sortBy) {
     return NewsApi.getArticles(source, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles: {
           articles,
-          sortBy
+          sortBy,
         },
       }, (err) => {
         AppDispatcher.dispatch({

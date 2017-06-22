@@ -1,8 +1,8 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
-import NewsActions from '../actions/NewsActions';
-import SourcesStore from '../stores/SourcesStore';
+import NewsActions from '../actions/NewsActions.jsx';
+import SourcesStore from '../stores/SourcesStore.jsx';
 import SourcesList from './SourcesList.jsx';
 // import Preloader from '../components/Preloader.jsx';
 
@@ -32,6 +32,9 @@ class Sources extends React.Component {
    */
   componentDidMount() {
     NewsActions.allSources();
+    // this.setState{
+
+    // }
     SourcesStore.addChangeListener(this.onChange);
   }
   /**
@@ -61,6 +64,7 @@ class Sources extends React.Component {
    *
    */
   btnClick(id, sortBysAvailable) {
+    // create an action to hold sourceID
     NewsActions.allArticles(id, sortBysAvailable);
   }
 
@@ -77,7 +81,7 @@ class Sources extends React.Component {
    *
    */
   render() {
-    console.log(this.state);
+    // console.log('Sources', this.state.sources);
     return (
       <div className="sources">
         <SourcesList

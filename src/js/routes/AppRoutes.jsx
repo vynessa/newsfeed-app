@@ -12,7 +12,7 @@ const routes = (
   <Route name="app" exact path="/" component={Template}>
     <IndexRoute component={App} />
     <Route path="sources" component={Sources} />
-    <Route path="articles" component={Articles} />
+    <Route path="headlines" component={Articles} />
     {/*<NotFoundRoute component={ErrorPage} />*/}
   </Route >
 );
