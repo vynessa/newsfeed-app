@@ -43,5 +43,3 @@ jspm_packages
 # Environment configuration files
 .env
 
-# transpiled code
-dist
