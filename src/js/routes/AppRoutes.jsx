@@ -1,3 +1,4 @@
+/* global location localStorage*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-router';
@@ -5,14 +6,14 @@ import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
-import ErrorPage from '../components/ErrorPage.jsx';
+// import ErrorPage from '../components/ErrorPage.jsx';
 import Template from '../components/Template.jsx';
 
 const routes = (
   <Route name="app" exact path="/" component={Template}>
     <IndexRoute component={App} />
-    <Route path="sources" component={Sources} />
-    <Route path="headlines" component={Articles} />
+    <Route path="sources" component={localStorage.User ? Sources : App} />
+    <Route path="headlines" component={localStorage.User ? Articles : App} />
     {/*<NotFoundRoute component={ErrorPage} />*/}
   </Route >
 );

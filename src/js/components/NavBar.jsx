@@ -1,5 +1,8 @@
+/* global location localStorage*/
+import $ from 'jquery';
 import React from 'react';
 import { Link } from 'react-router';
+import GoogleLogin from 'react-google-login';
 
 // import css from '../../../public/css/main.scss';
 
@@ -7,14 +10,30 @@ import { Link } from 'react-router';
  * @function
  * @param
  */
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
   render() {
-    const showButton = () => {
-
+    const buttonHide = (user) => {
+      if (!user) {
+        $('#logout-btn').show();
+      } else {
+        $('#login-btn').hide();
+      }
     };
 
-    const hideButton = () => {
-
+    const login = () => {
+      const onSuccess = (googleUser) => {
+        const profile = googleUser.getBasicProfile();
+        localStorage.setItem(
+          'User',
+          JSON.stringify({
+            iD: profile.getId(),
+            name: profile.getName(),
+            imageURL: profile.getImageUrl(),
+            email: profile.getEmail()
+          })
+        );
+        location.reload();
+      };
     };
 
     return (
@@ -27,12 +46,12 @@ export default class NavBar extends React.Component {
               className="button-collapse">
               <i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
-              <li><Link to="Sources" className="waves-effect waves-light btn login-btn">Login</Link></li>
-              <li><Link to="/" className="waves-effect waves-light btn logout-btn">Logout</Link></li>
+              <li><Link to="Sources" id="login-btn" className="waves-effect waves-light btn">Login</Link></li>
+              <li><Link to="/" id="logout-btn" className="waves-effect waves-light btn">Logout</Link></li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
-              <li><Link to="Sources" className="waves-effect waves-light btn login-btn">Login</Link></li>
-              <li><Link to="/" className="waves-effect waves-light btn logout-btn">Logout</Link></li>
+              <li><Link to="Sources" id="login-btn" className="waves-effect waves-light btn">Login</Link></li>
+              <li><Link to="/" id="logout-btn" className="waves-effect waves-light btn">Logout</Link></li>
             </ul>
           </div>
         </nav>
@@ -40,3 +59,5 @@ export default class NavBar extends React.Component {
     );
   }
 }
+
+export default NavBar;
