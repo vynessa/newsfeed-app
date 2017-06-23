@@ -12,7 +12,7 @@ const config = {
   },
   devServer: {
     publicPath: '/',
-    // contentBase: './src',
+    contentBase: './src',
     compress: true,
     port: 8080,
     historyApiFallback: true

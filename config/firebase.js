@@ -1,6 +1,6 @@
-var firebase = require('firebase');
+const firebase = require('firebase');
 
-var config = {
+const config = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,
   databaseURL: process.env.databaseURL,

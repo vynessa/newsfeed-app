@@ -12,8 +12,8 @@ import Template from '../components/Template.jsx';
 const routes = (
   <Route name="app" exact path="/" component={Template}>
     <IndexRoute component={App} />
-    <Route path="sources" component={localStorage.User ? Sources : App} />
-    <Route path="headlines" component={localStorage.User ? Articles : App} />
+    <Route path="sources" component={Sources} />
+    <Route path="headlines" component={Articles} />
     {/*<NotFoundRoute component={ErrorPage} />*/}
   </Route >
 );

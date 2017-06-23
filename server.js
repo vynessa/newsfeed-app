@@ -2,7 +2,6 @@ const path = require('path'),
   express = require('express'),
   app = express();
 
-console.log('hbvcfdzhf');
 module.exports = {
   app: () => {
     // const app = express();

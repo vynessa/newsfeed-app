@@ -12,29 +12,29 @@ import GoogleLogin from 'react-google-login';
  */
 class NavBar extends React.Component {
   render() {
-    const buttonHide = (user) => {
-      if (!user) {
-        $('#logout-btn').show();
-      } else {
-        $('#login-btn').hide();
-      }
-    };
+    // const buttonHide = (user) => {
+    //   if (!user) {
+    //     $('#logout-btn').show();
+    //   } else {
+    //     $('#login-btn').hide();
+    //   }
+    // };
 
-    const login = () => {
-      const onSuccess = (googleUser) => {
-        const profile = googleUser.getBasicProfile();
-        localStorage.setItem(
-          'User',
-          JSON.stringify({
-            iD: profile.getId(),
-            name: profile.getName(),
-            imageURL: profile.getImageUrl(),
-            email: profile.getEmail()
-          })
-        );
-        location.reload();
-      };
-    };
+    // const login = () => {
+    //   const onSuccess = (googleUser) => {
+    //     const profile = googleUser.getBasicProfile();
+    //     localStorage.setItem(
+    //       'User',
+    //       JSON.stringify({
+    //         iD: profile.getId(),
+    //         name: profile.getName(),
+    //         imageURL: profile.getImageUrl(),
+    //         email: profile.getEmail()
+    //       })
+    //     );
+    //     location.reload();
+    //   };
+    // };
 
     return (
       <div className="navbar-fixed">
@@ -46,12 +46,16 @@ class NavBar extends React.Component {
               className="button-collapse">
               <i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
-              <li><Link to="Sources" id="login-btn" className="waves-effect waves-light btn">Login</Link></li>
-              <li><Link to="/" id="logout-btn" className="waves-effect waves-light btn">Logout</Link></li>
+              <li><Link to="Sources" id="login-btn"
+                className="waves-effect waves-light btn">Login</Link></li>
+              <li><Link to="/" id="logout-btn"
+                className="waves-effect waves-light btn">Logout</Link></li>
             </ul>
             <ul className="side-nav" id="mobile-demo">
-              <li><Link to="Sources" id="login-btn" className="waves-effect waves-light btn">Login</Link></li>
-              <li><Link to="/" id="logout-btn" className="waves-effect waves-light btn">Logout</Link></li>
+              <li><Link to="Sources" id="login-btn"
+                className="waves-effect waves-light btn">Login</Link></li>
+              <li><Link to="/" id="logout-btn"
+                className="waves-effect waves-light btn">Logout</Link></li>
             </ul>
           </div>
         </nav>

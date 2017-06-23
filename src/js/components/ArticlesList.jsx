@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
+import PropTypes from 'prop-types';
 
 /**
  * @class
@@ -24,7 +25,6 @@ class ArticlesList extends React.Component {
         <Col key={index} m={6} s={12}>
           <Card key ={article.author}
             className='small hoverable'
-            header={<CardTitle image={article.urlToImage}>{article.title}</CardTitle>}
             actions={[
               <a className="btn"
                 target="_blank"
@@ -33,6 +33,7 @@ class ArticlesList extends React.Component {
                 View full article
               </a>
             ]}>
+            <h5>{article.title}</h5>
             {article.description}
             <br/>
             <br/>

@@ -1,25 +1,15 @@
-// import path from 'path';
-// import webpack from 'webpack';
-// import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import ExtractTextPlugin from 'extract-text-webpack-plugin';
-const path = require('path'),
-  webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   devtool: 'eval-source-map',
   entry: './src/js/client.jsx',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'app.min.js'
-  },
-  devServer: {
-    publicPath: '/',
-    contentBase: './src',
-    compress: true,
-    port: 8080,
-    historyApiFallback: true
+    path: path.join(__dirname, './dist'),
+    filename: 'app.min.js',
+    publicPath: '/dist/'
   },
   module: {
     loaders: [
@@ -35,31 +25,49 @@ const config = {
       {
         test: /\.(jpg|png|svg)$/,
         loader: 'url-loader',
-        options: {
-          limit: 25000,
-        },
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader'],
-          publicPath: './dist'
         })
       }
     ]
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true,
+      },
+      compress: {
+        screw_ie8: true,
+        warnings: false,
+        pure_funcs: ['console.log', 'window.console.log.apply']
+      },
+      comments: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
     new HtmlWebpackPlugin({
       title: 'News Feed App',
       template: './src/index.html',
     }),
-
     new ExtractTextPlugin({
       filename: 'app.css',
       allChunks: true
-    })
-  ]
+    }),
+  ],
+  resolve: {
+    extensions: ['.js', '.json', '.jsx', '.scss']
+  },
 };
 
 module.exports = config;
