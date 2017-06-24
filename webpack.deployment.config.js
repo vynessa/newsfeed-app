@@ -36,26 +36,6 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true,
-      },
-      compress: {
-        screw_ie8: true,
-        warnings: false,
-        pure_funcs: ['console.log', 'window.console.log.apply']
-      },
-      comments: false
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
     new HtmlWebpackPlugin({
       title: 'News Feed App',
       template: './src/index.html',
@@ -63,6 +43,21 @@ const config = {
     new ExtractTextPlugin({
       filename: 'app.css',
       allChunks: true
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      beautify: false,
+      comments: false
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+        'API_KEY': JSON.stringify(process.env.API_KEY)
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
     }),
   ],
   resolve: {

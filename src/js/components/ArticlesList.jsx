@@ -25,6 +25,7 @@ class ArticlesList extends React.Component {
         <Col key={index} m={6} s={12}>
           <Card key ={article.author}
             className='small hoverable'
+            header={<CardTitle image={article.urlToImage}></CardTitle>}
             actions={[
               <a className="btn"
                 target="_blank"
@@ -33,11 +34,10 @@ class ArticlesList extends React.Component {
                 View full article
               </a>
             ]}>
-            <h5>{article.title}</h5>
+            <h5 className="article-title">{article.title}</h5>
             {article.description}
             <br/>
             <br/>
-            <div>Author: {article.author}</div>
             <div>Published On: {article.publishedAt}</div>
           </Card>
         </Col>

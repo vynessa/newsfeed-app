@@ -18,7 +18,6 @@ const FacebookIcon = generateShareIcon('facebook'),
 
 const {
   FacebookShareCount,
-  GooglePlusShareCount,
   TwitterShareCount,
   LinkedinShareCount,
   RedditShareCount,
@@ -28,6 +27,22 @@ const {
 
 // }
 
-const ShareArticle = () => {
+// const ShareArticle = () => {
   
-};
+// };
+
+class SocialArticle extends React.Component {
+  /**
+   * Renders Social Share Buttons
+   * 
+   */
+  render() {
+    return (
+      <div>
+        <>
+      </div>
+    );
+  }
+}
+
+export default SocialArticle;
