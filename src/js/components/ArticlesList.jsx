@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
+import ShareArticleButtons from './ShareArticleButtons.jsx';
 
 /**
  * @class
@@ -20,16 +21,17 @@ class ArticlesList extends React.Component {
       result = this.props.articles.articles;
       sortByAvailable = this.props.articles.sortBy;
     }
-    const articles = result.map((article, index) => {
+    const articles = result.map((article) => {
       return (
-        <Col key={index} m={6} s={12}>
-          <Card key ={article.author}
-            className='small hoverable'
-            header={<CardTitle image={article.urlToImage}></CardTitle>}
+        <Col key ={article.publishedAt} {...article} m={6} s={12}>
+          <Card
+            className='small'
+            header={<CardTitle image={article.urlToImage}/>}
             actions={[
-              <a className="btn"
+              <a
+                className="btn"
                 target="_blank"
-                rel="noopener"
+                rel="noopener noreferrer"
                 href={article.url}>
                 View full article
               </a>
@@ -38,7 +40,12 @@ class ArticlesList extends React.Component {
             {article.description}
             <br/>
             <br/>
-            <div>Published On: {article.publishedAt}</div>
+            <div className="col 6">
+              <ShareArticleButtons />
+            </div>
+            {/* <br/>
+            <br/>
+            <div>Published On: {article.publishedAt}</div>*/}
           </Card>
         </Col>
       );
@@ -47,7 +54,7 @@ class ArticlesList extends React.Component {
     const heading = result.map((article) => { return <h1>{article.id}</h1>; });
 
     const sortInput = sortByAvailable.map((tag) => {
-      return <option value={tag}>{tag}</option>;
+      return <option key={tag} value={tag}>{tag}</option>;
     });
 
     return (
@@ -56,7 +63,7 @@ class ArticlesList extends React.Component {
         <Row>
           <Input m={6} s={12}
             type="select"
-            onChange={this.props.sortOptions}
+            onChange={this.props.sortOption}
             label="Sort Articles By:">{sortInput}
           </Input>
         </Row>

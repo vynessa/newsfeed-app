@@ -18,7 +18,7 @@ class Sources extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sources: [],
+      sources: SourcesStore.getAll(),
       search: ''
       // currentPage: 1
     };
@@ -35,7 +35,12 @@ class Sources extends React.Component {
     // this.setState{
 
     // }
-    SourcesStore.addChangeListener(this.onChange);
+    // SourcesStore.addChangeListener(this.onChange);
+    SourcesStore.on('change', () => {
+      this.setState({
+        sources: SourcesStore.getAll()
+      });
+    });
   }
   /**
    *
@@ -57,14 +62,14 @@ class Sources extends React.Component {
    */
   updateSearch(event) {
     this.setState({
-      search: event.target.value.substr(0, 20)
+      search: event.target.value.substr(0, 25)
     });
   }
   /**
    *
    */
   btnClick(id, sortBysAvailable) {
-    // create an action to hold sourceID
+    // create an action to hold sourceID and Name
     NewsActions.allArticles(id, sortBysAvailable);
   }
 
@@ -74,14 +79,15 @@ class Sources extends React.Component {
    */
   handleCategory(event) {
     return (event.target.value === '1')
-    ? Materialize.toast('Select a valid category', 4000, 'rounded')
+    ? Materialize.toast('Select a valid category', 1000, 'rounded')
     : NewsActions.categories(event.target.value);
   }
   /**
    *
    */
   render() {
-    // console.log('Sources', this.state.sources);
+    console.log('Sources', this.state.sources);
+    console.log(this.state.sources.sortBysAvailable);
     return (
       <div className="sources">
         <SourcesList

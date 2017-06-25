@@ -3,7 +3,7 @@ import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
 
 const CHANGE_EVENT = 'change';
-let articles = {};
+let _articles = {};
 
 const ArticlesStore = Object.assign({}, EventEmitter.prototype, {
   addChangeListener(callback) {
@@ -16,18 +16,18 @@ const ArticlesStore = Object.assign({}, EventEmitter.prototype, {
     this.emit(CHANGE_EVENT);
   },
   getAll() {
-    return articles;
+    return _articles;
   }
 });
 
 AppDispatcher.register((action) => {
   switch (action.type) {
     case constants.articles:
-      articles = action.articles;
+      _articles = action.articles;
       ArticlesStore.emitChange();
       break;
     case constants.articlesError:
-      articles = action.articlesError;
+      _articles = action.articlesError;
       ArticlesStore.emitChange();
       break;
     default:

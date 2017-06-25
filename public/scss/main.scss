@@ -33,12 +33,12 @@ $color-dark-brown: brown;
   font-family: 'Lato', sans-serif;
 }
 
-.card {
-  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
-}
+
 
 .article-title {
   color: $color-teal;
+  font-weight: bold;
+  font-size: 22px;
 }
 
 // .card-image {
@@ -50,21 +50,18 @@ $color-dark-brown: brown;
   color: $color-white;
   position: absolute;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 900px;
   // background: rgba($color-white, 0.5);
 }
 
 // .card .card-image img {
-//   height: 250px;
-
+//   height: 400px;
 // }
 
-.card-content {
-  height: 280px
-}
+
 
 .card.small {
-  height: 500px;
+  height:700px;
   width: 100%;
   box-shadow: 
     0 4px 8px 0 rgba(0, 0, 0, 0.2), 
@@ -72,14 +69,18 @@ $color-dark-brown: brown;
 }
 
 // Sources Styling
-// .card .card-content .card-title {
-//   color: $color-white;
-//   font-size: 32px;
-// }
+.card {
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-content {
+  height: 280px
+}
 
 .card .card-title {
   color: $color-white;
   font-size: 32px;
+  font-weight: bold;
 }
 
 // Footer

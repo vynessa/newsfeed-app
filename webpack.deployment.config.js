@@ -39,22 +39,29 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'News Feed App',
       template: './src/index.html',
+      inject: true
     }),
     new ExtractTextPlugin({
       filename: 'app.css',
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
       beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      compress: {
+        screw_ie8: true
+      },
       comments: false
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'API_KEY': JSON.stringify(process.env.API_KEY)
-      }
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     'NODE_ENV': JSON.stringify('production'),
+    //     'API_KEY': JSON.stringify(process.env.API_KEY)
+    //   }
+    // }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
@@ -62,7 +69,7 @@ const config = {
   ],
   resolve: {
     extensions: ['.js', '.json', '.jsx', '.scss']
-  },
+  }
 };
 
 module.exports = config;

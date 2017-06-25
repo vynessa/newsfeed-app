@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
 import ArticlesStore from '../stores/ArticlesStore.jsx';
 import ArticlesList from './ArticlesList.jsx';
@@ -16,10 +15,10 @@ class Articles extends React.Component {
     super(props);
     this.state = {
       articles: [],
-      sortBy: ''
+      sortBy: '',
     };
     this.onChange = this.onChange.bind(this);
-    this.handleSortOptions = this.handleSortOptions.bind(this);
+    this.handleSortOption = this.handleSortOption.bind(this);
   }
   /**
    *
@@ -48,26 +47,28 @@ class Articles extends React.Component {
    * 
    * @param {*} event
    */
-  handleSortOptions(event) {
+  handleSortOption(event, id) {
     event.preventDefault();
-    console.log(event);
-    console.log(event.target.value);
+    console.log('Event:', event);
+    console.log('Event Target:', event.target.value);
+    const val = event.target.value;
     this.setState({
-      sortBy: event.target.value
+      sortBy: val
     });
-    // NewsActions.allArticles(event.target.value)
+    console.log('id:', id);
+    NewsActions.allArticles(id, event.target.value);
   }
 
   /**
    *
    */
   render() {
-    console.log('state', this.state);
+    console.log('state:', this.state);
     return (
       <ArticlesList
         articles={this.state.articles}
         sortBy={this.state.sortBy}
-        sortOptions={this.handleSortOptions} />
+        sortOption={this.handleSortOption} />
     );
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import { Link } from 'react-router';
-// import Preloader from '../components/Preloader.jsx';
+import Preloader from '../components/Preloader.jsx';
 
 /**
  * @class
@@ -63,6 +64,8 @@ class SourcesList extends React.Component {
     return (
       <div>
         <div>
+          {
+          renderSources ?
           <Row className="center-align">
             <Input
               className="search-content"
@@ -76,6 +79,7 @@ class SourcesList extends React.Component {
               type='select' label="Categories:"
               defaultValue='1'>
                 <option value='1'>Choose Category</option>
+                <option value=''>All Sources</option>
                 <option value='business'>Business</option>
                 <option value='entertainment'>Entertainment</option>
                 <option value='gaming'>Gaming</option>
@@ -87,6 +91,8 @@ class SourcesList extends React.Component {
                 <option value='technology'>Technology</option>
             </Input>
           </Row>
+          : <Preloader />
+          }
         </div>
         <div className="row">{renderSources}</div>
         <div className="clearfix"></div>

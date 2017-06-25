@@ -49,16 +49,17 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
 
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
 
     new HtmlWebpackPlugin({
       title: 'News Feed App',
       template: './src/index.html',
+      inject: true
     }),
 
     new ExtractTextPlugin({
       filename: 'app.css',
-      allChunks: true
+      allChunks: true,
     }),
 
     new webpack.DefinePlugin({
@@ -67,7 +68,10 @@ const config = {
         'API_KEY': JSON.stringify(process.env.API_KEY)
       }
     })
-  ]
+  ],
+  resolve: {
+    extensions: ['.js', '.json', '.jsx', '.scss']
+  }
 };
 
 module.exports = config;
