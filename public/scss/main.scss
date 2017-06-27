@@ -33,14 +33,15 @@ $color-dark-brown: brown;
   font-family: 'Lato', sans-serif;
 }
 
-
-
 .article-title {
   color: $color-teal;
   font-weight: bold;
   font-size: 22px;
 }
 
+#heading-text {
+  color: $color-teal
+}
 // .card-image {
 //   opacity: 0.5;
 // }
