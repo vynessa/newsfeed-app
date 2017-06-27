@@ -1,0 +1,11 @@
+// File workspace settings to overwrite vscode default and user settings.
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true
+        // "node_modules": true
+  }
+}

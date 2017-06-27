@@ -1,0 +1,17 @@
+engines:
+  duplications:
+    enabled: true
+    config:
+      languages:
+        - javascript
+  eslint:
+    enabled: true
+ratings:
+  paths:
+      - "src/**.js"
+exclude_paths:
+- "dist"
+- .gitignore
+- .travis.yml
+- .eslintrc
+- "webpack.config.babel.js"
