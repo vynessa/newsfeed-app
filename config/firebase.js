@@ -9,5 +9,7 @@ const config = {
   messagingSenderId: process.env.messagingSenderId
 };
 
+firebase.initializeApp(config);
 
-module.exports = firebase.initializeApp(config);
+export const provider = new firebase.auth.GoogleAuthProvider();
+
