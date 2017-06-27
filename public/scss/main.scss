@@ -1,0 +1,90 @@
+$color-brown: #623b19;
+$color-teal: teal;
+$color-black: black;
+$color-white: #fff;
+$color-dark-brown: brown;
+
+.nav-wrapper {
+  background-color: $color-brown
+}
+
+.btn{
+  background-color: $color-brown
+}
+
+.waves-effect.waves-light.btn {
+  background-color: $color-teal
+}
+
+.btn:hover {
+  background-color: $color-teal
+}
+
+.row {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.search-content {
+  align-content: center;
+}
+
+#app {
+  font-family: 'Lato', sans-serif;
+}
+
+.article-title {
+  color: $color-teal;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+#heading-text {
+  color: $color-teal
+}
+// .card-image {
+//   opacity: 0.5;
+// }
+
+.card .card-image .card-title {
+  // font-size: 30px;
+  color: $color-white;
+  position: absolute;
+  font-size: 24px;
+  font-weight: 900px;
+  // background: rgba($color-white, 0.5);
+}
+
+// .card .card-image img {
+//   height: 400px;
+// }
+
+
+
+.card.small {
+  height:700px;
+  width: 100%;
+  box-shadow: 
+    0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+// Sources Styling
+.card {
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-content {
+  height: 280px
+}
+
+.card .card-title {
+  color: $color-white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+// Footer
+footer {
+  color: $color-teal
+}
