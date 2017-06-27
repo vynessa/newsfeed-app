@@ -45,7 +45,7 @@ class SourcesList extends React.Component {
             <Card key={source.id} className='teal'
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable}`}
+              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
               className='btn'
               value={[source.name, source.id]}
               onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
