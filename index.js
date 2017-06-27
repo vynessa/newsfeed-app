@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
   const webpackDevMiddleware = require('webpack-dev-middleware');
   const webpackHotMiddleware = require('webpack-hot-middleware');
-  config = require('./webpack.config.babel.js');
+  config = require('./webpack.config.js');
   const compiler = webpack(config);
 
   app.use(webpackHotMiddleware(compiler));
