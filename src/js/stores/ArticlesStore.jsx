@@ -2,36 +2,66 @@ import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
 
-const CHANGE_EVENT = 'change';
-let _articles = {};
-
-const ArticlesStore = Object.assign({}, EventEmitter.prototype, {
-  addChangeListener(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
-  removeChangeListener(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  },
-  emitChange() {
-    this.emit(CHANGE_EVENT);
-  },
+/**
+ * 
+ */
+class ArticlesStore extends EventEmitter {
+  /**
+   * 
+   */
+  constructor() {
+    super();
+    this.articles = {};
+    // this.sourceKey = '';
+  }
+  /**
+   * 
+   * @param {object} articles
+   */
+  getArticles(articles) {
+    this.articles = articles;
+    this.emit('change');
+  }
+  /**
+   * 
+   */
   getAll() {
-    return _articles;
+    return this.articles;
   }
-});
-
-AppDispatcher.register((action) => {
-  switch (action.type) {
-    case constants.articles:
-      _articles = action.articles;
-      ArticlesStore.emitChange();
-      break;
-    case constants.articlesError:
-      _articles = action.articlesError;
-      ArticlesStore.emitChange();
-      break;
-    default:
+  /**
+   * 
+   * @param {string} sourceKey
+   */
+  // setSourceKey(sourceKey) {
+  //   this.sourceKey = sourceKey;
+  //   localStorage.setItem('source_key', sourceKey);
+  // }
+  /**
+   * 
+   */
+  // getSourceKey() {
+  //   return this.sourceKey;
+  // }
+  /**
+   * 
+   * @param {object} action
+   */
+  updateArticles(action) {
+    switch (action.type) {
+      case constants.articles:
+        this.getArticles(action.articles);
+        break;
+      case constants.articlesError:
+        this.getArticles(action.articlesError);
+        break;
+      // case constants.sourceKey:
+      //   this.sourceKey(action.sourceKey);
+      //   break;
+      default: break;
+    }
   }
-});
-
-export default ArticlesStore;
+}
+// console.log(typeof ArticlesStore.getSourceKey);
+const articlesStore = new ArticlesStore();
+AppDispatcher.register(articlesStore.updateArticles.bind(articlesStore));
+export default articlesStore;

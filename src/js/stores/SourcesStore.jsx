@@ -2,48 +2,20 @@ import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
 
-// const CHANGE_EVENT = 'change';
-// let _sources = {};
-
-// const SourcesStore = Object.assign({}, EventEmitter.prototype, {
-//   addChangeListener(callback) {
-//     this.on(CHANGE_EVENT, callback);
-//   },
-//   removeChangeListener(callback) {
-//     this.removeListener(CHANGE_EVENT, callback);
-//   },
-//   emitChange() {
-//     this.emit(CHANGE_EVENT);
-//   },
-//   getAll() {
-//     return _sources;
-//   }
-// });
-
-// AppDispatcher.register((action) => {
-//   switch (action.type) {
-//     case constants.sources:
-//       _sources = action.sources;
-//       SourcesStore.emitChange();
-//       break;
-//     case constants.sourcesError:
-//       _sources = action.sourcesError;
-//       SourcesStore.emitChange();
-//       break;
-//     default:
-//   }
-// });
-
-// export default SourcesStore;
-
+/**
+ * 
+ */
 class SourcesStore extends EventEmitter {
+  /**
+   * 
+   */
   constructor() {
     super();
     this.sources = [];
-    // this.getSources =
   }
   /**
    * 
+   * @param {object} sources
    */
   getSources(sources) {
     this.sources = sources;

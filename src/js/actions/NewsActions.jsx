@@ -3,7 +3,7 @@ import constants from '../constants/constants.jsx';
 import NewsApi from '../utils/newsApi.jsx';
 
 const NewsActions = {
-  allSources: () => {
+  allSources() {
     return NewsApi.getSources().then((sources) => {
       AppDispatcher.dispatch({
         type: constants.sources,
@@ -17,7 +17,7 @@ const NewsActions = {
     });
   },
 
-  categories: (category) => {
+  getCategories(category) {
     return NewsApi.getSources(category).then((sources) => {
       AppDispatcher.dispatch({
         type: constants.sources,
@@ -31,22 +31,17 @@ const NewsActions = {
     });
   },
 
-  getSourceKey: (sourceKey) => {
-    AppDispatcher.dispatch({
-      type: constants.sourceKey,
-      sourceKey
-    });
-  },
+  allArticles(sourceKey, sortBy) {
+    console.log('articles', sourceKey);
+    console.log('sortBy', sortBy);
 
-  allArticles: (source, sortBy) => {
-    console.log('articles', sortBy);
-    return NewsApi.getArticles(source, sortBy[0]).then((articles) => {
+    return NewsApi.getArticles(sourceKey, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles: {
           articles,
-          sortBy,
-          source
+          sourceKey,
+          sortBy
         },
       }, (err) => {
         AppDispatcher.dispatch({
@@ -55,7 +50,15 @@ const NewsActions = {
         });
       });
     });
-  }
+  },
+
+  // getSourceKey(sourceKey) {
+  //   console.log('articles2', sourceKey);
+  //   AppDispatcher.dispatch({
+  //     type: constants.sourceKey,
+  //     sourceKey
+  //   });
+  // }
 };
 
 export default NewsActions;

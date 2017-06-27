@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import { Link } from 'react-router';
 import Preloader from '../components/Preloader.jsx';
@@ -18,14 +18,19 @@ class SourcesList extends React.Component {
    *
    */
   render() {
+    const { sources,
+      search,
+      updateSearch,
+      btnClick,
+      handleCategory } = this.props;
+
     /** Search filter function
      * @function
      * @param {object} source
      * @returns
      */
-    // console.log(this.props.sources);
-    const filteredSearch = this.props.sources.filter((source) => {
-      return source.name.toLowerCase().indexOf(this.props.search.toLowerCase()) !== -1;
+    const filteredSearch = sources.filter((source) => {
+      return source.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
 
     /** Source Function
@@ -34,17 +39,16 @@ class SourcesList extends React.Component {
      * @returns
      */
     const renderSources = filteredSearch.map((source) => {
-      // console.log(source.sortBysAvailable);
       return (
         <div>
           <Col m={4} s={12}>
             <Card key={source.id} className='teal'
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
+              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable}`}
               className='btn'
               value={[source.name, source.id]}
-              onClick={() => this.props.btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
+              onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
               {source.description}
             </Card>
           </Col>
@@ -63,19 +67,17 @@ class SourcesList extends React.Component {
 
     return (
       <div>
-        <div>
-          {
-          renderSources ?
-          <Row className="center-align">
+        <div className="center-align">
+          <Row>
             <Input
               className="search-content"
               s={3}
               label="Search Sources"
-              value={this.props.search}
-              onChange={this.props.updateSearch}>
+              value={search}
+              onChange={updateSearch}>
             </Input>
             <Input m={3} s={12}
-              onChange={this.props.handleCategory}
+              onChange={handleCategory}
               type='select' label="Categories:"
               defaultValue='1'>
                 <option value='1'>Choose Category</option>
@@ -91,10 +93,8 @@ class SourcesList extends React.Component {
                 <option value='technology'>Technology</option>
             </Input>
           </Row>
-          : <Preloader />
-          }
         </div>
-        <div className="row">{renderSources}</div>
+        <div className="row">{renderSources ? renderSources : (<h1>Loading...</h1>)}</div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination
@@ -107,6 +107,22 @@ class SourcesList extends React.Component {
     );
   }
 }
+
+SourcesList.defaultProps = {
+  sources: [],
+  search: '',
+  updateSearch: SourcesList.prototype.updateSearch,
+  btnClick: SourcesList.prototype.btnClick,
+  handleCategory: SourcesList.prototype.handleCategory
+};
+
+SourcesList.propTypes = {
+  sources: PropTypes.array,
+  search: PropTypes.string,
+  updateSearch: PropTypes.func,
+  btnClick: PropTypes.func,
+  handleCategory: PropTypes.func
+};
 
 export default SourcesList;
 

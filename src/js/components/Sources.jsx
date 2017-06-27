@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import NewsActions from '../actions/NewsActions.jsx';
 import SourcesStore from '../stores/SourcesStore.jsx';
+import ArticlesStore from '../stores/ArticlesStore.jsx';
 import SourcesList from './SourcesList.jsx';
 // import Preloader from '../components/Preloader.jsx';
 
@@ -26,27 +27,20 @@ class Sources extends React.Component {
     this.updateSearch = this.updateSearch.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.btnClick = this.btnClick.bind(this);
+    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
   }
   /**
    *
    */
   componentDidMount() {
     NewsActions.allSources();
-    // this.setState{
-
-    // }
-    // SourcesStore.addChangeListener(this.onChange);
-    SourcesStore.on('change', () => {
-      this.setState({
-        sources: SourcesStore.getAll()
-      });
-    });
+    SourcesStore.on('change', this.onChange);
   }
   /**
    *
    */
   componentWillUnmount() {
-    SourcesStore.removeChangeListener(this.onChange);
+    SourcesStore.removeListener('change', this.onChange);
   }
   /**
    *
@@ -66,33 +60,33 @@ class Sources extends React.Component {
     });
   }
   /**
-   *
+   * 
+   * @param {string} sourceKey
+   * @param {array} sortBysAvailable
    */
-  btnClick(id, sortBysAvailable) {
+  btnClick(sourceKey, sortBy) {
+    // localStorage.getItem('source_key');
     // create an action to hold sourceID and Name
-    NewsActions.allArticles(id, sortBysAvailable);
+    NewsActions.allArticles(sourceKey, sortBy);
   }
 
   /**
    *
-   * @param {*} event
+   * @param {object} event
    */
   handleCategory(event) {
     return (event.target.value === '1')
     ? Materialize.toast('Select a valid category', 1000, 'rounded')
-    : NewsActions.categories(event.target.value);
+    : NewsActions.getCategories(event.target.value);
   }
   /**
    *
    */
   render() {
-    console.log('Sources', this.state.sources);
-    console.log(this.state.sources.sortBysAvailable);
     return (
       <div className="sources">
         <SourcesList
           sources={this.state.sources}
-          sortBysAvailable={this.state.sortBysAvailable}
           search={this.state.search}
           updateSearch={this.updateSearch}
           btnClick={this.btnClick}

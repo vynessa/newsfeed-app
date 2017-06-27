@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
+import NewsActions from '../actions/NewsActions.jsx';
 import ShareArticleButtons from './ShareArticleButtons.jsx';
 
 /**
@@ -13,36 +14,44 @@ class ArticlesList extends React.Component {
    *
    */
   render() {
-    console.log('props', this.props);
+    console.log('Props', this.props);
+    console.log('Articles Props', this.props.articles);
+
+    const { articles, sortBy, sourceKey } = this.props.articles;
+    const { handleSort } = this.props;
     let result = [];
     let sortByAvailable = [];
+    let getSourceKey = '';
     if (this.props.articles !== undefined &&
-      this.props.articles.articles !== undefined) {
-      result = this.props.articles.articles;
-      sortByAvailable = this.props.articles.sortBy;
+      articles !== undefined) {
+      result = articles;
+      sortByAvailable = sortBy;
+      getSourceKey = sourceKey;
     }
-    const articles = result.map((article) => {
+    const renderArticles = result.map((article) => {
       return (
-        <Col key ={article.publishedAt} {...article} m={6} s={12}>
+        <Col key ={article.publishedAt} m={6} s={12}>
           <Card
             className='small'
             header={<CardTitle image={article.urlToImage}/>}
             actions={[
-              <a
-                className="btn"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={article.url}>
-                View full article
-              </a>
+              <div>
+                <a
+                  className="btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={article.url}>
+                  View full article
+                </a>
+                <br/>
+                <br/>
+                <div className="col 6">
+                  <ShareArticleButtons />
+                </div>
+              </div>
             ]}>
             <h5 className="article-title">{article.title}</h5>
             {article.description}
-            <br/>
-            <br/>
-            <div className="col 6">
-              <ShareArticleButtons />
-            </div>
             {/* <br/>
             <br/>
             <div>Published On: {article.publishedAt}</div>*/}
@@ -51,26 +60,48 @@ class ArticlesList extends React.Component {
       );
     });
 
-    const heading = result.map((article) => { return <h1>{article.id}</h1>; });
+    // const getSorted = () => {
+    //   NewsActions.allArticles(sourceKey, this.props.sortBy);
+    // };
 
     const sortInput = sortByAvailable.map((tag) => {
       return <option key={tag} value={tag}>{tag}</option>;
     });
 
+    // const sortOption = (e) => {
+    //   // e.preventdefault();
+    //   console.log(e.target.value);
+    //   return e.target.value;
+    // };
+
     return (
       <div >
-        <div>{heading}</div>
+        <h1 className="center-align" id="heading-text">Headlines from {getSourceKey}</h1>
         <Row>
           <Input m={6} s={12}
             type="select"
-            onChange={this.props.sortOption}
+            onChange={handleSort}
             label="Sort Articles By:">{sortInput}
           </Input>
         </Row>
-        <div className="row">{articles}</div>
+        <div className="row">{renderArticles}</div>
       </div>
     );
   }
 }
+
+ArticlesList.defaultProps = {
+  articles: {},
+  handleSort: ArticlesList.prototype.handleSort,
+  sortBy: '',
+  sourceKey: ''
+};
+
+ArticlesList.propTypes = {
+  articles: PropTypes.object,
+  handleSort: PropTypes.func,
+  sortBy: PropTypes.string,
+  sourceKey: PropTypes.string,
+};
 
 export default ArticlesList;

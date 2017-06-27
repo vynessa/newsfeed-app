@@ -14,29 +14,33 @@ class Articles extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: [],
-      sortBy: '',
+      articles: ArticlesStore.getAll(),
+      sortBy: ''
     };
+    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
     this.onChange = this.onChange.bind(this);
-    this.handleSortOption = this.handleSortOption.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
+    this.handleSort = this.handleSort.bind(this);
+    // this.sourceKey = this.state.sourceKey;
   }
   /**
    *
    */
   componentDidMount() {
+    // NewsActions.allArticles(sourceKey, sortBy[0]);
     // const id = 'al-jazeera-english';
     // const sort = 'top';
     // NewsActions.allArticles(id, sort);
-    ArticlesStore.addChangeListener(this.onChange);
+    ArticlesStore.on('change', this.onChange);
   }
   /**
-   * 
+   *
    */
   componentWillUnmount() {
-    ArticlesStore.removeChangeListener(this.onChange);
+    ArticlesStore.removeListener('change', this.onChange);
   }
   /**
-   * 
+   *
    */
   onChange() {
     this.setState({
@@ -44,31 +48,36 @@ class Articles extends React.Component {
     });
   }
   /**
-   * 
+   *
+   * @param {*} sourceKey
+   * @param {*} sortBysAvailable
+   */
+  handleSort(sourceKey, sortBy) {
+    return NewsActions.allArticles(sourceKey, sortBy);
+  }
+  /**
+   *
    * @param {*} event
    */
-  handleSortOption(event, id) {
-    event.preventDefault();
-    console.log('Event:', event);
-    console.log('Event Target:', event.target.value);
+  updateSortBy(event) {
     const val = event.target.value;
     this.setState({
       sortBy: val
     });
-    console.log('id:', id);
-    NewsActions.allArticles(id, event.target.value);
   }
-
   /**
    *
    */
   render() {
-    console.log('state:', this.state);
+    console.log('Parent props', this.props);
+    console.log('state2', this.state);
+    console.log('Sourcekey', this.state.sourceKey);
     return (
       <ArticlesList
         articles={this.state.articles}
-        sortBy={this.state.sortBy}
-        sortOption={this.handleSortOption} />
+        handleSort={this.handleSort}
+        sortBy = {this.state.sortBy}
+        sourceKey= {this.state.sourceKey} />
     );
   }
 }
