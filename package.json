@@ -10,7 +10,7 @@
   "scripts": {
     "build:prod": "NODE_ENV=production webpack --config ./webpack.deployment.config.js --progress --colors",
     "start": "NODE_ENV=production node index.js",
-    "dev": "webpack-dev-server  --config webpack.config.babel.js --open --content-base src/",
+    "dev": "webpack-dev-server  --config webpack.config.js --open --content-base src/",
     "build": "webpack --watch",
     "heroku-postbuild": "npm run build:prod"
   },
@@ -48,6 +48,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.4",
     "dotenv": "^4.0.0",
+    "enzyme": "^2.9.1",
     "es6-promise": "^4.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",

@@ -18,7 +18,9 @@
   },
   "globals": {
     "document": true,
-    "Materialize": true
+    "Materialize": true,
+    "localStorage": true,
+    "location": true
   },
   "rules": {
     "one-var": 0,
