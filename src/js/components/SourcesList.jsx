@@ -45,7 +45,7 @@ class SourcesList extends React.Component {
             <Card key={source.id} className='teal'
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
+              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0 ]}`}
               className='btn'
               value={[source.name, source.id]}
               onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
@@ -94,7 +94,7 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{renderSources ? renderSources : (<h1>Loading...</h1>)}</div>
+        <div className="row">{sources !== null ? renderSources : (<h1>Loading...</h1>)}</div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination
