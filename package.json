@@ -12,6 +12,7 @@
     "start": "NODE_ENV=production node index.js",
     "dev": "webpack-dev-server  --config webpack.config.js --open --content-base src/",
     "build": "webpack --watch",
+    "test": "jest",
     "heroku-postbuild": "npm run build:prod"
   },
   "repository": {
@@ -86,6 +87,7 @@
     "history": "^4.6.1",
     "html-webpack-plugin": "^2.28.0",
     "img-loader": "^2.0.0",
+    "jasmine": "^2.6.0",
     "jest": "^20.0.4",
     "jquery": "^3.2.1",
     "node-env-file": "^0.1.8",
