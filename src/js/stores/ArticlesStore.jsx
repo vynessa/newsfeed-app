@@ -3,48 +3,44 @@ import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
 
 /**
- * 
+ * @description Articles store which recieves data dispatches from actions
+ * @class ArticlesStore
+ * @extends {EventEmitter}
  */
 class ArticlesStore extends EventEmitter {
   /**
-   * 
+   * Creates an instance of ArticlesStore.
+   * @memberof ArticlesStore
    */
   constructor() {
     super();
     this.articles = {};
-    // this.sourceKey = '';
   }
   /**
-   * 
+   * @description
+   * @method
    * @param {object} articles
+   * @returns {void}
    */
   getArticles(articles) {
     this.articles = articles;
     this.emit('change');
   }
+
   /**
-   * 
+   * @description
+   * @returns {object} this.articles
+   * @memberof ArticlesStore
    */
   getAll() {
     return this.articles;
   }
+
   /**
-   * 
-   * @param {string} sourceKey
-   */
-  // setSourceKey(sourceKey) {
-  //   this.sourceKey = sourceKey;
-  //   localStorage.setItem('source_key', sourceKey);
-  // }
-  /**
-   * 
-   */
-  // getSourceKey() {
-  //   return this.sourceKey;
-  // }
-  /**
-   * 
-   * @param {object} action
+   * @description Articles store
+   * @param {any} action
+   * @memberof ArticlesStore
+   * @returns {void}
    */
   updateArticles(action) {
     switch (action.type) {
@@ -54,14 +50,10 @@ class ArticlesStore extends EventEmitter {
       case constants.articlesError:
         this.getArticles(action.articlesError);
         break;
-      // case constants.sourceKey:
-      //   this.sourceKey(action.sourceKey);
-      //   break;
-      default: break;
+      default: // Finir
     }
   }
 }
-// console.log(typeof ArticlesStore.getSourceKey);
 const articlesStore = new ArticlesStore();
 AppDispatcher.register(articlesStore.updateArticles.bind(articlesStore));
 export default articlesStore;

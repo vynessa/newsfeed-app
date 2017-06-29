@@ -1,17 +1,17 @@
 import React from 'react';
 import Home from './Home.jsx';
-import NavBar from './NavBar.jsx';
-import Sources from './Sources.jsx';
-import Articles from './Articles.jsx';
-import Footer from './Footer.jsx';
-
+const firebase = require('firebase/app');
 /**
- * @function
- * @param
+ * @description Home Page Component
+ * @class
  */
 export default class App extends React.Component {
+  constructor() {
+    super();
+  }
   /**
-   * 
+   * @description render Home Component
+   * @returns {JSX.Element} Home Page
    */
   render() {
     return (

@@ -2,20 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import { Link } from 'react-router';
-import Preloader from '../components/Preloader.jsx';
+// import Preloader from '../components/Preloader.jsx';
 
 /**
- * @class
- * @param
+ * @description Sources child component
+ * @class SourcesList
+ * @extends {React.Component}
  */
 class SourcesList extends React.Component {
-  // pagination(currentPage) {
-  //   this.setState({
-  //     currentPage
-  //   });
-  // }
   /**
-   *
+   * @description
+   * @returns {JSX.Element} SourcesList
+   * @memberof SourcesList
    */
   render() {
     const { sources,
@@ -27,7 +25,7 @@ class SourcesList extends React.Component {
     /** Search filter function
      * @function
      * @param {object} source
-     * @returns
+     * @returns {object} filteredSearch
      */
     const filteredSearch = sources.filter((source) => {
       return source.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
@@ -36,7 +34,7 @@ class SourcesList extends React.Component {
     /** Source Function
      * @function
      * @param {object} source
-     * @returns
+     * @returns {object} renderSources
      */
     const renderSources = filteredSearch.map((source) => {
       return (
@@ -94,7 +92,7 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{sources !== null ? renderSources : (<h1>Loading...</h1>)}</div>
+        <div className="row">{renderSources}</div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination

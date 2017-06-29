@@ -2,16 +2,18 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
-import NewsActions from '../actions/NewsActions.jsx';
 import ShareArticleButtons from './ShareArticleButtons.jsx';
 
 /**
+ * @description ArticlesList component
  * @class
- * @param
  */
 class ArticlesList extends React.Component {
   /**
-   *
+   * 
+   * 
+   * @returns 
+   * @memberof ArticlesList
    */
   render() {
     console.log('Props', this.props);

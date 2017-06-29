@@ -4,12 +4,13 @@ import ArticlesStore from '../stores/ArticlesStore.jsx';
 import ArticlesList from './ArticlesList.jsx';
 
 /**
+ * @description Articles component
  * @class
- * @param
  */
 class Articles extends React.Component {
   /**
-   *
+   * Initialize State
+   * @param {object} props
    */
   constructor(props) {
     super(props);
@@ -17,14 +18,14 @@ class Articles extends React.Component {
       articles: ArticlesStore.getAll(),
       sortBy: ''
     };
-    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
     this.onChange = this.onChange.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.handleSort = this.handleSort.bind(this);
-    // this.sourceKey = this.state.sourceKey;
   }
   /**
-   *
+   * @description Mount Component on every change
+   * @method
+   * @returns {void}
    */
   componentDidMount() {
     // NewsActions.allArticles(sourceKey, sortBy[0]);
@@ -34,13 +35,17 @@ class Articles extends React.Component {
     ArticlesStore.on('change', this.onChange);
   }
   /**
-   *
+   * @description Unmount Component
+   * @method
+   * @returns {void}
    */
   componentWillUnmount() {
     ArticlesStore.removeListener('change', this.onChange);
   }
   /**
-   *
+   * @description Change state on user(s) request
+   * @method
+   * @returns {object} articles
    */
   onChange() {
     this.setState({
@@ -48,16 +53,20 @@ class Articles extends React.Component {
     });
   }
   /**
-   *
-   * @param {*} sourceKey
-   * @param {*} sortBysAvailable
+   *@description Sort function to filter headlines
+   * @method
+   * @param {string} sourceKey
+   * @param {string} sortBy
+   * @returns {object} articles
    */
   handleSort(sourceKey, sortBy) {
     return NewsActions.allArticles(sourceKey, sortBy);
   }
   /**
-   *
-   * @param {*} event
+   * @description Event handler function to update sort state
+   * @method
+   * @param {object} event
+   * @returns {string} sortBy
    */
   updateSortBy(event) {
     const val = event.target.value;
@@ -66,7 +75,9 @@ class Articles extends React.Component {
     });
   }
   /**
-   *
+   * @description render child component - ArticlesList
+   * @method
+   * @returns {JSX.Element} ArticlesList
    */
   render() {
     console.log('Parent props', this.props);

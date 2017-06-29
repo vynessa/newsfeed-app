@@ -14,23 +14,19 @@ const routes = (
     <IndexRoute component={App} />
     <Route path="sources" component={Sources} />
     <Route path="headlines" component={Articles} />
-    {/*<NotFoundRoute component={ErrorPage} />*/}
   </Route >
 );
 
-{/*<Router>
-    <Route component={Main} path="app">
-        <Route path="/" component={Home}/>
-        <Route path="/cars" component={Car}/>
-        <Route path="/about" component={About}/>
-    </Route>
-</Router>*/}
 /**
- * 
+ * @description Define routes for components
+ * @class AppRoutes
+ * @extends {React.Component}
  */
 class AppRoutes extends React.Component {
   /**
-   * 
+   * @description Define routes for components
+   * @memberof AppRoutes
+   * @returns {JSX.Element} AppRoutes
    */
   render() {
     return <Router routes={routes} history={browserHistory} />;
