@@ -24,25 +24,25 @@ class Home extends React.Component {
         <Slide
           src={business}
           title="Latest News feeds from...">
-          Here's our small slogan.
+          View Latest feeds from different Sources
         </Slide>
         <Slide
           src={whatsNew}
-          title="Left aligned Caption"
+          title="Check out what's new on the news today"
           placement="left">
-          Here's our small slogan.
+          Login to access the Latest gist
         </Slide>
         <Slide
           src={theGoodNews}
-          title="Right aligned Caption"
+          title="Get the latest news on the fly"
           placement="right">
-          Here's our small slogan.
+          Both good and bad
         </Slide>
         <Slide
           src={newsWallpaper}
-          title="Right aligned Caption"
+          title="Explore different news categories..."
           placement="right">
-          Here's our small slogan.
+          From Business news to Sports, Fashion, Music...
         </Slide>
       </Slider>
     );

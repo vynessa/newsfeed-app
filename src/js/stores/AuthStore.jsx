@@ -1,6 +1,8 @@
 import { EventEmitter } from 'events';
+import {browserHistory} from 'react-router';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
+
 
 
 /**
@@ -17,7 +19,6 @@ class AuthStore extends EventEmitter {
   constructor() {
     super();
     this.user = {};
-    // this.userId = '';
   }
 
   /**
@@ -26,13 +27,23 @@ class AuthStore extends EventEmitter {
    * @memberof LoginStore
    */
   getUser(user) {
-    // console.log(user.user, 'user id')
+    this.user = user;
+    console.log(user, 'user id');
     localStorage.setItem('user', JSON.stringify(user));
-    // this.user = user;
+    browserHistory.push('sources');
+    location.reload();
+    console.log(localStorage.getItem('user'), 'here ooo ');
+    
+    // getUserDetails(user);
     // localStorage.setItem('user', JSON.stringify(user));
     // console.log(localStorage.getItem('user'), 'here ooo ');
-    return this.user;
+    // return this.user;
   }
+
+  // getUserDetails(user) {
+  //   console.log(this.user)
+  //   return this.user;
+  // }
   /**
    * 
    * 

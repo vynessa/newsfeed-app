@@ -4,7 +4,7 @@ import constants from '../constants/constants.jsx';
 import NewsApi from '../utils/newsApi.jsx';
 
 const firebase = require('firebase/app');
-require('firebase/app');
+require('firebase/auth');
 
 /**
  * @description News Actions to dispatch actions to stores
@@ -84,7 +84,6 @@ const NewsActions = {
     firebase.auth().signInWithPopup(provider).then((result) => {
       console.log(result.user);
       console.log(result.user.uid);
-      browserHistory.push('sources');
       AppDispatcher.dispatch({
         type: constants.login,
         // user: {
@@ -106,12 +105,11 @@ const NewsActions = {
    * @return {void}
    */
   signOutAuth() {
-    firebase.auth().signOut().then(() => {
-      AppDispatcher.dispatch({
-        type: constants.signOut,
-        user
-      });
-    });
+    // firebase.auth().signOut().then(() => {
+    //   AppDispatcher.dispatch({
+    //     type: constants.signOut
+    //   });
+    // });
   }
 };
 
