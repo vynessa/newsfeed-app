@@ -10,7 +10,7 @@ import Articles from '../components/Articles.jsx';
 import Template from '../components/Template.jsx';
 
 const routes = (
-  <Route name="app" exact path="/" component={Template}>
+  <Route exact path="/" component={Template}>
     <IndexRoute component={App} />
     <Route path="sources" component={Sources} />
     <Route path="headlines" component={Articles} />

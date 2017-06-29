@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
 import ArticlesStore from '../stores/ArticlesStore.jsx';
 import ArticlesList from './ArticlesList.jsx';
@@ -22,16 +23,28 @@ class Articles extends React.Component {
     this.updateSortBy = this.updateSortBy.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
+
+  /**
+   * 
+   * 
+   * @memberof Sources
+   */
+  componentWillMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      user
+    });
+  }
   /**
    * @description Mount Component on every change
    * @method
    * @returns {void}
    */
   componentDidMount() {
+    if (this.state.user === null) {
+      browserHistory.push('/');
+    }
     // NewsActions.allArticles(sourceKey, sortBy[0]);
-    // const id = 'al-jazeera-english';
-    // const sort = 'top';
-    // NewsActions.allArticles(id, sort);
     ArticlesStore.on('change', this.onChange);
   }
   /**
@@ -80,15 +93,11 @@ class Articles extends React.Component {
    * @returns {JSX.Element} ArticlesList
    */
   render() {
-    console.log('Parent props', this.props);
-    console.log('state2', this.state);
-    console.log('Sourcekey', this.state.sourceKey);
     return (
       <ArticlesList
         articles={this.state.articles}
         handleSort={this.handleSort}
-        sortBy = {this.state.sortBy}
-        sourceKey= {this.state.sourceKey} />
+        sortBy = {this.state.sortBy} />
     );
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
+// import { browserHistory } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
-import { provider } from '../../../config/firebase';
 
-// const firebase = require('firebase/app');
-// require('firebase/app');
+const firebase = require('firebase/app');
+require('firebase/app');
 
-// const provider = new firebase.auth.GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 /**
  * @description Navigation bar component
@@ -17,9 +17,23 @@ class NavBar extends React.Component {
    */
   constructor() {
     super();
-
+    this.state = {
+      user: null
+    };
     this.login = this.login.bind(this);
     this.signOut = this.signOut.bind(this);
+  }
+
+  /**
+   * 
+   * 
+   * @memberof NavBar
+   */
+  componentWillMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      user
+    });
   }
   /**
    * @description Login method
@@ -29,6 +43,7 @@ class NavBar extends React.Component {
    */
   login() {
     NewsActions.loginAuth(provider);
+    // browserHistory.push('sources');
   }
   /**
    * @memberof NavBar
@@ -43,6 +58,7 @@ class NavBar extends React.Component {
    * @returns {JSX.Element} NavBar
    */
   render() {
+    const user = this.state.user;
     return (
       <div className="navbar-fixed">
         <nav className="brown">
@@ -53,20 +69,24 @@ class NavBar extends React.Component {
               className="button-collapse">
               <i className="material-icons">menu</i></a>
             <ul className="right hide-on-med-and-down">
-              <li>
+              {
+                user == null ?
+                (<li>
                 <a
                 id="login-btn"
                 onClick={this.login}
                 className="waves-effect waves-light btn">Login
                 </a>
-              </li>
-              <li>
+              </li>)
+              :
+              (<li>
                 <a to="/sources"
                 id="logout-btn"
                 onClick ={this.signOut}
                 className="waves-effect waves-light btn">Logout
                 </a>
-              </li>
+              </li>)
+              }
             </ul>
             <ul className="side-nav" id="mobile-demo">
               <li>

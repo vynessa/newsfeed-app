@@ -1,7 +1,10 @@
+import { browserHistory } from 'react-router';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants.jsx';
 import NewsApi from '../utils/newsApi.jsx';
-import firebase from '../../../config/firebase';
+
+const firebase = require('firebase/app');
+require('firebase/app');
 
 /**
  * @description News Actions to dispatch actions to stores
@@ -79,8 +82,15 @@ const NewsActions = {
    */
   loginAuth(provider) {
     firebase.auth().signInWithPopup(provider).then((result) => {
+      console.log(result.user);
+      console.log(result.user.uid);
+      browserHistory.push('sources');
       AppDispatcher.dispatch({
         type: constants.login,
+        // user: {
+        //   user: result.user,
+        //   userId: result.user.uid
+        // }
         user: result.user
       }, (err) => {
         AppDispatcher.dispatch({
@@ -98,7 +108,8 @@ const NewsActions = {
   signOutAuth() {
     firebase.auth().signOut().then(() => {
       AppDispatcher.dispatch({
-        type: constants.signOut
+        type: constants.signOut,
+        user
       });
     });
   }

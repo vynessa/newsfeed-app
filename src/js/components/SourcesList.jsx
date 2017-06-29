@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import { Link } from 'react-router';
-// import Preloader from '../components/Preloader.jsx';
 
 /**
  * @description Sources child component

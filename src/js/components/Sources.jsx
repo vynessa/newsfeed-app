@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import NewsActions from '../actions/NewsActions.jsx';
 import SourcesStore from '../stores/SourcesStore.jsx';
+import AuthStore from '../stores/AuthStore.jsx';
 import SourcesList from './SourcesList.jsx';
 // import Preloader from '../components/Preloader.jsx';
 
@@ -14,13 +15,14 @@ import SourcesList from './SourcesList.jsx';
 class Sources extends React.Component {
   /**
    * Creates an instance of Sources.
-   * @param {any} props 
+   * @param {any} props
    * @memberof Sources
    */
   constructor(props) {
     super(props);
     this.state = {
       sources: SourcesStore.getAll(),
+      user: null,
       search: ''
       // currentPage: 1
     };
@@ -32,15 +34,30 @@ class Sources extends React.Component {
   }
 
   /**
+   * 
+   * 
+   * @memberof Sources
+   */
+  componentWillMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      user
+    });
+  }
+  /**
    * @description On Component Mount, sources actions are called and stores listen for change
    * @memberof Sources
    * @returns {void}
    */
   componentDidMount() {
+    console.log(this.state.user);
+    if (this.state.user === null) {
+      browserHistory.push('/');
+    }
     NewsActions.allSources();
     SourcesStore.on('change', this.onChange);
+    console.log(localStorage.getItem('user'));
   }
-
   /**
    * 
    * @description When Component unmounts, state is lost.
@@ -64,7 +81,7 @@ class Sources extends React.Component {
   /**
    * 
    * 
-   * @param {any} event 
+   * @param {any} event
    * @memberof Sources
    */
   updateSearch(event) {
@@ -104,6 +121,7 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   render() {
+    console.log(this.state);
     return (
       <div className="sources">
         <SourcesList
