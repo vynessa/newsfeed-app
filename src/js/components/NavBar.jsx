@@ -1,7 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
-import LoginActions from '../actions/LoginActions.jsx';
 import AuthStore from '../stores/AuthStore.jsx';
 
 const firebase = require('firebase/app');
@@ -47,24 +46,9 @@ class NavBar extends React.Component {
    */
   login() {
     NewsActions.loginAuth(provider);
-    // LoginActions.loginAuth();
-    // browserHistory.push('sources');
-    // firebase.auth().signInWithPopup(provider).then(function(result) {
-    //   // This gives you a Google Access Token. You can use it to access the Google API.
-    //   var token = result.credential.accessToken;
-    //   // The signed-in user info.
-    //   var user = result.user;
-    //   // ...
-    // }).catch(function(error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // The email of the user's account used.
-    //   var email = error.email;
-    //   // The firebase.auth.AuthCredential type that was used.
-    //   var credential = error.credential;
-    //   // ...
-    // });
+  }
+
+  loginFailure() {
   }
   /**
    * @memberof NavBar
@@ -72,7 +56,6 @@ class NavBar extends React.Component {
   signOut() {
     localStorage.clear();
     location.reload();
-    // LoginActions.signOutAuth();
   }
 
   /**
@@ -87,11 +70,26 @@ class NavBar extends React.Component {
       <div className="navbar-fixed">
         <nav className="brown">
           <div className="nav-wrapper">
-            <a href="index.html" className="brand-logo">e-Feeds</a>
-            <a href="index.html"
-              data-activates="mobile-demo"
-              className="button-collapse">
-              <i className="material-icons">menu</i></a>
+            {
+              (user === null) ?
+              <div>
+                <a href="/" className="brand-logo">e-Feeds</a>
+                <a href="/"
+                  data-activates="mobile-demo"
+                  className="button-collapse">
+                <i className="material-icons">menu</i>
+                </a>
+              </div>
+              :
+              <div>
+                <a href="/" className="brand-logo">e-Feeds</a>
+                <a href="/"
+                  data-activates="mobile-demo"
+                  className="button-collapse">
+                  <i className="material-icons">menu</i>
+                </a>
+              </div>
+            }
             <ul className="right hide-on-med-and-down">
                 {
                   (user === null) ?
@@ -104,7 +102,7 @@ class NavBar extends React.Component {
                 </li>
                 :
               <li>
-                <a to="/sources"
+                <a
                 id="logout-btn"
                 onClick ={this.signOut}
                 className="waves-effect waves-light btn">Logout
@@ -114,13 +112,14 @@ class NavBar extends React.Component {
             </ul>
             <ul className="side-nav" id="mobile-demo">
               <li>
-                <a id="login-btn"
+                <a
+                id="login-btn"
                 onClick={this.login}
                 className="waves-effect waves-light btn">Login
                 </a>
               </li>
               <li>
-                <a to="/"
+                <a
                 id="logout-btn"
                 onClick={this.signOut}
                 className="waves-effect waves-light btn">Logout

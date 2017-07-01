@@ -56,7 +56,7 @@ const NewsActions = {
    * @returns {object} articles
    */
   allArticles(sourceKey, sortBy) {
-    // console.log('articles', sourceKey);
+    // console.log('sourcekey', sourceKey);
     // console.log('sortBy', sortBy);
     return NewsApi.getArticles(sourceKey, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
@@ -86,10 +86,6 @@ const NewsActions = {
       console.log(result.user.uid);
       AppDispatcher.dispatch({
         type: constants.login,
-        // user: {
-        //   user: result.user,
-        //   userId: result.user.uid
-        // }
         user: result.user
       }, (err) => {
         AppDispatcher.dispatch({
@@ -105,11 +101,11 @@ const NewsActions = {
    * @return {void}
    */
   signOutAuth() {
-    // firebase.auth().signOut().then(() => {
-    //   AppDispatcher.dispatch({
-    //     type: constants.signOut
-    //   });
-    // });
+    firebase.auth().signOut().then(() => {
+      AppDispatcher.dispatch({
+        type: constants.signOut
+      });
+    });
   }
 };
 

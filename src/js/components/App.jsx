@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './Home.jsx';
 
 const firebase = require('firebase/app');
-// require('firebase/auth');
 /**
  * @description Home Page Component
  * @class
@@ -22,10 +21,10 @@ export default class App extends React.Component {
       storageBucket: process.env.STORAGE_BUCKET,
       messagingSenderId: process.env.MESSAGING_SENDER_ID
     };
-    // firebase.initializeApp(config);
     if (!firebase.apps.length) {
-    firebase.initializeApp(config);
-}
+      firebase.initializeApp(config);
+    }
+    console.log(firebase.apps.length);
   }
   /**
    * @description render Home Component

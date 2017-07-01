@@ -6,14 +6,21 @@ import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
-// import ErrorPage from '../components/ErrorPage.jsx';
 import Template from '../components/Template.jsx';
+
+const check = (nextState, replace, next) => {
+  const getUser = localStorage.getItem('user');
+  if (getUser !== null) {
+    replace('/sources');
+  }
+  next();
+};
 
 const routes = (
   <Route exact path="/" component={Template}>
-    <IndexRoute component={App} />
+    <IndexRoute onEnter={check} component={App} />
     <Route path="sources" component={Sources} />
-    <Route path="headlines" component={Articles} />
+    <Route path="articles" component={Articles} />
   </Route >
 );
 
