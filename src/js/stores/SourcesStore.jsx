@@ -25,7 +25,6 @@ class SourcesStore extends EventEmitter {
    * @returns {void}
    */
   getSources(sources) {
-    console.log('SourceStore', sources);
     this.sources = sources;
     this.emit('change');
   }
