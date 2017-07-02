@@ -16,8 +16,8 @@ class ArticlesList extends React.Component {
    * @memberof ArticlesList
    */
   render() {
-    console.log('Props', this.props);
-    console.log('Articles Props', this.props.articles);
+    // console.log('Props', this.props);
+    // console.log('Articles Props', this.props.articles);
 
     const { articles, sortBy, sourceKey } = this.props.articles;
     const { handleSort } = this.props;
