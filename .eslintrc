@@ -21,6 +21,7 @@
     "Materialize": true,
     "localStorage": true,
     "location": true
+    // "expect": true
   },
   "rules": {
     "one-var": 0,
