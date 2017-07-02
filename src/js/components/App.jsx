@@ -24,7 +24,6 @@ export default class App extends React.Component {
     if (!firebase.apps.length) {
       firebase.initializeApp(config);
     }
-    console.log(firebase.apps.length);
   }
   /**
    * @description render Home Component

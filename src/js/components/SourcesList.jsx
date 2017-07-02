@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import { Link } from 'react-router';
+import Preloader from '../components/Preloader.jsx';
 
 /**
  * @description Sources child component
@@ -91,7 +92,7 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{renderSources}</div>
+        <div className="row">{ sources === null ? <Preloader /> : renderSources}</div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination

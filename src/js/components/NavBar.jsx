@@ -1,7 +1,10 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import GoogleButton from 'react-google-button';
+import { Navbar, NavItem } from 'react-materialize';
+// import { browserHistory } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
 import AuthStore from '../stores/AuthStore.jsx';
+
 
 const firebase = require('firebase/app');
 require('firebase/auth');
@@ -52,6 +55,7 @@ class NavBar extends React.Component {
   }
   /**
    * @memberof NavBar
+   * @returns {void}
    */
   signOut() {
     localStorage.clear();
@@ -65,42 +69,28 @@ class NavBar extends React.Component {
    */
   render() {
     const user = this.state.user;
-    console.log('yppppp', user);
     return (
       <div className="navbar-fixed">
         <nav className="brown">
           <div className="nav-wrapper">
-            {
-              (user === null) ?
-              <div>
-                <a href="/" className="brand-logo">e-Feeds</a>
-                <a href="/"
-                  data-activates="mobile-demo"
-                  className="button-collapse">
-                <i className="material-icons">menu</i>
-                </a>
-              </div>
-              :
-              <div>
-                <a href="/" className="brand-logo">e-Feeds</a>
-                <a href="/"
-                  data-activates="mobile-demo"
-                  className="button-collapse">
-                  <i className="material-icons">menu</i>
-                </a>
-              </div>
-            }
+            <a href="/" className="brand-logo">e-Feeds</a>
+            <a href="/"
+              data-activates="mobile-demo"
+              className="button-collapse">
+            <i className="material-icons">menu</i>
+            </a>
             <ul className="right hide-on-med-and-down">
                 {
                   (user === null) ?
-                <li>
-                  <a
+                  <GoogleButton
                   id="login-btn"
-                  onClick={this.login}
-                  className="waves-effect waves-light btn">Login
-                  </a>
-                </li>
+                  type="light"
+                  onClick={this.login}/>
                 :
+              <div>
+              <li>
+                {this.state.user.displayName}
+              </li>
               <li>
                 <a
                 id="logout-btn"
@@ -108,23 +98,27 @@ class NavBar extends React.Component {
                 className="waves-effect waves-light btn">Logout
                 </a>
               </li>
+              </div>
                 }
             </ul>
             <ul className="side-nav" id="mobile-demo">
-              <li>
-                <a
-                id="login-btn"
-                onClick={this.login}
-                className="waves-effect waves-light btn">Login
-                </a>
-              </li>
-              <li>
-                <a
-                id="logout-btn"
-                onClick={this.signOut}
-                className="waves-effect waves-light btn">Logout
-                </a>
-              </li>
+              {
+                (user === null) ?
+                <li>
+                  <GoogleButton
+                  id="login-btn"
+                  type="light"
+                  onClick={this.login}/>
+                </li>
+                :
+                <li>
+                  <a
+                  id="logout-btn"
+                  onClick={this.signOut}
+                  className="waves-effect waves-light btn">Logout
+                  </a>
+                </li>
+              }
             </ul>
           </div>
         </nav>

@@ -1,11 +1,9 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Col, Card, Row, Input, Pagination } from 'react-materialize';
 import NewsActions from '../actions/NewsActions.jsx';
 import SourcesStore from '../stores/SourcesStore.jsx';
 import AuthStore from '../stores/AuthStore.jsx';
 import SourcesList from './SourcesList.jsx';
-// import Preloader from '../components/Preloader.jsx';
 
 /**
  * @description Parent component - Sources
@@ -50,13 +48,11 @@ class Sources extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    console.log(this.state.user);
     if (this.state.user === null) {
       browserHistory.push('/');
     }
     NewsActions.allSources();
     SourcesStore.on('change', this.onChange);
-    console.log(localStorage.getItem('user'));
   }
   /**
    * 
@@ -121,7 +117,6 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   render() {
-    console.log(this.state);
     return (
       <div className="sources">
         <SourcesList

@@ -23,7 +23,7 @@ class Home extends React.Component {
       <Slider className="slider fullscreen">
         <Slide
           src={business}
-          title="Latest News feeds from...">
+          title="Welcome to e-Feeds">
           View Latest feeds from different Sources
         </Slide>
         <Slide
