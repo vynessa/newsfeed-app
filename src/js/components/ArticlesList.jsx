@@ -12,11 +12,10 @@ class ArticlesList extends React.Component {
   /**
    * 
    * 
-   * @returns 
+   * @returns
    * @memberof ArticlesList
    */
   render() {
-
     const { articles, sortBy, sourceKey } = this.props.articles;
     const { handleSort } = this.props;
     let result = [];
