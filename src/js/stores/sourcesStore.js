@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants.jsx';
+import constants from '../constants/constants';
 
 
 /**

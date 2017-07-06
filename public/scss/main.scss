@@ -1,33 +1,37 @@
 $color-brown: #623b19;
-$color-teal: teal;
 $color-black: black;
-$color-white: #fff;
+$color-white: white;
 $color-dark-brown: brown;
+$color-light-brown: rgb(197,190,189);
 
+// Navigation Bar
 .nav-wrapper {
   background-color: $color-brown
 }
 
 .right #login-btn {
+  width: 200px !important;
   margin-top: 8px;
   margin-right: 15px;
 }
 
-.btn{
-  background-color: $color-brown
+div #login-btn {
+  background-color: $color-light-brown !important;
+  color: $color-white !important;
+  border-radius: 4px !important;
 }
 
-.waves-effect.waves-light.btn {
-  background-color: $color-teal
+.circle.responsive-img {
+  max-width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
-.btn:hover {
-  background-color: $color-teal
-}
 
-.row {
-  margin: 0 auto;
-  width: 1000px;
+
+div #login-btn:hover, #logout-btn:hover {
+  background-color: $color-brown !important;
 }
 
 .search-content {
@@ -39,14 +43,17 @@ $color-dark-brown: brown;
 }
 
 .article-title {
-  color: $color-teal;
+  color: $color-brown;
   font-weight: bold;
   font-size: 22px;
 }
 
 #heading-text {
-  color: $color-teal
+  color: $color-brown;
+  text-transform: capitalize;
 }
+
+
 // .card-image {
 //   opacity: 0.5;
 // }
@@ -73,12 +80,37 @@ $color-dark-brown: brown;
 }
 
 // Sources Styling
+.row {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.btn{
+  background-color: $color-brown
+}
+
+.btn:hover {
+  background-color: $color-light-brown
+}
+
+.waves-effect.waves-light.btn {
+  background-color: $color-light-brown
+}
+
 .card {
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-content {
-  height: 280px
+  height: 280px;
+}
+
+.card .card-content.white-text{
+  background: $color-light-brown;
+}
+
+.card .card-action {
+  background: $color-light-brown;
 }
 
 .card .card-title {
@@ -89,5 +121,5 @@ $color-dark-brown: brown;
 
 // Footer
 footer {
-  color: $color-teal
+  color: $color-brown
 }

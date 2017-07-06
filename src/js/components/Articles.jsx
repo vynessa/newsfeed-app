@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import NewsActions from '../actions/NewsActions.jsx';
-import ArticlesStore from '../stores/ArticlesStore.jsx';
+import NewsActions from '../actions/newsActions';
+import ArticlesStore from '../stores/articlesStore';
 import ArticlesList from './ArticlesList.jsx';
 
 /**
@@ -17,7 +17,8 @@ class Articles extends React.Component {
     super(props);
     this.state = {
       articles: ArticlesStore.getAll(),
-      sortBy: ''
+      sortBy: '',
+      user: null
     };
     this.onChange = this.onChange.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
@@ -44,7 +45,7 @@ class Articles extends React.Component {
     if (this.state.user === null) {
       browserHistory.push('/');
     }
-    // NewsActions.allArticles(sourceKey, sortBy[0]);
+    // NewsActions.allArticles(sourceKey, sortBy);
     ArticlesStore.on('change', this.onChange);
   }
   /**
@@ -93,6 +94,7 @@ class Articles extends React.Component {
    * @returns {JSX.Element} ArticlesList
    */
   render() {
+    console.log(this.state);
     return (
       <ArticlesList
         articles={this.state.articles}

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
 import ShareArticleButtons from './ShareArticleButtons.jsx';
+import Preloader from './Preloader.jsx';
 
 /**
  * @description ArticlesList component
@@ -12,21 +12,20 @@ class ArticlesList extends React.Component {
   /**
    * 
    * 
-   * @returns 
+   * @returns
    * @memberof ArticlesList
    */
   render() {
-
     const { articles, sortBy, sourceKey } = this.props.articles;
     const { handleSort } = this.props;
     let result = [];
     let sortByAvailable = [];
-    let getSourceKey = '';
+    let sourceId = '';
     if (this.props.articles !== undefined &&
       articles !== undefined) {
       result = articles;
       sortByAvailable = sortBy;
-      getSourceKey = sourceKey;
+      sourceId = sourceKey;
     }
     const renderArticles = result.map((article) => {
       return (
@@ -73,10 +72,10 @@ class ArticlesList extends React.Component {
     //   console.log(e.target.value);
     //   return e.target.value;
     // };
-
+    console.log(articles);
     return (
       <div >
-        <h1 className="center-align" id="heading-text">Headlines from {getSourceKey}</h1>
+        <h1 className="center-align" id="heading-text">Headlines from {sourceId.replace(/-/g, ' ')}</h1>
         <Row>
           <Input m={6} s={12}
             type="select"
@@ -84,21 +83,22 @@ class ArticlesList extends React.Component {
             label="Sort Articles By:">{sortInput}
           </Input>
         </Row>
-        <div className="row">{renderArticles}</div>
+        <div className="row">{renderArticles}
+          </div>
       </div>
     );
   }
 }
 
 ArticlesList.defaultProps = {
-  articles: {},
+  articles: [],
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
   sourceKey: ''
 };
 
 ArticlesList.propTypes = {
-  articles: PropTypes.object,
+  articles: PropTypes.array,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
   sourceKey: PropTypes.string,

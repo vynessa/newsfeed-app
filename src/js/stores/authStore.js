@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 import { browserHistory } from 'react-router';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants.jsx';
+import constants from '../constants/constants';
 
 /**
  * @description Login store which gets user details

@@ -1,3 +1,7 @@
+// import React from 'react';
+// import { mount } from 'enzyme';
+// import NavBar from '../../src/js/components/NavBar.jsx';
+
 const expect = require('expect');
 
 describe('Addition', () => {

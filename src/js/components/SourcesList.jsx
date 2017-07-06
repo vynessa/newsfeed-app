@@ -40,7 +40,7 @@ class SourcesList extends React.Component {
       return (
         <div>
           <Col m={4} s={12}>
-            <Card key={source.id} className='teal'
+            <Card key={source.id}
               textClassName='white-text'
               title={source.name}
               actions={[<Link to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0 ]}`}
@@ -77,8 +77,7 @@ class SourcesList extends React.Component {
             <Input m={3} s={12}
               onChange={handleCategory}
               type='select' label="Categories:"
-              defaultValue='1'>
-                <option value='1'>Choose Category</option>
+              defaultValue=''>
                 <option value=''>All Sources</option>
                 <option value='business'>Business</option>
                 <option value='entertainment'>Entertainment</option>
@@ -92,7 +91,10 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{ sources === null ? <Preloader /> : renderSources}</div>
+        <div className="row">{ (sources.length === 0) ?
+          <div className="center-align"><Preloader /></div>
+          : renderSources }
+          </div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination

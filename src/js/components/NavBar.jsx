@@ -2,8 +2,8 @@ import React from 'react';
 import GoogleButton from 'react-google-button';
 import { Navbar, NavItem } from 'react-materialize';
 // import { browserHistory } from 'react-router';
-import NewsActions from '../actions/NewsActions.jsx';
-import AuthStore from '../stores/AuthStore.jsx';
+import NewsActions from '../actions/newsActions';
+import AuthStore from '../stores/authStore';
 
 
 const firebase = require('firebase/app');
@@ -33,7 +33,7 @@ class NavBar extends React.Component {
    * 
    * @memberof NavBar
    */
-  componentDidMount() {
+  componentWillMount() {
     // const user = AuthStore.getUser();
     // console.log("User", user);
     const user = JSON.parse(localStorage.getItem('user'));
@@ -88,16 +88,19 @@ class NavBar extends React.Component {
                   onClick={this.login}/>
                 :
               <div>
-              <li>
-                {this.state.user.displayName}
-              </li>
-              <li>
-                <a
-                id="logout-btn"
-                onClick ={this.signOut}
-                className="waves-effect waves-light btn">Logout
-                </a>
-              </li>
+                <li>
+                  <img className="circle responsive-img" src={this.state.user.photoURL}/>
+                </li>
+                <li>
+                  {this.state.user.displayName}
+                </li>
+                <li>
+                  <a
+                  id="logout-btn"
+                  onClick ={this.signOut}
+                  className="waves-effect waves-light btn">Logout
+                  </a>
+                </li>
               </div>
                 }
             </ul>

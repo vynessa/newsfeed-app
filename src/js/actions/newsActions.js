@@ -1,7 +1,7 @@
 import { browserHistory } from 'react-router';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants.jsx';
-import NewsApi from '../utils/newsApi.jsx';
+import constants from '../constants/constants';
+import NewsApi from '../utils/newsApi';
 
 const firebase = require('firebase/app');
 require('firebase/auth');
@@ -56,8 +56,8 @@ const NewsActions = {
    * @returns {object} articles
    */
   allArticles(sourceKey, sortBy) {
-    // console.log('sourcekey', sourceKey);
-    // console.log('sortBy', sortBy);
+    console.log('sourcekey', sourceKey);
+    console.log('sortBy', sortBy);
     return NewsApi.getArticles(sourceKey, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
@@ -82,8 +82,6 @@ const NewsActions = {
    */
   loginAuth(provider) {
     firebase.auth().signInWithPopup(provider).then((result) => {
-      console.log(result.user);
-      console.log(result.user.uid);
       AppDispatcher.dispatch({
         type: constants.login,
         user: result.user

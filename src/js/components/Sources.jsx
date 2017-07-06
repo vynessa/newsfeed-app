@@ -1,8 +1,8 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import NewsActions from '../actions/NewsActions.jsx';
-import SourcesStore from '../stores/SourcesStore.jsx';
-import AuthStore from '../stores/AuthStore.jsx';
+import NewsActions from '../actions/newsActions';
+import SourcesStore from '../stores/sourcesStore';
+import AuthStore from '../stores/authStore';
 import SourcesList from './SourcesList.jsx';
 
 /**
@@ -106,9 +106,7 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   handleCategory(event) {
-    return (event.target.value === '1')
-    ? Materialize.toast('Select a valid category', 1000, 'rounded')
-    : NewsActions.getCategories(event.target.value);
+    return NewsActions.getCategories(event.target.value);
   }
 
   /**
@@ -117,6 +115,7 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   render() {
+    console.log(this.state);
     return (
       <div className="sources">
         <SourcesList
