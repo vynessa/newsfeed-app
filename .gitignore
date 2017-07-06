@@ -14,6 +14,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# Coveralls
+.coveralls.yml
+
 # nyc test coverage
 .nyc_output
 
@@ -32,6 +35,7 @@ jspm_packages
 
 #visual studio code settings
 .vscode
+.DS_Store
 
 # Optional npm cache directory
 .npm

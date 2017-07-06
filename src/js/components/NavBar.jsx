@@ -1,60 +1,124 @@
-import $ from 'jquery';
 import React from 'react';
-import { Link } from 'react-router';
-import GoogleLogin from 'react-google-login';
+import GoogleButton from 'react-google-button';
+import { Navbar, NavItem } from 'react-materialize';
+// import { browserHistory } from 'react-router';
+import NewsActions from '../actions/NewsActions.jsx';
+import AuthStore from '../stores/AuthStore.jsx';
 
-// import css from '../../../public/css/main.scss';
+
+const firebase = require('firebase/app');
+require('firebase/auth');
+
+const provider = new firebase.auth.GoogleAuthProvider();
 
 /**
- * @function
- * @param
+ * @description Navigation bar component
+ * @class
  */
 class NavBar extends React.Component {
+  /**
+   * 
+   */
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+    this.login = this.login.bind(this);
+    this.signOut = this.signOut.bind(this);
+  }
+
+  /**
+   * 
+   * 
+   * @memberof NavBar
+   */
+  componentDidMount() {
+    // const user = AuthStore.getUser();
+    // console.log("User", user);
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      user
+    });
+  }
+  /**
+   * @description Login method
+   * @param {string} provider
+   * @memberof NavBar
+   * @returns {object}
+   */
+  login() {
+    NewsActions.loginAuth(provider);
+  }
+
+  loginFailure() {
+  }
+  /**
+   * @memberof NavBar
+   * @returns {void}
+   */
+  signOut() {
+    localStorage.clear();
+    location.reload();
+  }
+
+  /**
+   * @description
+   * @method
+   * @returns {JSX.Element} NavBar
+   */
   render() {
-    // const buttonHide = (user) => {
-    //   if (!user) {
-    //     $('#logout-btn').show();
-    //   } else {
-    //     $('#login-btn').hide();
-    //   }
-    // };
-
-    // const login = () => {
-    //   const onSuccess = (googleUser) => {
-    //     const profile = googleUser.getBasicProfile();
-    //     localStorage.setItem(
-    //       'User',
-    //       JSON.stringify({
-    //         iD: profile.getId(),
-    //         name: profile.getName(),
-    //         imageURL: profile.getImageUrl(),
-    //         email: profile.getEmail()
-    //       })
-    //     );
-    //     location.reload();
-    //   };
-    // };
-
+    const user = this.state.user;
     return (
       <div className="navbar-fixed">
         <nav className="brown">
           <div className="nav-wrapper">
-            <a href="index.html" className="brand-logo">e-Feeds</a>
-            <a href="index.html"
+            <a href="/" className="brand-logo">e-Feeds</a>
+            <a href="/"
               data-activates="mobile-demo"
               className="button-collapse">
-              <i className="material-icons">menu</i></a>
+            <i className="material-icons">menu</i>
+            </a>
             <ul className="right hide-on-med-and-down">
-              <li><Link to="Sources" id="login-btn"
-                className="waves-effect waves-light btn">Login</Link></li>
-              <li><Link to="/" id="logout-btn"
-                className="waves-effect waves-light btn">Logout</Link></li>
+                {
+                  (user === null) ?
+                  <GoogleButton
+                  id="login-btn"
+                  type="light"
+                  onClick={this.login}/>
+                :
+              <div>
+              <li>
+                {this.state.user.displayName}
+              </li>
+              <li>
+                <a
+                id="logout-btn"
+                onClick ={this.signOut}
+                className="waves-effect waves-light btn">Logout
+                </a>
+              </li>
+              </div>
+                }
             </ul>
             <ul className="side-nav" id="mobile-demo">
-              <li><Link to="Sources" id="login-btn"
-                className="waves-effect waves-light btn">Login</Link></li>
-              <li><Link to="/" id="logout-btn"
-                className="waves-effect waves-light btn">Logout</Link></li>
+              {
+                (user === null) ?
+                <li>
+                  <GoogleButton
+                  id="login-btn"
+                  type="light"
+                  onClick={this.login}/>
+                </li>
+                :
+                <li>
+                  <a
+                  id="logout-btn"
+                  onClick={this.signOut}
+                  className="waves-effect waves-light btn">Logout
+                  </a>
+                </li>
+              }
             </ul>
           </div>
         </nav>

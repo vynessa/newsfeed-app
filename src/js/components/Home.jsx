@@ -5,36 +5,44 @@ import whatsNew from '../../../public/img/whats-new.jpg';
 import theGoodNews from '../../../public/img/the-good-news.jpg';
 import newsWallpaper from '../../../public/img/newspaper-wallpaper.jpg';
 
-
+/**
+ * 
+ * 
+ * @class Home
+ * @extends {React.Component}
+ */
 class Home extends React.Component {
   /**
-   *
+   * 
+   * 
+   * @returns 
+   * @memberof Home
    */
   render() {
     return (
-      <Slider>
+      <Slider className="slider fullscreen">
         <Slide
           src={business}
-          title="This is our big Tagline!">
-          Here's our small slogan.
+          title="Welcome to e-Feeds">
+          View Latest feeds from different Sources
         </Slide>
         <Slide
           src={whatsNew}
-          title="Left aligned Caption"
+          title="Check out what's new on the news today"
           placement="left">
-          Here's our small slogan.
+          Login to access the Latest gist
         </Slide>
         <Slide
           src={theGoodNews}
-          title="Right aligned Caption"
+          title="Get the latest news on the fly"
           placement="right">
-          Here's our small slogan.
+          Both good and bad
         </Slide>
         <Slide
           src={newsWallpaper}
-          title="Right aligned Caption"
+          title="Explore different news categories..."
           placement="right">
-          Here's our small slogan.
+          From Business news to Sports, Fashion, Music...
         </Slide>
       </Slider>
     );

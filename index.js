@@ -2,7 +2,6 @@ const Server = require('./server.js'),
   port = (process.env.PORT || 8080),
   app = Server.app();
 
-console.log(process.env.NODE_ENV);
 let config;
 if (process.env.NODE_ENV === 'development') {
   const webpack = require('webpack');
@@ -19,4 +18,4 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.listen(port);
-console.log(`Listening at http://localhost:${port}`);
+

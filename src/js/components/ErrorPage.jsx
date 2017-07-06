@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+
+/**
+ * 
+ * 
+ * @class ErrorPage
+ * @extends {Component}
+ */
 class ErrorPage extends Component {
+  /**
+   * 
+   * 
+   * @returns 
+   * @memberof ErrorPage
+   */
   render() {
     return (
       <div>

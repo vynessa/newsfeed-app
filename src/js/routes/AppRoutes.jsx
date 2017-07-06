@@ -6,31 +6,34 @@ import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
-// import ErrorPage from '../components/ErrorPage.jsx';
 import Template from '../components/Template.jsx';
 
+const check = (nextState, replace, next) => {
+  const getUser = localStorage.getItem('user');
+  if (getUser !== null) {
+    replace('/sources');
+  }
+  next();
+};
+
 const routes = (
-  <Route name="app" exact path="/" component={Template}>
-    <IndexRoute component={App} />
+  <Route exact path="/" component={Template}>
+    <IndexRoute onEnter={check} component={App} />
     <Route path="sources" component={Sources} />
-    <Route path="headlines" component={Articles} />
-    {/*<NotFoundRoute component={ErrorPage} />*/}
+    <Route path="articles" component={Articles} />
   </Route >
 );
 
-{/*<Router>
-    <Route component={Main} path="app">
-        <Route path="/" component={Home}/>
-        <Route path="/cars" component={Car}/>
-        <Route path="/about" component={About}/>
-    </Route>
-</Router>*/}
 /**
- * 
+ * @description Define routes for components
+ * @class AppRoutes
+ * @extends {React.Component}
  */
 class AppRoutes extends React.Component {
   /**
-   * 
+   * @description Define routes for components
+   * @memberof AppRoutes
+   * @returns {JSX.Element} AppRoutes
    */
   render() {
     return <Router routes={routes} history={browserHistory} />;

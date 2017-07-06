@@ -1,15 +1,17 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import NewsActions from '../actions/NewsActions.jsx';
 import ArticlesStore from '../stores/ArticlesStore.jsx';
 import ArticlesList from './ArticlesList.jsx';
 
 /**
+ * @description Articles component
  * @class
- * @param
  */
 class Articles extends React.Component {
   /**
-   *
+   * Initialize State
+   * @param {object} props
    */
   constructor(props) {
     super(props);
@@ -17,30 +19,46 @@ class Articles extends React.Component {
       articles: ArticlesStore.getAll(),
       sortBy: ''
     };
-    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
     this.onChange = this.onChange.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.handleSort = this.handleSort.bind(this);
-    // this.sourceKey = this.state.sourceKey;
+  }
+
+  /**
+   * 
+   * 
+   * @memberof Sources
+   */
+  componentWillMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.setState({
+      user
+    });
   }
   /**
-   *
+   * @description Mount Component on every change
+   * @method
+   * @returns {void}
    */
   componentDidMount() {
+    if (this.state.user === null) {
+      browserHistory.push('/');
+    }
     // NewsActions.allArticles(sourceKey, sortBy[0]);
-    // const id = 'al-jazeera-english';
-    // const sort = 'top';
-    // NewsActions.allArticles(id, sort);
     ArticlesStore.on('change', this.onChange);
   }
   /**
-   *
+   * @description Unmount Component
+   * @method
+   * @returns {void}
    */
   componentWillUnmount() {
     ArticlesStore.removeListener('change', this.onChange);
   }
   /**
-   *
+   * @description Change state on user(s) request
+   * @method
+   * @returns {object} articles
    */
   onChange() {
     this.setState({
@@ -48,16 +66,20 @@ class Articles extends React.Component {
     });
   }
   /**
-   *
-   * @param {*} sourceKey
-   * @param {*} sortBysAvailable
+   *@description Sort function to filter headlines
+   * @method
+   * @param {string} sourceKey
+   * @param {string} sortBy
+   * @returns {object} articles
    */
   handleSort(sourceKey, sortBy) {
     return NewsActions.allArticles(sourceKey, sortBy);
   }
   /**
-   *
-   * @param {*} event
+   * @description Event handler function to update sort state
+   * @method
+   * @param {object} event
+   * @returns {string} sortBy
    */
   updateSortBy(event) {
     const val = event.target.value;
@@ -66,18 +88,16 @@ class Articles extends React.Component {
     });
   }
   /**
-   *
+   * @description render child component - ArticlesList
+   * @method
+   * @returns {JSX.Element} ArticlesList
    */
   render() {
-    console.log('Parent props', this.props);
-    console.log('state2', this.state);
-    console.log('Sourcekey', this.state.sourceKey);
     return (
       <ArticlesList
         articles={this.state.articles}
         handleSort={this.handleSort}
-        sortBy = {this.state.sortBy}
-        sourceKey= {this.state.sourceKey} />
+        sortBy = {this.state.sortBy} />
     );
   }
 }

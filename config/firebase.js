@@ -1,5 +1,4 @@
 const firebase = require('firebase');
-
 const config = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,
@@ -12,4 +11,5 @@ const config = {
 firebase.initializeApp(config);
 
 export const provider = new firebase.auth.GoogleAuthProvider();
+export default firebase;
 

@@ -5,17 +5,15 @@ import { Link } from 'react-router';
 import Preloader from '../components/Preloader.jsx';
 
 /**
- * @class
- * @param
+ * @description Sources child component
+ * @class SourcesList
+ * @extends {React.Component}
  */
 class SourcesList extends React.Component {
-  // pagination(currentPage) {
-  //   this.setState({
-  //     currentPage
-  //   });
-  // }
   /**
-   *
+   * @description
+   * @returns {JSX.Element} SourcesList
+   * @memberof SourcesList
    */
   render() {
     const { sources,
@@ -27,7 +25,7 @@ class SourcesList extends React.Component {
     /** Search filter function
      * @function
      * @param {object} source
-     * @returns
+     * @returns {object} filteredSearch
      */
     const filteredSearch = sources.filter((source) => {
       return source.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
@@ -36,7 +34,7 @@ class SourcesList extends React.Component {
     /** Source Function
      * @function
      * @param {object} source
-     * @returns
+     * @returns {object} renderSources
      */
     const renderSources = filteredSearch.map((source) => {
       return (
@@ -45,7 +43,7 @@ class SourcesList extends React.Component {
             <Card key={source.id} className='teal'
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to={`headlines?source=${source.id}&sortBy=${source.sortBysAvailable[0 ]}`}
+              actions={[<Link to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0 ]}`}
               className='btn'
               value={[source.name, source.id]}
               onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
@@ -94,7 +92,7 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{sources !== null ? renderSources : (<h1>Loading...</h1>)}</div>
+        <div className="row">{ sources === null ? <Preloader /> : renderSources}</div>
         <div className="clearfix"></div>
         {/*<div>
         <Pagination
