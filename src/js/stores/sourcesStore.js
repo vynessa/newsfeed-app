@@ -2,7 +2,6 @@ import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 
-
 /**
  * @description Source store which receives data dispatched from actions
  * @class SourcesStore
@@ -50,7 +49,7 @@ class SourcesStore extends EventEmitter {
       case constants.sourcesError:
         this.getSources(action.sourcesError);
         break;
-      default: // Finir
+      default:
     }
   }
 }

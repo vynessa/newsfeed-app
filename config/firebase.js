@@ -1,4 +1,5 @@
-const firebase = require('firebase');
+import firebase from 'firebase';
+
 const config = {
   apiKey: process.env.apiKey,
   authDomain: process.env.authDomain,

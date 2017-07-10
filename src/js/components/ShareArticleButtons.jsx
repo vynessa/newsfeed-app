@@ -1,6 +1,6 @@
 import React from 'react';
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
-
+import { ShareButtons, generateShareIcon } from 'react-share';
+import PropTypes from 'prop-types';
 
 const {
   FacebookShareButton,
@@ -15,13 +15,6 @@ const FacebookIcon = generateShareIcon('facebook'),
   TwitterIcon = generateShareIcon('twitter'),
   LinkedinIcon = generateShareIcon('linkedin'),
   RedditIcon = generateShareIcon('reddit');
-
-const {
-  FacebookShareCount,
-  TwitterShareCount,
-  LinkedinShareCount,
-  RedditShareCount,
-} = ShareCounts;
 
 const ShareArticleButtons = (props) => {
   const { shareUrl, title } = props;
@@ -69,6 +62,16 @@ const ShareArticleButtons = (props) => {
       </div>
     </div>
   );
+};
+
+ShareArticleButtons.defaultProps = {
+  shareUrl: '',
+  title: ''
+};
+
+ShareArticleButtons.propTypes = {
+  shareUrl: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default ShareArticleButtons;

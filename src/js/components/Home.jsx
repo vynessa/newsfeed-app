@@ -6,16 +6,13 @@ import theGoodNews from '../../../public/img/the-good-news.jpg';
 import newsWallpaper from '../../../public/img/newspaper-wallpaper.jpg';
 
 /**
- * 
- * 
  * @class Home
  * @extends {React.Component}
  */
 class Home extends React.Component {
   /**
-   * 
-   * 
-   * @returns 
+   * @description Returns JSX Home page Component
+   * @returns {JSX.Element} Home
    * @memberof Home
    */
   render() {

@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home.jsx';
 
 const firebase = require('firebase/app');
+require('firebase/auth');
 /**
  * @description Home Page Component
  * @class

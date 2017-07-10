@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Card, Row, Input, Pagination } from 'react-materialize';
+import { Col, Card, Row, Input } from 'react-materialize';
 import { Link } from 'react-router';
 import Preloader from '../components/Preloader.jsx';
 
@@ -36,14 +36,14 @@ class SourcesList extends React.Component {
      * @param {object} source
      * @returns {object} renderSources
      */
-    const renderSources = filteredSearch.map((source) => {
+    const renderSources = filteredSearch.map((source, index) => {
       return (
-        <div>
+        <div key={source.id}>
           <Col m={4} s={12}>
-            <Card key={source.id}
+            <Card
               textClassName='white-text'
               title={source.name}
-              actions={[<Link to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0 ]}`}
+              actions={[<Link key={index} to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
               className='btn'
               value={[source.name, source.id]}
               onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
@@ -54,15 +54,6 @@ class SourcesList extends React.Component {
       );
     });
 
-    // Set variables for pagination function
-    // const { sources, currentPage } = this.state;
-    // let allSources = sources;
-    // const totalSources = allSources.length;
-    // const sourcePerPage = 6;
-    // const end = currentPage * sourcePerPage;
-    // const start = end - sourcePerPage;
-    // allSources = allSources.slice(start, end);
-
     return (
       <div>
         <div className="center-align">
@@ -72,11 +63,11 @@ class SourcesList extends React.Component {
               s={3}
               label="Search Sources"
               value={search}
-              onChange={updateSearch}>
-            </Input>
+              onChange={updateSearch}/>
             <Input m={3} s={12}
               onChange={handleCategory}
-              type='select' label="Categories:"
+              type='select'
+              label="Categories:"
               defaultValue=''>
                 <option value=''>All Sources</option>
                 <option value='business'>Business</option>
@@ -91,18 +82,16 @@ class SourcesList extends React.Component {
             </Input>
           </Row>
         </div>
-        <div className="row">{ (sources.length === 0) ?
-          <div className="center-align"><Preloader /></div>
-          : renderSources }
-          </div>
-        <div className="clearfix"></div>
-        {/*<div>
-        <Pagination
-          className="center-align"
-          items={Math.ceil(sources.length / sourcePerPage)}
-          activePage={currentPage}
-          onSelect={(current) => { this.changePage(current); } } />
-        </div>*/}
+        <div className="row">
+          { (sources.length === 0) ?
+              <div className="center-align">
+              <Preloader />
+              </div>
+            :
+              renderSources
+          }
+        </div>
+        <div className="clearfix"/>
       </div>
     );
   }

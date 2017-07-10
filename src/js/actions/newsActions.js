@@ -1,10 +1,9 @@
-import { browserHistory } from 'react-router';
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 import NewsApi from '../utils/newsApi';
 
 const firebase = require('firebase/app');
-require('firebase/auth');
+// require('firebase/auth');
 
 /**
  * @description News Actions to dispatch actions to stores
@@ -55,15 +54,13 @@ const NewsActions = {
    * @param {string} sortBy
    * @returns {object} articles
    */
-  allArticles(sourceKey, sortBy) {
-    console.log('sourcekey', sourceKey);
-    console.log('sortBy', sortBy);
-    return NewsApi.getArticles(sourceKey, sortBy[0]).then((articles) => {
+  allArticles(source, sortBy) {
+    return NewsApi.getArticles(source, sortBy[0]).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles: {
           articles,
-          sourceKey,
+          source,
           sortBy
         },
       }, (err) => {
@@ -102,6 +99,11 @@ const NewsActions = {
     firebase.auth().signOut().then(() => {
       AppDispatcher.dispatch({
         type: constants.signOut
+      }, (err) => {
+        AppDispatcher.dispatch({
+          type: constants.signOutError,
+          err
+        });
       });
     });
   }

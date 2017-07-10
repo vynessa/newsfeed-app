@@ -9,7 +9,6 @@ import constants from '../constants/constants';
  * @extends {EventEmitter}
  */
 class AuthStore extends EventEmitter {
-
   /**
    * Creates an instance of LoginStore.
    * @memberof LoginStore
@@ -18,29 +17,38 @@ class AuthStore extends EventEmitter {
     super();
     this.user = {};
   }
-
   /**
-   * 
-   * 
-   * @memberof LoginStore
+   * @param {any} user
+   * @returns {void}
+   * @memberof AuthStore
    */
   getUser(user) {
-    this.user = user;
+    // console.log(user)
     localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
     browserHistory.push('sources');
     location.reload();
   }
-
   /**
-   * 
-   * 
+   * @memberof AuthStore
+   * @returns {void}
+   */
+  clearUser() {
+    localStorage.clear();
+    location.reload();
+  }
+  /**
    * @param {any} action
    * @memberof LoginStore
+   * @returns {void}
    */
   handleUser(action) {
     switch (action.type) {
       case constants.login:
         this.getUser(action.user);
+        break;
+      case constants.signOut:
+        this.clearUser();
         break;
       default:
     }

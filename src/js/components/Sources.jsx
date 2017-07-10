@@ -2,7 +2,6 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import SourcesStore from '../stores/sourcesStore';
-import AuthStore from '../stores/authStore';
 import SourcesList from './SourcesList.jsx';
 
 /**
@@ -22,18 +21,15 @@ class Sources extends React.Component {
       sources: SourcesStore.getAll(),
       user: null,
       search: ''
-      // currentPage: 1
     };
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.handleCategory = this.handleCategory.bind(this);
     this.btnClick = this.btnClick.bind(this);
-    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
   }
 
   /**
-   * 
-   * 
+   * @returns {void}
    * @memberof Sources
    */
   componentWillMount() {
@@ -55,7 +51,6 @@ class Sources extends React.Component {
     SourcesStore.on('change', this.onChange);
   }
   /**
-   * 
    * @description When Component unmounts, state is lost.
    * @memberof Sources
    * @returns {void}
@@ -64,9 +59,9 @@ class Sources extends React.Component {
     SourcesStore.removeListener('change', this.onChange);
   }
   /**
-   * 
-   * 
+   * @description Change event to get all sources from stores
    * @memberof Sources
+   * @returns {void}
    */
   onChange() {
     this.setState({
@@ -75,9 +70,9 @@ class Sources extends React.Component {
   }
 
   /**
-   * 
-   * 
+   * @description Update search event which gets change immediately
    * @param {any} event
+   * @returns {void}
    * @memberof Sources
    */
   updateSearch(event) {
@@ -90,16 +85,16 @@ class Sources extends React.Component {
    * @function
    * @param {string} sourceKey
    * @param {array} sortBy
+   * @returns {void}
    * @memberof Sources
    */
   btnClick(sourceKey, sortBy) {
-    // localStorage.getItem('source_key');
     // create an action to hold sourceID and Name
     NewsActions.allArticles(sourceKey, sortBy);
   }
 
   /**
-   * @description Get category using option value to filterc categories
+   * @description Get category using option value to filter categories
    * @function
    * @param {any} event
    * @returns {void}
@@ -115,7 +110,6 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   render() {
-    console.log(this.state);
     return (
       <div className="sources">
         <SourcesList

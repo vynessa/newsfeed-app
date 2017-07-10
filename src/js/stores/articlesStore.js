@@ -15,6 +15,7 @@ class ArticlesStore extends EventEmitter {
   constructor() {
     super();
     this.articles = [];
+    this.sourceKey = '';
   }
   /**
    * @description
@@ -37,6 +38,25 @@ class ArticlesStore extends EventEmitter {
   }
 
   /**
+   * @description Gets source id from a source
+   * @param {any} articles
+   * @memberof ArticlesStore
+   * @returns {void}
+   */
+  setSourceKey(articles) {
+    this.sourceKey = articles.source;
+    localStorage.setItem('sourceKey', articles.source);
+  }
+  /**
+   * @description returns the source Id set in setSourceKey function
+   * @returns {string} this.sourceKey
+   * @memberof ArticlesStore
+   */
+  getSourceKey() {
+    return this.sourceKey;
+  }
+
+  /**
    * @description Articles store
    * @param {any} action
    * @memberof ArticlesStore
@@ -50,7 +70,7 @@ class ArticlesStore extends EventEmitter {
       case constants.articlesError:
         this.getArticles(action.articlesError);
         break;
-      default: // Finir
+      default:
     }
   }
 }

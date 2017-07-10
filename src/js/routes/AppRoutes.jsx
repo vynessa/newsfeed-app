@@ -1,7 +1,6 @@
 /* global location localStorage*/
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';

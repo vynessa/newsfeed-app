@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
 import ShareArticleButtons from './ShareArticleButtons.jsx';
-import Preloader from './Preloader.jsx';
 
 /**
  * @description ArticlesList component
@@ -10,13 +9,11 @@ import Preloader from './Preloader.jsx';
  */
 class ArticlesList extends React.Component {
   /**
-   * 
-   * 
-   * @returns
+   * @returns {JSX.Element} ArticlesList
    * @memberof ArticlesList
    */
   render() {
-    const { articles, sortBy, sourceKey } = this.props.articles;
+    const { articles, sortBy, source } = this.props.articles;
     const { handleSort } = this.props;
     let result = [];
     let sortByAvailable = [];
@@ -25,16 +22,16 @@ class ArticlesList extends React.Component {
       articles !== undefined) {
       result = articles;
       sortByAvailable = sortBy;
-      sourceId = sourceKey;
+      sourceId = source;
     }
-    const renderArticles = result.map((article) => {
+    const renderArticles = result.map((article, index) => {
       return (
         <Col key ={article.publishedAt} m={6} s={12}>
           <Card
             className='small'
             header={<CardTitle image={article.urlToImage}/>}
             actions={[
-              <div>
+              <div key={index}>
                 <a
                   className="btn"
                   target="_blank"
@@ -51,28 +48,15 @@ class ArticlesList extends React.Component {
             ]}>
             <h5 className="article-title">{article.title}</h5>
             {article.description}
-            {/* <br/>
-            <br/>
-            <div>Published On: {article.publishedAt}</div>*/}
           </Card>
         </Col>
       );
     });
 
-    // const getSorted = () => {
-    //   NewsActions.allArticles(sourceKey, this.props.sortBy);
-    // };
-
     const sortInput = sortByAvailable.map((tag) => {
       return <option key={tag} value={tag}>{tag}</option>;
     });
 
-    // const sortOption = (e) => {
-    //   // e.preventdefault();
-    //   console.log(e.target.value);
-    //   return e.target.value;
-    // };
-    console.log(articles);
     return (
       <div >
         <h1 className="center-align" id="heading-text">Headlines from {sourceId.replace(/-/g, ' ')}</h1>
@@ -80,7 +64,8 @@ class ArticlesList extends React.Component {
           <Input m={6} s={12}
             type="select"
             onChange={handleSort}
-            label="Sort Articles By:">{sortInput}
+            label="Sort Articles By:">
+            {sortInput}
           </Input>
         </Row>
         <div className="row">{renderArticles}
@@ -91,17 +76,17 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.defaultProps = {
-  articles: [],
+  // articles: {},
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
-  sourceKey: ''
+  source: ''
 };
 
 ArticlesList.propTypes = {
-  articles: PropTypes.array,
+  // articles: PropTypes.object,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
-  sourceKey: PropTypes.string,
+  source: PropTypes.string,
 };
 
 export default ArticlesList;

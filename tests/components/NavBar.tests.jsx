@@ -1,12 +1,11 @@
-// import React from 'react';
-import TestUtils from 'react/lib/ReactTestUtils';
-import MemberList from '../../src/js/components/NavBar.jsx';
-import React from 'react/addons';
-const TestUtils = React.addons.TestUtils;
- 
-describe('MemberList', () => {
+import React from 'react';
+import expect from 'expect';
+import TestUtils from 'react-dom/test-utils';
+import NavBar from '../../src/js/components/NavBar.jsx';
+
+describe('NavBar', () => {
   it('renders', () => {
-    var element = TestUtils.renderIntoDocument(<MemberList />);
-    expect(element).toBeTruthy();
+    const navbar = TestUtils.renderIntoDocument(<NavBar />);
+    expect(navbar).toExist();
   });
 });

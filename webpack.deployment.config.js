@@ -59,14 +59,14 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'NEWS_API_KEY': JSON.stringify(process.env.NEWS_API_KEY),
-        'API_KEY': JSON.stringify(process.env.apiKey),
-        'AUTH_DOMAIN': JSON.stringify(process.env.authDomain),
-        'DATABASE_URL': JSON.stringify(process.env.databaseURL),
-        'PROJECT_ID': JSON.stringify(process.env.projectId),
-        'STORAGE_BUCKET': JSON.stringify(process.env.storageBucket),
-        'MESSAGING_SENDER_ID': JSON.stringify(process.env.messagingSenderId)
+        NODE_ENV: JSON.stringify('production'),
+        NEWS_API_KEY: JSON.stringify(process.env.NEWS_API_KEY),
+        API_KEY: JSON.stringify(process.env.apiKey),
+        AUTH_DOMAIN: JSON.stringify(process.env.authDomain),
+        DATABASE_URL: JSON.stringify(process.env.databaseURL),
+        PROJECT_ID: JSON.stringify(process.env.projectId),
+        STORAGE_BUCKET: JSON.stringify(process.env.storageBucket),
+        MESSAGING_SENDER_ID: JSON.stringify(process.env.messagingSenderId)
 
       }
     }),

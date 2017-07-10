@@ -8,10 +8,9 @@ import React from 'react';
  * @extends {React.Component}
  */
 export default class Footer extends React.Component {
-
   /**
-   * 
-   * @returns 
+   * @description Renders Footer component
+   * @returns {JSX.Element} Footer
    * @memberof Footer
    */
   render() {

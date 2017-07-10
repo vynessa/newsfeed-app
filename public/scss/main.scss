@@ -28,14 +28,8 @@ div #login-btn {
   margin-right: 10px;
 }
 
-
-
 div #login-btn:hover, #logout-btn:hover {
   background-color: $color-brown !important;
-}
-
-.search-content {
-  align-content: center;
 }
 
 #app {
@@ -53,18 +47,11 @@ div #login-btn:hover, #logout-btn:hover {
   text-transform: capitalize;
 }
 
-
-// .card-image {
-//   opacity: 0.5;
-// }
-
 .card .card-image .card-title {
-  // font-size: 30px;
   color: $color-white;
   position: absolute;
   font-size: 24px;
   font-weight: 900px;
-  // background: rgba($color-white, 0.5);
 }
 
 .card .card-image img {
@@ -117,6 +104,10 @@ div #login-btn:hover, #logout-btn:hover {
   color: $color-white;
   font-size: 32px;
   font-weight: bold;
+}
+
+.search-content {
+  align-content: center;
 }
 
 // Footer

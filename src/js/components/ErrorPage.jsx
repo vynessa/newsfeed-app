@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-
 /**
- * 
- * 
  * @class ErrorPage
  * @extends {Component}
  */
 class ErrorPage extends Component {
   /**
-   * 
-   * 
-   * @returns 
+   * @returns {JSX.Element} ErrorPage
    * @memberof ErrorPage
    */
   render() {

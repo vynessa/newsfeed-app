@@ -20,14 +20,15 @@ class Articles extends React.Component {
       sortBy: '',
       user: null
     };
+    this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('sourceKey');
     this.onChange = this.onChange.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
 
   /**
-   * 
-   * 
+   * @description
+   * @returns {void}
    * @memberof Sources
    */
   componentWillMount() {
@@ -45,7 +46,7 @@ class Articles extends React.Component {
     if (this.state.user === null) {
       browserHistory.push('/');
     }
-    // NewsActions.allArticles(sourceKey, sortBy);
+    // NewsActions.allArticles(this.sourceKey, sortBy);
     ArticlesStore.on('change', this.onChange);
   }
   /**
@@ -74,6 +75,10 @@ class Articles extends React.Component {
    * @returns {object} articles
    */
   handleSort(sourceKey, sortBy) {
+    sourceKey = localStorage.getItem('sourceKey');
+    this.setState({
+      sourceKey
+    });
     return NewsActions.allArticles(sourceKey, sortBy);
   }
   /**
@@ -94,7 +99,6 @@ class Articles extends React.Component {
    * @returns {JSX.Element} ArticlesList
    */
   render() {
-    console.log(this.state);
     return (
       <ArticlesList
         articles={this.state.articles}
