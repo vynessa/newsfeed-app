@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/js/client.jsx',
+  entry: './src/js/Client.jsx',
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'app.min.js',
@@ -38,7 +38,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'News Feed App',
+      title: 'e-Feedly',
       template: './src/index.html',
       inject: true
     }),
