@@ -9,6 +9,10 @@ $color-light-brown: rgb(197,190,189);
   background-color: $color-brown
 }
 
+nav .brand-logo {
+  margin-left: 10px;
+}
+
 .right #login-btn {
   width: 200px !important;
   margin-top: 8px;
@@ -54,6 +58,9 @@ div #login-btn:hover, #logout-btn:hover {
   font-weight: 900px;
 }
 
+.dropdown-content li>span {
+  color: $color-brown;
+}
 .card .card-image img {
   max-height: 400px !important;
 }
