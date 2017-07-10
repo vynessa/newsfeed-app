@@ -44,14 +44,11 @@ class Sources extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    if (this.state.user === null) {
-      browserHistory.push('/');
-    }
     NewsActions.allSources();
     SourcesStore.on('change', this.onChange);
   }
   /**
-   * @description When Component unmounts, state is lost.
+   * @description When Component unmounts, state is cleared.
    * @memberof Sources
    * @returns {void}
    */

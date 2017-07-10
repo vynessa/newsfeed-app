@@ -1,7 +1,9 @@
 /* global window */
 import React from 'react';
 import GoogleButton from 'react-google-button';
+import swal from 'sweetalert2';
 import { Breadcrumb, MenuItem } from 'react-materialize';
+// import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import AuthStore from '../stores/authStore';
 
@@ -63,18 +65,12 @@ class NavBar extends React.Component {
    */
   render() {
     const user = this.state.user;
-    const currentPath = window.location.pathname;
+    // const currentPath = window.location.pathname;
 
     return (
       <div className="navbar-fixed">
         <nav className="brown">
           <div className="nav-wrapper">
-            { currentPath === '/articles' ?
-              <Breadcrumb>
-                <MenuItem href="sources">Sources</MenuItem>
-                <MenuItem href="articles">Articles</MenuItem>
-              </Breadcrumb>
-              :
               <div>
                 <a href="/" className="brand-logo">e-Feeds</a>
                 <a href="/"
@@ -83,7 +79,6 @@ class NavBar extends React.Component {
                 <i className="material-icons">menu</i>
                 </a>
               </div>
-            }
               <ul className="right hide-on-med-and-down">
                   {
                     (user === null) ?
@@ -115,13 +110,17 @@ class NavBar extends React.Component {
                     onClick={this.login}/>
                   </li>
                   :
-                  <li>
-                    <a
-                    id="logout-btn"
-                    onClick={this.signOut}
-                    className="waves-effect waves-light btn">Logout
-                    </a>
-                  </li>
+                  <div>
+                    <li><img className="circle responsive-img" src={this.state.user.photoURL}/></li>
+                    <li>{this.state.user.displayName}</li>
+                    <li>
+                      <a
+                      id="logout-btn"
+                      onClick={this.signOut}
+                      className="waves-effect waves-light btn">Logout
+                      </a>
+                    </li>
+                  </div>
                 }
               </ul>
           </div>

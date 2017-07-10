@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
+import { Breadcrumb, Row, Input, Col, Card, CardTitle, MenuItem } from 'react-materialize';
 import PropTypes from 'prop-types';
 import ShareArticleButtons from './ShareArticleButtons.jsx';
 
@@ -58,7 +58,12 @@ class ArticlesList extends React.Component {
     });
 
     return (
-      <div >
+      <div>
+        <div className="clearfix"></div>
+        <Breadcrumb className="fixed">
+          <MenuItem href="sources">Sources</MenuItem>
+          <MenuItem>Articles</MenuItem>
+        </Breadcrumb>
         <h1 className="center-align" id="heading-text">Headlines from {sourceId.replace(/-/g, ' ')}</h1>
         <Row>
           <Input m={6} s={12}
@@ -68,7 +73,8 @@ class ArticlesList extends React.Component {
             {sortInput}
           </Input>
         </Row>
-        <div className="row">{renderArticles}
+        <div className="row">
+          {renderArticles}
           </div>
       </div>
     );

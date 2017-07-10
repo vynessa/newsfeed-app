@@ -43,9 +43,6 @@ class Articles extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    if (this.state.user === null) {
-      browserHistory.push('/');
-    }
     // NewsActions.allArticles(this.sourceKey, sortBy);
     ArticlesStore.on('change', this.onChange);
   }
