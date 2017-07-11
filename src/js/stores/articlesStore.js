@@ -64,13 +64,13 @@ class ArticlesStore extends EventEmitter {
    */
   updateArticles(action) {
     switch (action.type) {
-      case constants.articles:
-        this.getArticles(action.articles);
-        break;
-      case constants.articlesError:
-        this.getArticles(action.articlesError);
-        break;
-      default:
+    case constants.articles:
+      this.getArticles(action.articles);
+      break;
+    case constants.articlesError:
+      this.getArticles(action.articlesError);
+      break;
+    default:
     }
   }
 }

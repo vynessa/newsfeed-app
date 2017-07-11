@@ -1,9 +1,6 @@
 /* global window */
 import React from 'react';
 import GoogleButton from 'react-google-button';
-import swal from 'sweetalert2';
-import { Breadcrumb, MenuItem } from 'react-materialize';
-// import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import AuthStore from '../stores/authStore';
 
@@ -35,7 +32,6 @@ class NavBar extends React.Component {
    * @memberof NavBar
    */
   componentWillMount() {
-    // const user = AuthStore.getUser();
     const user = JSON.parse(localStorage.getItem('user'));
     this.setState({
       user
@@ -65,8 +61,6 @@ class NavBar extends React.Component {
    */
   render() {
     const user = this.state.user;
-    // const currentPath = window.location.pathname;
-
     return (
       <div className="navbar-fixed">
         <nav className="brown">
@@ -88,7 +82,10 @@ class NavBar extends React.Component {
                     onClick={this.login}/>
                   :
                 <div>
-                  <li><img className="circle responsive-img" src={this.state.user.photoURL}/></li>
+                  <li>
+                    <img className="circle responsive-img"
+                    src={this.state.user.photoURL}/>
+                  </li>
                   <li>{this.state.user.displayName}</li>
                   <li>
                     <a
@@ -111,7 +108,10 @@ class NavBar extends React.Component {
                   </li>
                   :
                   <div>
-                    <li><img className="circle responsive-img" src={this.state.user.photoURL}/></li>
+                    <li>
+                      <img className="circle responsive-img"
+                        src={this.state.user.photoURL}/>
+                      </li>
                     <li>{this.state.user.displayName}</li>
                     <li>
                       <a

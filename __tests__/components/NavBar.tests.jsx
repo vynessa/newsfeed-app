@@ -25,7 +25,7 @@ describe('NavBar', () => {
 // var React = require('react');
 // var TestUtils = require('react/lib/ReactTestUtils');
 // var MemberList = require('../MemberList.jsx');
- 
+
 // describe('MemberList', () => {
 //   it('renders', () => {
 //     var element = TestUtils.renderIntoDocument(<MemberList />);

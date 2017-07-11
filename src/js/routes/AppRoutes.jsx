@@ -5,7 +5,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
-import Template from '../components/Template.jsx';
+import Layout from '../components/Layout.jsx';
 
 const checkUser = (nextState, replace, next) => {
   const user = localStorage.getItem('user');
@@ -16,10 +16,12 @@ const checkUser = (nextState, replace, next) => {
 };
 
 const routes = (
-  <Route exact path="/" component={Template}>
+  <Route exact path="/" component={Layout}>
     <IndexRoute onEnter={checkUser} component={App} />
-    <Route path="sources" component={localStorage.user ? Sources : browserHistory.push('/')} />
-    <Route path="articles" component={localStorage.user ? Articles : browserHistory.push('/')} />
+    <Route path="sources"
+    component={localStorage.user ? Sources : browserHistory.push('/')} />
+    <Route path="articles"
+    component={localStorage.user ? Articles : browserHistory.push('/')} />
   </Route>
 );
 

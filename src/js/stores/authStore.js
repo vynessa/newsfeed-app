@@ -3,13 +3,13 @@ import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 
 /**
- * @description Login store which gets user details
- * @class LoginStore
+ * @description Authentication store which gets user details
+ * @class AuthStore
  * @extends {EventEmitter}
  */
 class AuthStore extends EventEmitter {
   /**
-   * Creates an instance of LoginStore.
+   * @description Creates an instance of AuthStore.
    * @memberof LoginStore
    */
   constructor() {
@@ -31,7 +31,9 @@ class AuthStore extends EventEmitter {
    * @returns {void}
    */
   clearUser() {
-    localStorage.clear();
+    localStorage
+      .removeItem('user')
+      .removeItem('firebase:authUser:AIzaSyA2ZqwgwAQDzq0XeRQij2ESeB0u3CC_boo:[DEFAULT]');
     location.reload();
   }
   /**
@@ -41,13 +43,13 @@ class AuthStore extends EventEmitter {
    */
   handleUser(action) {
     switch (action.type) {
-      case constants.login:
-        this.getUser(action.user);
-        break;
-      case constants.signOut:
-        this.clearUser();
-        break;
-      default:
+    case constants.login:
+      this.getUser(action.user);
+      break;
+    case constants.signOut:
+      this.clearUser();
+      break;
+    default:
     }
   }
 }

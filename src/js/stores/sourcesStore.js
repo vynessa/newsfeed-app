@@ -43,13 +43,13 @@ class SourcesStore extends EventEmitter {
    */
   updateSources(action) {
     switch (action.type) {
-      case constants.sources:
-        this.getSources(action.sources);
-        break;
-      case constants.sourcesError:
-        this.getSources(action.sourcesError);
-        break;
-      default:
+    case constants.sources:
+      this.getSources(action.sources);
+      break;
+    case constants.sourcesError:
+      this.getSources(action.sourcesError);
+      break;
+    default:
     }
   }
 }

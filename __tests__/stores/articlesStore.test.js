@@ -1,7 +1,7 @@
 /* global expect jest describe it beforeEach */
 import AppDispatcher from '../../src/js/dispatcher';
 import articlesStore from '../../src/js/stores/articlesStore';
-import articlesConstants from '../../src/js/constants/constants';
+// import articlesConstants from '../../src/js/constants/constants';
 import articlesMock from './mocks/mockArticle.json';
 
 
