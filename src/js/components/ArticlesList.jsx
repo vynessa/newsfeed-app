@@ -1,7 +1,8 @@
 import React from 'react';
-import { Breadcrumb, Row, Input, Col, Card, CardTitle, MenuItem } from 'react-materialize';
+import { Breadcrumb, Row,
+          Input, Col,
+          Card, CardTitle, MenuItem } from 'react-materialize';
 import PropTypes from 'prop-types';
-import ShareArticleButtons from './ShareArticleButtons.jsx';
 
 /**
  * @description ArticlesList component
@@ -28,7 +29,7 @@ class ArticlesList extends React.Component {
       return (
         <Col key ={article.publishedAt} m={6} s={12}>
           <Card
-            className='small'
+            className="small"
             header={<CardTitle image={article.urlToImage}/>}
             actions={[
               <div key={index}>
@@ -39,15 +40,10 @@ class ArticlesList extends React.Component {
                   href={article.url}>
                   View full article
                 </a>
-                <br/>
-                <br/>
-                <div className="col 6">
-                  <ShareArticleButtons />
-                </div>
               </div>
             ]}>
             <h5 className="article-title">{article.title}</h5>
-            {article.description}
+            {article.description.substr(0, 70)}
           </Card>
         </Col>
       );
@@ -59,12 +55,16 @@ class ArticlesList extends React.Component {
 
     return (
       <div>
-        <div className="clearfix"></div>
+        <div className="clearfix"/>
         <Breadcrumb className="fixed">
-          <MenuItem href="sources">Sources</MenuItem>
-          <MenuItem>Articles</MenuItem>
+          <MenuItem id="sources" href="sources">Sources</MenuItem>
+          <MenuItem id="articles">Articles</MenuItem>
         </Breadcrumb>
-        <h1 className="center-align" id="heading-text">Headlines from {sourceId.replace(/-/g, ' ')}</h1>
+        <h1
+        className="center-align"
+        id="heading-text">
+        Headlines from {sourceId.replace(/-/g, ' ')}
+        </h1>
         <Row>
           <Input m={6} s={12}
             type="select"

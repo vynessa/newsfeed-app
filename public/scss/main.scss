@@ -5,6 +5,10 @@ $color-dark-brown: brown;
 $color-light-brown: rgb(197,190,189);
 
 // Navigation Bar
+#app {
+  font-family: 'Lato', sans-serif;
+}
+
 .nav-wrapper {
   background-color: $color-brown
 }
@@ -32,12 +36,22 @@ div #login-btn {
   margin-right: 10px;
 }
 
+.row .nav-wrapper {
+  background-color: $color-light-brown;
+}
+
 div #login-btn:hover, #logout-btn:hover {
   background-color: $color-brown !important;
 }
 
-#app {
-  font-family: 'Lato', sans-serif;
+.breadcrumb {
+  color: #fff;
+  font-size: 13px;
+}
+
+#sources.breadcrumb:hover {
+  color: $color-brown;
+  text-decoration: underline;
 }
 
 .article-title {
