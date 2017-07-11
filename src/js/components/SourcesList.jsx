@@ -19,15 +19,15 @@ class SourcesList extends React.Component {
     const { sources,
       search,
       updateSearch,
-      btnClick,
-      handleCategory } = this.props;
+      displayArticles,
+      sortCategory } = this.props;
 
     /** Search filter function
      * @function
      * @param {object} source
      * @returns {object} filteredSearch
      */
-    const filteredSearch = sources.filter((source) => {
+    const filteredSources = sources.filter((source) => {
       return source.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
 
@@ -36,17 +36,20 @@ class SourcesList extends React.Component {
      * @param {object} source
      * @returns {object} renderSources
      */
-    const renderSources = filteredSearch.map((source, index) => {
+    const renderSources = filteredSources.map((source, index) => {
       return (
         <div key={source.id}>
           <Col m={4} s={12}>
             <Card
-              textClassName='white-text'
+              textClassName="white-text"
               title={source.name}
-              actions={[<Link key={index} to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
-              className='btn'
+              actions={[<Link
+              key={index}
+              to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
+              className="btn"
               value={[source.name, source.id]}
-              onClick={() => btnClick(source.id, source.sortBysAvailable)}>View headlines</Link>]}>
+              onClick={() => displayArticles(source.id, source.sortBysAvailable)}>
+              View headlines</Link>]}>
               {source.description}
             </Card>
           </Col>
@@ -65,20 +68,20 @@ class SourcesList extends React.Component {
               value={search}
               onChange={updateSearch}/>
             <Input m={3} s={12}
-              onChange={handleCategory}
-              type='select'
+              onChange={sortCategory}
+              type="select"
               label="Categories:"
-              defaultValue=''>
-                <option value=''>All Sources</option>
-                <option value='business'>Business</option>
-                <option value='entertainment'>Entertainment</option>
-                <option value='gaming'>Gaming</option>
-                <option value='general'>General</option>
-                <option value='music'>Music</option>
-                <option value='politics'>Politics</option>
-                <option value='science-and-nature'>Science and Nature</option>
-                <option value='sport'>Sport</option>
-                <option value='technology'>Technology</option>
+              defaultValue="">
+                <option value="">All Sources</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="gaming">Gaming</option>
+                <option value="general">General</option>
+                <option value="music">Music</option>
+                <option value="politics">Politics</option>
+                <option value="science-and-nature">Science and Nature</option>
+                <option value="sport">Sport</option>
+                <option value="technology">Technology</option>
             </Input>
           </Row>
         </div>
@@ -88,7 +91,7 @@ class SourcesList extends React.Component {
               <Preloader />
               </div>
             :
-              renderSources
+            renderSources
           }
         </div>
         <div className="clearfix"/>
@@ -101,16 +104,16 @@ SourcesList.defaultProps = {
   sources: [],
   search: '',
   updateSearch: SourcesList.prototype.updateSearch,
-  btnClick: SourcesList.prototype.btnClick,
-  handleCategory: SourcesList.prototype.handleCategory
+  displayArticles: SourcesList.prototype.displayArticles,
+  sortCategory: SourcesList.prototype.sortCategory
 };
 
 SourcesList.propTypes = {
   sources: PropTypes.array,
   search: PropTypes.string,
   updateSearch: PropTypes.func,
-  btnClick: PropTypes.func,
-  handleCategory: PropTypes.func
+  displayArticles: PropTypes.func,
+  sortCategory: PropTypes.func
 };
 
 export default SourcesList;

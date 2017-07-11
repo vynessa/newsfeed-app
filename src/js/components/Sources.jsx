@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import SourcesStore from '../stores/sourcesStore';
 import SourcesList from './SourcesList.jsx';
@@ -24,8 +23,8 @@ class Sources extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    this.handleCategory = this.handleCategory.bind(this);
-    this.btnClick = this.btnClick.bind(this);
+    this.sortCategory = this.sortCategory.bind(this);
+    this.displayArticles = this.displayArticles.bind(this);
   }
 
   /**
@@ -78,16 +77,16 @@ class Sources extends React.Component {
     });
   }
   /**
-   * @description
+   * @description Handles display of all articles for each source
    * @function
-   * @param {string} sourceKey
+   * @param {string} sourceId
    * @param {array} sortBy
    * @returns {void}
    * @memberof Sources
    */
-  btnClick(sourceKey, sortBy) {
+  displayArticles(sourceId, sortBy) {
     // create an action to hold sourceID and Name
-    NewsActions.allArticles(sourceKey, sortBy);
+    NewsActions.allArticles(sourceId, sortBy);
   }
 
   /**
@@ -97,7 +96,7 @@ class Sources extends React.Component {
    * @returns {void}
    * @memberof Sources
    */
-  handleCategory(event) {
+  sortCategory(event) {
     return NewsActions.getCategories(event.target.value);
   }
 
@@ -113,8 +112,8 @@ class Sources extends React.Component {
           sources={this.state.sources}
           search={this.state.search}
           updateSearch={this.updateSearch}
-          btnClick={this.btnClick}
-          handleCategory={this.handleCategory} />
+          displayArticles={this.displayArticles}
+          sortCategory={this.sortCategory} />
       </div>
     );
   }
