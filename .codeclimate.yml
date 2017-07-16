@@ -3,15 +3,16 @@ engines:
     enabled: true
     config:
       languages:
-        - javascript
+        javascript:
+          mass_threshold: 20
   eslint:
     enabled: true
 ratings:
   paths:
-      - "src/**.js"
+      - "**.jsx"
 exclude_paths:
 - "dist"
 - .gitignore
-- .travis.yml
-- .eslintrc
+- "test/"
+- "node_modules/"
 - "webpack.config.babel.js"
