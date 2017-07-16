@@ -5,6 +5,16 @@
     "node": "8.0.0",
     "npm": "4.6.1"
   },
+  "jest": {
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom"
+    ],
+    "setupTestFrameworkScriptFile": "./__mocks__/browserMocks.js"
+  },
   "description": "Newsfeed App is a modern RSS feed that allows you to view all headlines from different news sources and link to the original articles/news on those sources.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +22,7 @@
     "start": "NODE_ENV=production node index.js",
     "dev": "webpack-dev-server  --config webpack.config.js --open --content-base src/",
     "build": "webpack --watch",
-    "test": "jest --coverage",
+    "test": "jest --coverage -u",
     "heroku-postbuild": "npm run build:prod"
   },
   "repository": {
@@ -40,6 +50,7 @@
   },
   "homepage": "https://github.com/Vynessa/newsfeed-app#readme",
   "devDependencies": {
+    "axios-mock-adapter": "^1.9.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
@@ -76,6 +87,7 @@
     "karma-webpack": "^2.0.3",
     "react-addons-test-utils": "^15.6.0",
     "react-hot-loader": "^1.3.1",
+    "react-test-renderer": "^15.6.1",
     "webpack": "^2.6.0",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5",
