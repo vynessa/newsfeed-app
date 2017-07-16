@@ -30,14 +30,14 @@ describe('Sources Component test suite', () => {
     // expect(preventDefault).toBeCalled();
   });
 
-  it('should pass a selected value to the onChange function', () => {
-    const component = shallow(<Sources sortCategory={this.sortCategory}/>);
-    component.find('input').simulate('change', { target: {
-      value: 'Change function' }
-    });
+  // it('should pass a selected value to the onChange function', () => {
+  //   const component = shallow(<Sources sortCategory={this.sortCategory}/>);
+  //   component.find('input').simulate('change', { target: {
+  //     value: 'Change function' }
+  //   });
 
-    expect(toJson(component)).toMatchSnapshot();
-  });
+  //   expect(toJson(component)).toMatchSnapshot();
+  // });
 
   // describe('Given the Sources Component test suite', () => {
   //   describe('When the `Sources` component is loaded', () => {
