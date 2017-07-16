@@ -1,16 +1,16 @@
 /* global expect jest describe it beforeEach */
 import AppDispatcher from '../../src/js/dispatcher';
 import articlesStore from '../../src/js/stores/articlesStore';
-// import articlesConstants from '../../src/js/constants/constants';
-import articlesMock from './mocks/mockArticle.json';
+import articlesConstants from '../../src/js/constants/constants';
+import articlesMock from '../../__mocks__/mockSources.json';
 
 
-jest.mock('../../src/js/stores/articlesStore');
+jest.dontMock('../../src/js/stores/articlesStore');
 describe('Articles Store', () => {
   describe('it should get dispatched data in articles store', () => {
     let callback;
     const actionGetArticles = {
-      type: 'GET_ARTICLES',
+      actionType: articlesConstants.articles,
       articles: articlesMock
     };
 

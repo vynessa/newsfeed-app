@@ -1,23 +1,23 @@
-/* global expect jest describe it beforeEach */
+/* global expect */
 import AppDispatcher from '../../src/js/dispatcher';
-import sourcesStore from '../../src/js/stores/sourcesStore';
-// import sourcesConstants from '../../src/js/constants/constants';
-import sourcesMock from './mocks/mockSources.json';
-
+import SourcesStore from '../../src/js/stores/sourcesStore';
+import sourcesConstants from '../../src/js/constants/constants';
+import sourcesMock from '../../__mocks__/mockSources.json';
 
 jest.dontMock('../../src/js/stores/sourcesStore');
+// jest.mock('../../src/js/constants/constants');
+// jest.dontMock('react/lib/merge');
+
 describe('Sources Store', () => {
 //   describe('it should get dispatched data in Source store', () => {
   let callback;
 
   const actionGetSources = {
-    type: 'GET_SOURCES',
+    type: sourcesConstants.sources,
     sources: sourcesMock
   };
 
   beforeEach(() => {
-    // AppDispatcher = require('../../src/js/dispatcher');
-    // sourcesStore = require('../../src/js/stores/sourcesStore');
     callback = AppDispatcher.register.mock.calls[0][0];
   });
 
@@ -26,8 +26,9 @@ describe('Sources Store', () => {
   });
 
   it('should initialize with no source', () => {
-    const all = sourcesStore.getAll();
-    expect(all).toEqual([]);
+    // let sourcesStore = new SourcesStore();
+    const all = SourcesStore.getAll();
+    expect(all.length).toBe(0);
   });
 
   it('should return the appropriate result', () => {
