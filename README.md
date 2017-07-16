@@ -1,15 +1,17 @@
 # e-Feedly
-Newsfeed App is a modern RSS feed that enables one view all headlines from 70 news sources and links to the original articles/news on these sources. https://e-feedly.herokuapp.com
+e-Feedly is a modern RSS feed that gives a user access to view all headlines from 70 news sources and link to the original articles/news on those sources. https://e-feedly.herokuapp.com
 
 [![Code Climate](https://codeclimate.com/github/Vynessa/newsfeed-app/badges/gpa.svg)](https://codeclimate.com/github/Vynessa/newsfeed-app)
 [![Travis Build](https://travis-ci.org/Vynessa/newsfeed-app.svg?branch=develop)](https://travis-ci.org/Vynessa/newsfeed-app)
 [![Coverage Status](https://coveralls.io/repos/github/Vynessa/inverted-index-api/badge.svg?branch=back-end)](https://coveralls.io/github/Vynessa/newsfeed-app?branch=develop)
 
 ## Introduction
-E-News is a News Feed Application that makes use of an API to display various News Sources with their corresponding Headlines based on the various options: top and latest.
+e-Feedly is a News Feed Application that makes use of an API to display various News Sources with their corresponding Headlines based on the various options: top and latest.
+
 
 ## Features
-- Search for News Source
+Users can:
+- Search for News Source within the application
 - View Headlines based on News Source
 - Sort Headlines based on Top and Latest Headlines.
 
@@ -40,9 +42,9 @@ E-News is a News Feed Application that makes use of an API to display various Ne
 * **[Axios](https://github.com/mzabriskie/axios)** -A Promise based HTTP client for the browser and node.js. Used in making the Api Call.
 
 ### Limitations of the project
-* The Application uses only Google Login as a form of Authentication
-* The Application does not allow for favoriting articles for later viewing
-* The Application does not have scraped articles displayed on the site
+* The Application uses only Google Login for Authentication
+* The Application doesn't have a ```bookmark``` feature.
+* The Application does not have scraped articles displayed on the site.
 
 ### Naming conventions
 * Visit the [Wiki](https://github.com/vynessa/newsfeed-app/wiki) to find branch, commit messages and pull request naming conventions.
@@ -60,26 +62,27 @@ Click this link to visit the hosted app [e-feedly](https://e-feedly.herokuapp.co
 I look forward to your pull requests :)
 
 ### License
-(The MIT License)
+MIT License
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+Copyright (c) 2017 Vanessa Ejikeme
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ## Author
 * **Vanessa Ejikeme**
