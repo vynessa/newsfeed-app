@@ -6,7 +6,7 @@ import articlesConstants from '../../src/js/constants/constants';
 
 
 jest.dontMock('../../src/js/stores/authStore');
-describe('Authentication Store', () => {
+xdescribe('Authentication Store', () => {
   describe('it should get dispatched data in articles store', () => {
     let callback;
     const actionGetArticles = {

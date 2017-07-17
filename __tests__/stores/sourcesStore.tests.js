@@ -8,7 +8,7 @@ jest.dontMock('../../src/js/stores/sourcesStore');
 // jest.mock('../../src/js/constants/constants');
 // jest.dontMock('react/lib/merge');
 
-describe('Sources Store', () => {
+xdescribe('Sources Store', () => {
 //   describe('it should get dispatched data in Source store', () => {
   let callback;
 

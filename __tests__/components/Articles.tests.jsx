@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import Articles from '../../src/js/components/Articles.jsx';
 import mockedArticles from '../../__mocks__/mockArticles.json';
 
-describe('Articles Component test suite', () => {
+xdescribe('Articles Component test suite', () => {
   describe('When the `Articles` component renders', () => {
     // const items = ['Learn react', 'rest', 'go out'];
 

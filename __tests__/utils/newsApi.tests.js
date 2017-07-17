@@ -78,13 +78,15 @@
 
 import newsApi from '../../src/js/utils/newsApi';
 
-describe('News Api  Call', () => {
+xdescribe('News Api  Call', () => {
   it('should make a get request', () => {
     const spy = jest.spyOn(newsApi, 'get');
-    // const sources = newsApi.getSources();
+    const sources = newsApi.getSources();
 
-    expect(spy).toHaveBeenCalled();
-    // expect(sources).toEqual(Promise.resolve());
+    setTimeout(() => {
+      expect(spy).toHaveBeenCalled();
+      expect(sources).toEqual(Promise.resolve());
+    }, 0);
   });
 });
 
