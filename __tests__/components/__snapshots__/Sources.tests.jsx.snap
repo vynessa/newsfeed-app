@@ -45,11 +45,17 @@ exports[`Sources Component test suite When the \`Sources\` component renders sho
           </label>
           <select
             className=""
-            defaultValue={undefined}
+            defaultValue=""
             id="input_1"
             multiple={undefined}
             onChange={[Function]}
-          />
+          >
+            <option
+              value=""
+            >
+              All Sources
+            </option>
+          </select>
         </div>
       </div>
     </div>

@@ -42,11 +42,17 @@ exports[`SourcesList Component test suite When the \`SourcesList\` component ren
         </label>
         <select
           className=""
-          defaultValue={undefined}
+          defaultValue=""
           id="input_1"
           multiple={undefined}
           onChange={undefined}
-        />
+        >
+          <option
+            value=""
+          >
+            All Sources
+          </option>
+        </select>
       </div>
     </div>
   </div>

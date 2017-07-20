@@ -6,7 +6,7 @@ import { shallow } from 'enzyme';
 import Sources from '../../src/js/components/Sources.jsx';
 import mockedSources from '../../__mocks__/mockSources.json';
 
-xdescribe('Sources Component test suite', () => {
+describe('Sources Component test suite', () => {
   describe('When the `Sources` component renders', () => {
     // const items = ['Learn react', 'rest', 'go out'];
 
