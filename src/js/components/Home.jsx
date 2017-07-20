@@ -12,8 +12,11 @@ const Home = () => {
    * @returns {JSX.Element} Home
    * @memberof Home
    */
+  const bool = true;
   return (
-    <Slider className="slider fullscreen">
+    <Slider className="slider fullscreen"
+      indicators={bool}
+      interval={6000}>
       <Slide
         src={images.business.image}
         title={images.business.title}>

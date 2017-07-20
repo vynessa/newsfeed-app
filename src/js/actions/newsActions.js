@@ -1,9 +1,12 @@
 import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 import NewsApi from '../utils/newsApi';
+import Categories from '../utils/getCategories';
 
 const firebase = require('firebase/app');
-// require('firebase/auth');
+
+// Create new instance of Category class
+const categoryClass = new Categories();
 
 /**
  * @description News Actions to dispatch actions to stores
@@ -12,50 +15,46 @@ const firebase = require('firebase/app');
 const NewsActions = {
   /**
    * @description Sources Actions
-   * @method
-   * @returns {object} sources
-   */
-  allSources() {
-    return NewsApi.getSources().then((sources) => {
-      AppDispatcher.dispatch({
-        type: constants.sources,
-        sources
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.sourcesError,
-          sources: err
-        });
-      });
-    });
-  },
-  /**
-   * @description Categories Action
-   * @method
    * @param {string} category
+   * @method
    * @returns {object} sources
    */
-  getCategories(category) {
-    return NewsApi.getSources(category).then((sources) => {
+  allSources(category) {
+    if (category) {
+      return NewsApi.getSources(category).then((sources) => {
+        AppDispatcher.dispatch({
+          type: constants.sources,
+          sources,
+        });
+      });
+    }
+    return NewsApi.getSources().then((sources) => {
+      const categoryList = categoryClass.sortCategories(sources);
       AppDispatcher.dispatch({
         type: constants.sources,
-        sources
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.sourcesError,
-          sources: err
-        });
+        sources,
+        categoryList
       });
     });
   },
+
   /**
    * @description Articles Action
    * @method
-   * @param {string} sourceKey
+   * @param {string} source
    * @param {string} sortBy
    * @returns {object} articles
    */
   allArticles(source, sortBy) {
-    return NewsApi.getArticles(source, sortBy[0]).then((articles) => {
+    const sortTerm = [];
+
+    if (typeof sortBy === 'object') {
+      sortTerm.push(sortBy[0]);
+    } else {
+      sortTerm.push(sortBy);
+    }
+
+    return NewsApi.getArticles(source, sortTerm).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles: {
@@ -63,11 +62,6 @@ const NewsActions = {
           source,
           sortBy
         },
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.articlesError,
-          articles: err
-        });
       });
     });
   },
@@ -82,11 +76,6 @@ const NewsActions = {
       AppDispatcher.dispatch({
         type: constants.login,
         user: result.user
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.loginError,
-          user: err
-        });
       });
     });
   },
@@ -99,11 +88,6 @@ const NewsActions = {
     firebase.auth().signOut().then(() => {
       AppDispatcher.dispatch({
         type: constants.signOut
-      }, (err) => {
-        AppDispatcher.dispatch({
-          type: constants.signOutError,
-          err
-        });
       });
     });
   }

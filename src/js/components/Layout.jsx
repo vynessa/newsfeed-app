@@ -9,7 +9,6 @@ import Footer from './Footer.jsx';
  * @returns {JSX.Element} Template
  */
 const Layout = (props) => {
-  console.log('Props Children', props.children);
   /**
    * @description Renders Layout component
    * @returns {JSX.Element} Layout

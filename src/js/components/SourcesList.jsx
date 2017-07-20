@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Col, Card, Row, Input } from 'react-materialize';
 import { Link } from 'react-router';
 import Preloader from '../components/Preloader.jsx';
+import StringFilter from '../utils/stringFilter';
+
+
+// New instance of StringFilter
+const strFilter = new StringFilter();
 
 /**
  * @description Sources child component
@@ -18,21 +23,37 @@ class SourcesList extends React.Component {
   render() {
     const { sources,
       search,
+      categories,
       updateSearch,
       displayArticles,
       sortCategory } = this.props;
 
-    /** Search filter function
-     * @function
-     * @param {object} source
+    // Create All Sources option tag
+    const allSourcesOptionTag = (<option key="" value="">All Sources</option>);
+
+    /**
+     * @description Maps categories array through an option tag
+     * @returns {array} displayCategories
+     */
+    const displayCategories = categories.map((category, index) => {
+      return <option key={index} value={category}>
+              {strFilter.filteredStr(category)}
+            </option>;
+    });
+
+    displayCategories.unshift(allSourcesOptionTag);
+
+    /**
+     * @description Filters through sources to
+        return sources if search term index is true
      * @returns {object} filteredSearch
      */
     const filteredSources = sources.filter((source) => {
       return source.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
 
-    /** Source Function
-     * @function
+    /**
+     * @description maps
      * @param {object} source
      * @returns {object} renderSources
      */
@@ -57,6 +78,15 @@ class SourcesList extends React.Component {
       );
     });
 
+    const checkSources = () => {
+      return (renderSources.length === 0) ?
+      <div className="center-align">
+        <h4>Oops! Search Term not found :(</h4>
+      </div>
+      :
+      renderSources;
+    };
+
     return (
       <div>
         <div className="center-align">
@@ -72,26 +102,17 @@ class SourcesList extends React.Component {
               type="select"
               label="Categories:"
               defaultValue="">
-                <option value="">All Sources</option>
-                <option value="business">Business</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="gaming">Gaming</option>
-                <option value="general">General</option>
-                <option value="music">Music</option>
-                <option value="politics">Politics</option>
-                <option value="science-and-nature">Science and Nature</option>
-                <option value="sport">Sport</option>
-                <option value="technology">Technology</option>
+                {displayCategories}
             </Input>
           </Row>
         </div>
         <div className="row">
           { (sources.length === 0) ?
               <div className="center-align">
-              <Preloader />
+               <Preloader />
               </div>
             :
-            renderSources
+            checkSources()
           }
         </div>
         <div className="clearfix"/>
@@ -103,6 +124,7 @@ class SourcesList extends React.Component {
 SourcesList.defaultProps = {
   sources: [],
   search: '',
+  categories: [],
   updateSearch: SourcesList.prototype.updateSearch,
   displayArticles: SourcesList.prototype.displayArticles,
   sortCategory: SourcesList.prototype.sortCategory
@@ -111,6 +133,7 @@ SourcesList.defaultProps = {
 SourcesList.propTypes = {
   sources: PropTypes.array,
   search: PropTypes.string,
+  categories: PropTypes.array,
   updateSearch: PropTypes.func,
   displayArticles: PropTypes.func,
   sortCategory: PropTypes.func

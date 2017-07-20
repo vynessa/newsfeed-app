@@ -14,7 +14,10 @@ class SourcesStore extends EventEmitter {
    */
   constructor() {
     super();
-    this.sources = [];
+    this.sourcesData = {
+      sources: [],
+      categoryList: []
+    };
   }
 
   /**
@@ -23,8 +26,11 @@ class SourcesStore extends EventEmitter {
    * @memberof SourcesStore
    * @returns {void}
    */
-  getSources(sources) {
-    this.sources = sources;
+  getSources(sources, categoryList) {
+    this.sourcesData.sources = sources;
+    if (categoryList !== undefined) {
+      this.sourcesData.categoryList = categoryList;
+    }
     this.emit('change');
   }
   /**
@@ -33,10 +39,12 @@ class SourcesStore extends EventEmitter {
    * @returns {object} this.sources
    */
   getAll() {
-    return this.sources;
+    console.log('---------');
+    console.log('------for', this.sourcesData);
+    return this.sourcesData;
   }
   /**
-   * @description Update sources method checks for action type and dispatches accordingly
+   * @description Update sources method checks for action type and dispatches data accordingly
    * @param {any} action
    * @memberof SourcesStore
    * @returns {void}
@@ -44,7 +52,7 @@ class SourcesStore extends EventEmitter {
   updateSources(action) {
     switch (action.type) {
     case constants.sources:
-      this.getSources(action.sources);
+      this.getSources(action.sources, action.categoryList);
       break;
     case constants.sourcesError:
       this.getSources(action.sourcesError);

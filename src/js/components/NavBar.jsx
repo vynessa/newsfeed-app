@@ -61,6 +61,7 @@ class NavBar extends React.Component {
    */
   render() {
     const user = this.state.user;
+
     return (
       <div className="navbar-fixed">
         <nav className="brown">

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 /**
  * API class
  * @class NewsApi

@@ -16,29 +16,21 @@ class Sources extends React.Component {
    */
   constructor(props) {
     super(props);
+    const sourcesData = SourcesStore.getAll();
     this.state = {
-      sources: SourcesStore.getAll(),
-      user: null,
-      search: ''
+      sources: sourcesData.sources,
+      search: '',
+      categories: sourcesData.categoryList,
     };
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.sortCategory = this.sortCategory.bind(this);
     this.displayArticles = this.displayArticles.bind(this);
+    this.getCategories = this.getCategories.bind(this);
   }
 
   /**
-   * @returns {void}
-   * @memberof Sources
-   */
-  componentWillMount() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.setState({
-      user
-    });
-  }
-  /**
-   * @description On Component Mount, sources actions are called and stores listen for change
+   * @description Sources actions are called and stores listen for change
    * @memberof Sources
    * @returns {void}
    */
@@ -54,14 +46,24 @@ class Sources extends React.Component {
   componentWillUnmount() {
     SourcesStore.removeListener('change', this.onChange);
   }
+
   /**
    * @description Change event to get all sources from stores
    * @memberof Sources
    * @returns {void}
    */
   onChange() {
+    const sourcesData = SourcesStore.getAll();
     this.setState({
-      sources: SourcesStore.getAll()
+      sources: sourcesData.sources
+    });
+    this.getCategories();
+  }
+
+  getCategories() {
+    const sourcesData = SourcesStore.getAll();
+    this.setState({
+      categories: sourcesData.categoryList
     });
   }
 
@@ -97,7 +99,7 @@ class Sources extends React.Component {
    * @memberof Sources
    */
   sortCategory(event) {
-    return NewsActions.getCategories(event.target.value);
+    return NewsActions.allSources(event.target.value);
   }
 
   /**
@@ -111,6 +113,7 @@ class Sources extends React.Component {
         <SourcesList
           sources={this.state.sources}
           search={this.state.search}
+          categories={this.state.categories}
           updateSearch={this.updateSearch}
           displayArticles={this.displayArticles}
           sortCategory={this.sortCategory} />

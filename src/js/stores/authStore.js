@@ -31,9 +31,7 @@ class AuthStore extends EventEmitter {
    * @returns {void}
    */
   clearUser() {
-    localStorage
-      .removeItem('user')
-      .removeItem('firebase:authUser:AIzaSyA2ZqwgwAQDzq0XeRQij2ESeB0u3CC_boo:[DEFAULT]');
+    localStorage.removeItem('user');
     location.reload();
   }
   /**

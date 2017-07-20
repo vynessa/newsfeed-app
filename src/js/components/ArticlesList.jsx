@@ -3,7 +3,9 @@ import { Breadcrumb, Row,
           Input, Col,
           Card, CardTitle, MenuItem } from 'react-materialize';
 import PropTypes from 'prop-types';
+import StringFilter from '../utils/stringFilter';
 
+const strFilter = new StringFilter();
 /**
  * @description ArticlesList component
  * @class
@@ -17,12 +19,12 @@ class ArticlesList extends React.Component {
     const { articles, sortBy, source } = this.props.articles;
     const { handleSort } = this.props;
     let result = [];
-    let sortByAvailable = [];
+    const sortByAvailable = [];
     let sourceId = '';
     if (this.props.articles !== undefined &&
       articles !== undefined) {
       result = articles;
-      sortByAvailable = sortBy;
+      sortByAvailable.push(sortBy);
       sourceId = source;
     }
     const renderArticles = result.map((article, index) => {
@@ -43,14 +45,18 @@ class ArticlesList extends React.Component {
               </div>
             ]}>
             <h5 className="article-title">{article.title}</h5>
-            {article.description.substr(0, 70)}
+            {article.description}
           </Card>
         </Col>
       );
     });
 
-    const sortInput = sortByAvailable.map((tag) => {
-      return <option key={tag} value={tag}>{tag}</option>;
+    if (sortByAvailable[0] === undefined) {
+      return false;
+    }
+
+    const sortInput = sortByAvailable[0].map((tag, index) => {
+      return <option key={index} value={tag}>{strFilter.filteredStr(tag)}</option>;
     });
 
     return (
@@ -63,14 +69,14 @@ class ArticlesList extends React.Component {
         <h1
         className="center-align"
         id="heading-text">
-        Headlines from {sourceId.replace(/-/g, ' ')}
+        Headlines from {strFilter.filteredStr(sourceId)}
         </h1>
-        <Row>
+        <Row className="center-align">
           <Input m={6} s={12}
             type="select"
             onChange={handleSort}
             label="Sort Articles By:">
-            {sortInput}
+             {sortInput}
           </Input>
         </Row>
         <div className="row">

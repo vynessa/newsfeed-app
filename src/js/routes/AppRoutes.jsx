@@ -15,10 +15,20 @@ const checkUser = (nextState, replace, next) => {
   next();
 };
 
+// const isLoggedIn = (nextState, replace, next) => {
+//   const user = localStorage.getItem('user');
+//   if (user !== null) {
+//     replace('/sources');
+//   }
+//   next(); 
+// };
+
 const routes = (
   <Route exact path="/" component={Layout}>
     <IndexRoute onEnter={checkUser} component={App} />
-    <Route path="sources"
+     {/* <Route path="sources" onEnter={checkUser} component={Sources} />
+    <Route path="articles" onEnter={checkUser} component={Articles} /> */}
+      <Route path="sources"
     component={localStorage.user ? Sources : browserHistory.push('/')} />
     <Route path="articles"
     component={localStorage.user ? Articles : browserHistory.push('/')} />
