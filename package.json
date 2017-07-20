@@ -10,10 +10,13 @@
       ".*": "<rootDir>/node_modules/babel-jest"
     },
     "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom"
+      "react",
+      "react-dom"
     ],
-    "setupTestFrameworkScriptFile": "./__mocks__/browserMocks.js"
+    "setupFiles": [
+      "./__mocks__/browserMocks.js"
+    ],
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
   },
   "description": "Newsfeed App is a modern RSS feed that allows you to view all headlines from different news sources and link to the original articles/news on those sources.",
   "main": "index.js",
@@ -120,6 +123,7 @@
     "jasmine": "^2.6.0",
     "jest": "^20.0.4",
     "jest-cli": "^20.0.4",
+    "jest-enzyme": "^3.5.3",
     "jquery": "^3.2.1",
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -130,6 +134,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.3",
+    "mock-local-storage": "^1.0.3",
     "node-env-file": "^0.1.8",
     "node-sass": "^4.5.3",
     "npm": "^4.6.1",
