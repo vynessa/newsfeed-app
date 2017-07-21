@@ -45,21 +45,13 @@ const NewsActions = {
    * @param {string} sortBy
    * @returns {object} articles
    */
-  allArticles(source, sortBy) {
-    const sortTerm = [];
-
-    if (typeof sortBy === 'object') {
-      sortTerm.push(sortBy[0]);
-    } else {
-      sortTerm.push(sortBy);
-    }
-
-    return NewsApi.getArticles(source, sortTerm).then((articles) => {
+  allArticles(sourceId, sortBy = 'top') {
+    return NewsApi.getArticles(sourceId, sortBy).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
         articles: {
           articles,
-          source,
+          sourceId,
           sortBy
         },
       });

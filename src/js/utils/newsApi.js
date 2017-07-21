@@ -38,7 +38,7 @@ class NewsApi {
    * @param {string} sortBy
    * @returns {object} articles
    */
-  static getArticles(sourceId, sortBy) {
+  static getArticles(sourceId, sortBy = 'top') {
     const apiUrl = 'https://newsapi.org/v1/articles?source=';
     const apiKey = process.env.NEWS_API_KEY;
     const newLink = `${apiUrl}${sourceId}&sortBy=${sortBy}&apiKey=${apiKey}`;
