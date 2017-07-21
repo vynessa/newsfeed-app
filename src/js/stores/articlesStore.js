@@ -25,8 +25,6 @@ class ArticlesStore extends EventEmitter {
    */
   getArticles(articles) {
     this.articles = articles;
-    this.sourceKey = articles.source;
-    localStorage.setItem('sourceKey', articles.sourcekey);
     this.emit('change');
   }
 
@@ -37,15 +35,6 @@ class ArticlesStore extends EventEmitter {
    */
   getAll() {
     return this.articles;
-  }
-
-  /**
-   * @description returns the source Id set in setSourceKey function
-   * @returns {string} this.sourceKey
-   * @memberof ArticlesStore
-   */
-  getSourceKey() {
-    return this.sourceKey;
   }
 
   /**

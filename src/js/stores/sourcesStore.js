@@ -39,8 +39,6 @@ class SourcesStore extends EventEmitter {
    * @returns {object} this.sources
    */
   getAll() {
-    console.log('---------');
-    console.log('------for', this.sourcesData);
     return this.sourcesData;
   }
   /**

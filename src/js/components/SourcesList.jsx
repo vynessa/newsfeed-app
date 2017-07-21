@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Card, Row, Input } from 'react-materialize';
-import { Link } from 'react-router';
 import Preloader from '../components/Preloader.jsx';
 import StringFilter from '../utils/stringFilter';
 
@@ -25,7 +24,7 @@ class SourcesList extends React.Component {
       search,
       categories,
       updateSearch,
-      displayArticles,
+      storeItems,
       sortCategory } = this.props;
 
     // Create All Sources option tag
@@ -64,13 +63,12 @@ class SourcesList extends React.Component {
             <Card
               textClassName="white-text"
               title={source.name}
-              actions={[<Link
+              actions={[<a
               key={index}
-              to={`articles?source=${source.id}&sortBy=${source.sortBysAvailable[0]}`}
               className="btn"
               value={[source.name, source.id]}
-              onClick={() => displayArticles(source.id, source.sortBysAvailable)}>
-              View headlines</Link>]}>
+              onClick={() => storeItems(source.id, source.sortBysAvailable)}>
+              View headlines</a>]}>
               {source.description}
             </Card>
           </Col>
@@ -126,7 +124,7 @@ SourcesList.defaultProps = {
   search: '',
   categories: [],
   updateSearch: SourcesList.prototype.updateSearch,
-  displayArticles: SourcesList.prototype.displayArticles,
+  storeItems: SourcesList.prototype.storeItems,
   sortCategory: SourcesList.prototype.sortCategory
 };
 
@@ -135,7 +133,7 @@ SourcesList.propTypes = {
   search: PropTypes.string,
   categories: PropTypes.array,
   updateSearch: PropTypes.func,
-  displayArticles: PropTypes.func,
+  storeItems: PropTypes.func,
   sortCategory: PropTypes.func
 };
 

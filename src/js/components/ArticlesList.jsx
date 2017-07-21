@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Breadcrumb, Row,
           Input, Col,
           Card, CardTitle, MenuItem } from 'react-materialize';
-import PropTypes from 'prop-types';
 import StringFilter from '../utils/stringFilter';
 
 const strFilter = new StringFilter();
@@ -16,20 +16,22 @@ class ArticlesList extends React.Component {
    * @memberof ArticlesList
    */
   render() {
-    const { articles, sortBy, source } = this.props.articles;
-    const { handleSort } = this.props;
+    const sortBys = JSON.parse(localStorage.sortBys);
+    const sortByAvailable = sortBys;
+
+    const { articles } = this.props.articles;
+    const { handleSort, sourceKey } = this.props;
+
     let result = [];
-    const sortByAvailable = [];
-    let sourceId = '';
+
     if (this.props.articles !== undefined &&
       articles !== undefined) {
       result = articles;
-      sortByAvailable.push(sortBy);
-      sourceId = source;
     }
+
     const renderArticles = result.map((article, index) => {
       return (
-        <Col key ={article.publishedAt} m={6} s={12}>
+        <Col key ={`col-${index}`} m={6} s={12}>
           <Card
             className="small"
             header={<CardTitle image={article.urlToImage}/>}
@@ -51,12 +53,10 @@ class ArticlesList extends React.Component {
       );
     });
 
-    if (sortByAvailable[0] === undefined) {
-      return false;
-    }
-
-    const sortInput = sortByAvailable[0].map((tag, index) => {
-      return <option key={index} value={tag}>{strFilter.filteredStr(tag)}</option>;
+    const sortInput = sortByAvailable.map((tag, index) => {
+      return <option key={`article-${index}`} value={tag}>
+                {strFilter.filteredStr(tag)}
+              </option>;
     });
 
     return (
@@ -69,14 +69,14 @@ class ArticlesList extends React.Component {
         <h1
         className="center-align"
         id="heading-text">
-        Headlines from {strFilter.filteredStr(sourceId)}
+         Headlines from {strFilter.filteredStr(sourceKey)}
         </h1>
         <Row className="center-align">
           <Input m={6} s={12}
             type="select"
             onChange={handleSort}
             label="Sort Articles By:">
-             {sortInput}
+               { sortInput }
           </Input>
         </Row>
         <div className="row">
@@ -88,14 +88,12 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.defaultProps = {
-  // articles: {},
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
   source: ''
 };
 
 ArticlesList.propTypes = {
-  // articles: PropTypes.object,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
   source: PropTypes.string,

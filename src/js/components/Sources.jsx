@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import SourcesStore from '../stores/sourcesStore';
 import SourcesList from './SourcesList.jsx';
@@ -25,7 +26,7 @@ class Sources extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.sortCategory = this.sortCategory.bind(this);
-    this.displayArticles = this.displayArticles.bind(this);
+    this.storeItems = this.storeItems.bind(this);
     this.getCategories = this.getCategories.bind(this);
   }
 
@@ -86,9 +87,10 @@ class Sources extends React.Component {
    * @returns {void}
    * @memberof Sources
    */
-  displayArticles(sourceId, sortBy) {
-    // create an action to hold sourceID and Name
-    NewsActions.allArticles(sourceId, sortBy);
+  storeItems(sourceId, sortBy) {
+    localStorage.setItem('sourceKey', sourceId);
+    localStorage.setItem('sortBys', JSON.stringify(sortBy));
+    browserHistory.push('/articles');
   }
 
   /**
@@ -115,7 +117,7 @@ class Sources extends React.Component {
           search={this.state.search}
           categories={this.state.categories}
           updateSearch={this.updateSearch}
-          displayArticles={this.displayArticles}
+          storeItems={this.storeItems}
           sortCategory={this.sortCategory} />
       </div>
     );

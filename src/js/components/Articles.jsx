@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import NewsActions from '../actions/newsActions';
 import ArticlesStore from '../stores/articlesStore';
 import ArticlesList from './ArticlesList.jsx';
@@ -15,11 +14,13 @@ class Articles extends React.Component {
    */
   constructor(props) {
     super(props);
+    this.sourceKey = localStorage.getItem('sourceKey');
+
     this.state = {
       articles: ArticlesStore.getAll(),
       sortBy: ''
     };
-    this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('sourceKey');
+
     this.onChange = this.onChange.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
@@ -30,7 +31,7 @@ class Articles extends React.Component {
    * @returns {void}
    */
   componentDidMount() {
-    // NewsActions.allArticles(this.sourceKey, sortBy);
+    NewsActions.allArticles(this.sourceKey);
     ArticlesStore.on('change', this.onChange);
   }
   /**
@@ -42,7 +43,7 @@ class Articles extends React.Component {
     ArticlesStore.removeListener('change', this.onChange);
   }
   /**
-   * @description Change state on user(s) request
+   * @description Change state on refresh or user(s) request
    * @method
    */
   onChange() {
@@ -71,6 +72,7 @@ class Articles extends React.Component {
       <ArticlesList
         articles={this.state.articles}
         handleSort={this.handleSort}
+        sourceKey = {this.sourceKey}
         sortBy = {this.state.sortBy} />
     );
   }
