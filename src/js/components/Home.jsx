@@ -5,6 +5,7 @@ import images from './Images.jsx';
 /**
  * @description Home component which contains slider and slide images for the landing page
  * @function Home
+ * @returns {object} Home
  */
 const Home = () => {
   /**

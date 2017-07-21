@@ -13,7 +13,6 @@ class Categories {
   static getCategories(sources) {
     const allCategories = [];
     let category = [];
-    // console.log('All Sources', sources);
     Object.keys(sources).forEach((source) => {
       category = sources[source].category;
       allCategories.push(category);
@@ -43,7 +42,6 @@ class Categories {
     let sortedCategories = [];
     sortedCategories = Categories.getCategories(allSources);
     sortedCategories = Categories.filterCategories(sortedCategories).sort();
-    // localStorage.setItem('categories', sortedCategories);
     return sortedCategories;
   }
 }

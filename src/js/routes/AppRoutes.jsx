@@ -26,8 +26,6 @@ const checkUser = (nextState, replace, next) => {
 const routes = (
   <Route exact path="/" component={Layout}>
     <IndexRoute onEnter={checkUser} component={App} />
-     {/* <Route path="sources" onEnter={checkUser} component={Sources} />
-    <Route path="articles" onEnter={checkUser} component={Articles} /> */}
       <Route path="sources"
     component={localStorage.user ? Sources : browserHistory.push('/')} />
     <Route path="articles"
