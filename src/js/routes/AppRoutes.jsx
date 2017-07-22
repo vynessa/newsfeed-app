@@ -15,14 +15,6 @@ const checkUser = (nextState, replace, next) => {
   next();
 };
 
-// const isLoggedIn = (nextState, replace, next) => {
-//   const user = localStorage.getItem('user');
-//   if (user !== null) {
-//     replace('/sources');
-//   }
-//   next(); 
-// };
-
 const routes = (
   <Route exact path="/" component={Layout}>
     <IndexRoute onEnter={checkUser} component={App} />

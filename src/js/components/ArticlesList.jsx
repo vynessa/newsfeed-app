@@ -4,6 +4,8 @@ import { Breadcrumb, Row,
           Input, Col,
           Card, CardTitle, MenuItem } from 'react-materialize';
 import StringFilter from '../utils/stringFilter';
+import Preloader from './Preloader.jsx';
+
 
 const strFilter = new StringFilter();
 /**
@@ -19,8 +21,8 @@ class ArticlesList extends React.Component {
     const sortBys = JSON.parse(localStorage.sortBys);
     const sortByAvailable = sortBys;
 
-    const { articles } = this.props.articles;
-    const { handleSort, sourceKey } = this.props;
+    // const {  } = this.props.articles;
+    const { articles, handleSort, sourceKey } = this.props;
 
     let result = [];
 
@@ -80,7 +82,14 @@ class ArticlesList extends React.Component {
           </Input>
         </Row>
         <div className="row">
-          {renderArticles}
+          {
+            articles.length === 0 ?
+            <div className="center-align">
+               <Preloader />
+              </div>
+            :
+            renderArticles
+          }
           </div>
       </div>
     );
@@ -88,12 +97,14 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.defaultProps = {
+  articles: [],
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
   source: ''
 };
 
 ArticlesList.propTypes = {
+  articles: PropTypes.array,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
   source: PropTypes.string,

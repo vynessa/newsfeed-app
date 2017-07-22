@@ -106,7 +106,7 @@ class Sources extends React.Component {
 
   /**
    * @description
-   * @returns {JSX.Element} Soutcrs
+   * @returns {JSX.Element} Sources
    * @memberof Sources
    */
   render() {

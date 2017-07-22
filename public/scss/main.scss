@@ -29,6 +29,10 @@ div #login-btn {
   border-radius: 4px !important;
 }
 
+div #login-btn:hover, #logout-btn:hover {
+  background-color: $color-brown !important;
+}
+
 .circle.responsive-img {
   max-width: 100%;
   height: 50px;
@@ -38,10 +42,6 @@ div #login-btn {
 
 .row .nav-wrapper {
   background-color: $color-light-brown;
-}
-
-div #login-btn:hover, #logout-btn:hover {
-  background-color: $color-brown !important;
 }
 
 .breadcrumb {
@@ -87,18 +87,18 @@ div #login-btn:hover, #logout-btn:hover {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-// Sources Styling
+// Sources Component
 .row {
   margin: 0 auto;
   width: 1000px;
 }
 
 .btn{
-  background-color: $color-brown
+  background-color: $color-brown 
 }
 
 .btn:hover {
-  background-color: $color-light-brown
+  background-color: $color-light-brown !important
 }
 
 .waves-effect.waves-light.btn {

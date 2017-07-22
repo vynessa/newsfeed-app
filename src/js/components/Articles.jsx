@@ -18,7 +18,6 @@ class Articles extends React.Component {
 
     this.state = {
       articles: ArticlesStore.getAll(),
-      sortBy: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -72,8 +71,7 @@ class Articles extends React.Component {
       <ArticlesList
         articles={this.state.articles}
         handleSort={this.handleSort}
-        sourceKey = {this.sourceKey}
-        sortBy = {this.state.sortBy} />
+        sourceKey = {this.sourceKey} />
     );
   }
 }

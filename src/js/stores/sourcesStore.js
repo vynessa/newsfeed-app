@@ -52,9 +52,9 @@ class SourcesStore extends EventEmitter {
     case constants.sources:
       this.getSources(action.sources, action.categoryList);
       break;
-    case constants.sourcesError:
-      this.getSources(action.sourcesError);
-      break;
+    // case constants.sourcesError:
+    //   this.getSources(action.sourcesError);
+    //   break;
     default:
     }
   }

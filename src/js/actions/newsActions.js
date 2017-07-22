@@ -49,11 +49,7 @@ const NewsActions = {
     return NewsApi.getArticles(sourceId, sortBy).then((articles) => {
       AppDispatcher.dispatch({
         type: constants.articles,
-        articles: {
-          articles,
-          sourceId,
-          sortBy
-        },
+        articles
       });
     });
   },
