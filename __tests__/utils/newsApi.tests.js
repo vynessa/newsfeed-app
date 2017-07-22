@@ -12,7 +12,7 @@ describe('News Api Test Suite', () => {
     expect(getSources).toEqual(Promise.resolve());
   });
 
-  it('should return a promise resolve from the Api for getSources(category)', () => {
+  xit('should return a promise resolve from the Api for getSources(category)', () => {
     const spy = jest.spyOn(newsApi, 'getSources');
     const getSources = newsApi.getSources(category);
 

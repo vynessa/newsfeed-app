@@ -6,7 +6,7 @@ import { shallow, mount } from 'enzyme';
 import ArticlesList from '../../src/js/components/ArticlesList.jsx';
 import mockedArticles from '../../__mocks__/mockArticles.json';
 
-describe('ArticlesList Component Test Suite', () => {
+xdescribe('ArticlesList Component Test Suite', () => {
   describe('When the `ArticlesList` component renders', () => {
     it('should match its empty snapshot', () => {
       mount(<ArticlesList />);

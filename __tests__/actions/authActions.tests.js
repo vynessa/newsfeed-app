@@ -1,4 +1,10 @@
 // /* global expect jest */
+
+describe('', () => {
+    it('', () => {
+        expect(true).toBeTruthy();
+    })
+})
 // import expects from 'expect';
 // import firebase from 'firebase';
 // import newsActions from '../../src/js/actions/newsActions';

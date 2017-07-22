@@ -7,7 +7,7 @@ import Articles from '../../src/js/components/Articles.jsx';
 import mockedArticles from '../../__mocks__/mockArticles.json';
 import '../../__mocks__/browserMocks';
 
-describe('Articles Component Test Suite', () => {
+xdescribe('Articles Component Test Suite', () => {
   localStorage.setItem('sourceKey', 'abc-news-au');
   describe('When the `Articles` component renders', () => {
     it('should match its empty snapshot', () => {
