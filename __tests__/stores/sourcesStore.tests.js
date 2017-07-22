@@ -1,23 +1,40 @@
+/* global expect jest describe it beforeEach */
 import expects from 'expect';
-
-import sourcesStore from '../../src/js/stores/sourcesStore';
+import dispatcher from '../../src/js/dispatcher';
 import sourcesMock from '../../__mocks__/mockSources.json';
+import sourcesStore from '../../src/js/stores/sourcesStore';
 import constants from '../../src/js/constants/constants';
 
-jest.dontMock('../../src/js/stores/sourcesStore.js');
+jest.mock('../../src/js/dispatcher');
 
-describe('Sources Store suite', () => {
-  describe('', () => {
-    it('should exist', () => {
-      expects(sourcesStore).toExist();
-    });
+describe('Sources Store Test Suite', () => {
+  let callback;
 
-    it('should be undefined', () => {
-      expect(sourcesStore.getSources()).toBe(undefined);
-    });
+  const sources = {
+    type: constants.sources,
+    sources: sourcesMock
+  };
 
-    it('should be an empty array', () => {
-      expect(sourcesStore.getAll().sources).toBe([]);
-    });
+  beforeEach(() => {
+    callback = dispatcher.register.mock.calls[0][0];
+  });
+
+  it('should exist', () => {
+    expects(sourcesStore).toExist();
+  });
+
+  it('should register a call with the dispatcher', () => {
+    expect(dispatcher.register.mock.calls.length).toBe(1);
+  });
+
+  it('should initialize with no sources', () => {
+    expect(sourcesStore.sourcesData.sources.length).toEqual(0);
+  });
+
+  it('should return the appropraite result', () => {
+    callback(sources);
+    expect(sourcesStore.getAll().sources.length).toBe(8);
+    expect(sourcesStore.getAll().sources).toEqual(sourcesMock);
   });
 });
+

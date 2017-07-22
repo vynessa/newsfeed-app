@@ -1,0 +1,37 @@
+[
+    {
+        "id": "mtv-news",
+        "name": "MTV News",
+        "description": "The ultimate news source for music, celebrity, entertainment, movies, and current events on the web. It's pop culture on steroids.",
+        "url": "http://www.mtv.com/news",
+        "category": "music",
+        "language": "en",
+        "country": "us",
+        "urlsToLogos": {
+        "small": "",
+        "medium": "",
+        "large": ""
+        },
+        "sortBysAvailable": [
+        "top",
+        "latest"
+        ]
+    },
+    {
+        "id": "mtv-news-uk",
+        "name": "MTV News (UK)",
+        "description": "All the latest celebrity news, gossip, exclusive interviews and pictures from the world of music and entertainment.",
+        "url": "http://www.mtv.co.uk/news",
+        "category": "music",
+        "language": "en",
+        "country": "gb",
+        "urlsToLogos": {
+        "small": "",
+        "medium": "",
+        "large": ""
+        },
+        "sortBysAvailable": [
+        "top"
+        ]
+    }
+]

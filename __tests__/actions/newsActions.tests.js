@@ -1,8 +1,9 @@
-/* global expect jest test */
+/* global expect jest */
 import dispatcher from '../../src/js/dispatcher';
 import newsActions from '../../src/js/actions/newsActions';
 import newsApi from '../../src/js/utils/newsApi';
 import sources from '../../__mocks__/mockSources.json';
+import sourcesCategory from '../../__mocks__/mockSourcesCategory.json';
 import articles from '../../__mocks__/mockArticles.json';
 import constants from '../../src/js/constants/constants';
 
@@ -18,28 +19,67 @@ newsApiGetArticles.mockReturnValue(Promise.resolve(articles));
 
 const dispatchSpy = jest.spyOn(dispatcher, 'dispatch');
 
-describe('NewsActions', () => {
-  test('should call newsActions.getSources() on getSources', () => {
+const category = 'music';
+
+describe('NewsActions Test Suite', () => {
+  it('should call newsActions.getSources() on getSources', () => {
     newsActions.allSources();
     expect(newsApiGetSources.mock.calls.length).toBe(1);
   });
 
-  test('should call newsActions.getArticles()', () => {
+  it('should call newsActions.getArticles()', () => {
     newsActions.allArticles();
     expect(newsApiGetArticles.mock.calls.length).toBe(1);
   });
 
-  test('should dispatch appropriate action type when called', () => {
+  it('should call newsActions.getSources(category) on getSources', () => {
+    newsActions.allSources(category);
+    expect(newsApiGetSources.mock.calls.length).toBe(2);
+  });
+
+  it('should dispatch appropriate action type for allSources when called', () => {
     newsActions.allSources();
     const action = dispatchSpy.mock.calls[0][0];
     expect(dispatchSpy).toHaveBeenCalled();
     expect(action.type).toEqual(constants.sources);
   });
 
-  test('should dispatch appropriate action type when called', () => {
+  it('should dispatch appropriate action type for allArticles when called', () => {
     newsActions.allArticles();
     const action = dispatchSpy.mock.calls[1][0];
     expect(dispatchSpy).toHaveBeenCalled();
     expect(action.type).toEqual(constants.articles);
   });
+
+  it('should dispatch appropriate action type for allSources when called', () => {
+    newsActions.allSources(category);
+    const action = dispatchSpy.mock.calls[0][0];
+    expect(dispatchSpy).toHaveBeenCalled();
+    expect(action.type).toEqual(constants.sources);
+  });
 });
+
+// import sinon from 'sinon';
+
+// import firebase, { googleProvider } from '../../app/firebase/index';
+// import dispatcher from '../../app/dispatcher';
+
+// describe('Login Actions', () => {
+//   let dispatcherSpy;
+//   let mockFirebase;
+
+//   beforeEach(() => {
+//     mockFirebase = sinon.stub(firebase, 'auth').callsFake(() => {});
+//   });
+// });
+
+// jest.mock('pathToFireBase', () => ({
+//    signInWithEmailAndPassword(email,password){
+//      if(password === 'correct') {
+//        return Promise.resolve({name: 'someUser'})
+//      } else {
+//        return Promise.reject({error: 'someError'})
+//      }
+//    }
+// }))
+

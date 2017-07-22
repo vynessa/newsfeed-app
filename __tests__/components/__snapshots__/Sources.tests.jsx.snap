@@ -1,6 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sources Component test suite When the \`Sources\` component renders should match its empty snapshot 1`] = `
+exports[`Sources Component Test Suite When the \`Sources\` component renders should a source based on the value in the state 1`] = `
+<div
+  className="sources"
+>
+  <SourcesList
+    categories={Array []}
+    search=""
+    sortCategory={[Function]}
+    sources={[TypeError: Cannot read property 'sources' of undefined]}
+    storeItems={[Function]}
+    updateSearch={[Function]}
+  />
+</div>
+`;
+
+exports[`Sources Component Test Suite When the \`Sources\` component renders should match its empty snapshot 1`] = `
 <div
   className="sources"
 >
@@ -100,20 +115,5 @@ exports[`Sources Component test suite When the \`Sources\` component renders sho
       className="clearfix"
     />
   </div>
-</div>
-`;
-
-exports[`Sources Component test suite should add an item based on the value in the state 1`] = `
-<div
-  className="sources"
->
-  <SourcesList
-    categories={Array []}
-    displayArticles={[Function]}
-    search=""
-    sortCategory={[Function]}
-    sources={[TypeError: Cannot read property 'sources' of undefined]}
-    updateSearch={[Function]}
-  />
 </div>
 `;

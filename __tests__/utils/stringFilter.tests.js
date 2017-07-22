@@ -4,7 +4,7 @@ import StringFilter from '../../src/js/utils/stringFilter';
 // Create new instance of StringFilter class
 const strFilter = new StringFilter();
 
-describe('String Filter Class', () => {
+describe('String Filter Class Test Suite', () => {
   describe('Given a String', () => {
     describe('When `valueChecker` takes a parameter which is a string', () => {
       it('Then returns true', () => {

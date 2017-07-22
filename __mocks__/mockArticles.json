@@ -1,30 +1,26 @@
-{
-    "articles": [
-        {
-            "author": "Mohit Mamoria",
-            "title": "The ultimate, 3500-word, plain English guide to blockchain",
-            "description": "Unless you’ve been hiding under a rock, I'm sure you’ve heard of Bitcoin and blockchain. After all, they are one of the most trending topics these days  —  the ultimate ...",
-            "url": "https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348",
-            "urlToImage": "https://cdn3.tnwcdn.com/wp-content/blogs.dir/1/files/2016/12/bitcoin.jpg",
-            "publishedAt": "2017-07-04T22:02:07Z"
-        },
-        {
-            "author": "Daniel Herman",
-            "title": "How learning to paint made me a better product manager",
-            "description": "Painting always felt like a desired but distant dream for me. Every time I visit an art museum, I sit and stare at masterpieces — fascinated by the deep talent that goes into ...",
-            "url": "https://thenextweb.com/business/2017/07/04/learning-paint-made-better-product-manager/",
-            "urlToImage": "https://cdn2.tnwcdn.com/wp-content/blogs.dir/1/files/2017/07/549347271_fd32ebe01d_o.jpg",
-            "publishedAt": "2017-07-04T19:02:35Z"
-        },
-        {
-            "author": "TNW Deals",
-            "title": "Craft beautiful apps worthy of your great idea with this UI & UX Design Bootcamp",
-            "description": "Building the perfect app goes way beyond nailing down a million-dollar idea. Put together an app that looks clunky and garish, even if it’s packed with great information, and you’re ...",
-            "url": "https://thenextweb.com/offers/2017/07/04/craft-beautiful-apps-worthy-great-idea-ui-ux-design-bootcamp/",
-            "urlToImage": "https://cdn3.tnwcdn.com/wp-content/blogs.dir/1/files/2017/07/UJ6cm0D.jpg",
-            "publishedAt": "2017-07-04T17:33:19Z"
-        }
-    ],
-    "sourcekey": "abc-news-au",
-    "sortBy": ["top"]
-}
+[
+    {
+        "author": "Mohit Mamoria",
+        "title": "The ultimate, 3500-word, plain English guide to blockchain",
+        "description": "Unless you’ve been hiding under a rock, I'm sure you’ve heard of Bitcoin and blockchain. After all, they are one of the most trending topics these days  —  the ultimate ...",
+        "url": "https://hackernoon.com/wtf-is-the-blockchain-1da89ba19348",
+        "urlToImage": "https://cdn3.tnwcdn.com/wp-content/blogs.dir/1/files/2016/12/bitcoin.jpg",
+        "publishedAt": "2017-07-04T22:02:07Z"
+    },
+    {
+        "author": "Daniel Herman",
+        "title": "How learning to paint made me a better product manager",
+        "description": "Painting always felt like a desired but distant dream for me. Every time I visit an art museum, I sit and stare at masterpieces — fascinated by the deep talent that goes into ...",
+        "url": "https://thenextweb.com/business/2017/07/04/learning-paint-made-better-product-manager/",
+        "urlToImage": "https://cdn2.tnwcdn.com/wp-content/blogs.dir/1/files/2017/07/549347271_fd32ebe01d_o.jpg",
+        "publishedAt": "2017-07-04T19:02:35Z"
+    },
+    {
+        "author": "TNW Deals",
+        "title": "Craft beautiful apps worthy of your great idea with this UI & UX Design Bootcamp",
+        "description": "Building the perfect app goes way beyond nailing down a million-dollar idea. Put together an app that looks clunky and garish, even if it’s packed with great information, and you’re ...",
+        "url": "https://thenextweb.com/offers/2017/07/04/craft-beautiful-apps-worthy-great-idea-ui-ux-design-bootcamp/",
+        "urlToImage": "https://cdn3.tnwcdn.com/wp-content/blogs.dir/1/files/2017/07/UJ6cm0D.jpg",
+        "publishedAt": "2017-07-04T17:33:19Z"
+    }
+]
