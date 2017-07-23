@@ -10,33 +10,17 @@ const categoriesList = ['buisness', 'sport', 'entertainment'];
 // const sourceId = 'the-next-web';
 // const sortBy = ['top', 'latest'];
 
+// localStorage.setItem('sourceKey', sourceId);
+// localStorage.setItem('sortBys', JSON.stringify(sortBy));
+
 describe('Sources Component Test Suite', () => {
   describe('When the `Sources` component renders', () => {
     it('should match its empty snapshot', () => {
-      // localStorage.setItem('sourceKey', sourceId);
-      // localStorage.setItem('sortBys', JSON.stringify(sortBy));
       const tree = renderer.create(<Sources />).toJSON();
-
-      // const component = mount(<Sources />);
-      // const tree = toJson(component);
-
       expect(tree).toMatchSnapshot();
-    // });
-
-    // // describe('When the `Sources` component renders', () => {
-    //   tree.props.storeItems();
-    //   // re-rendering
-    //   tree = component.toJSON();
-    //   expect(tree).toMatchSnapshot();
-    // // });
-
-      // tree.props.sortCategory();
-      // // re-rendering
-      // tree = component.toJSON();
-      // expect(tree).toMatchSnapshot();
     });
 
-    it('should a source based on the value in the state', () => {
+    it('should contain all sources based on the value in the state', () => {
       const component = shallow(<Sources />);
       component.setState({
         mockedSources
@@ -45,16 +29,24 @@ describe('Sources Component Test Suite', () => {
       expect(toJson(component)).toMatchSnapshot();
     });
 
-    xit('should add an item based on the value in the state', () => {
-      const component = shallow(<Sources />);
-      const preventDefault = jest.fn();
-      component.setState({
-        items
-      });
-      component.find('form').simulate('submit', { preventDefault });
-      expect(toJson(component)).toMatchSnapshot();
-      expect(preventDefault).toBeCalled();
-    });
+    // it('should contain all sources based on the value in the state', () => {
+    //   const doneChange = jest.fn();
+    //   const wrapper = mount(<Sources sources={mockedSources} doneChange={doneChange} />);
+
+    //   const p = wrapper.find('input');
+    //   p.simulate('click');
+    //   expect(doneChange).toBeCalledWith(1);
+    // });
+    // xit('should add an item based on the value in the state', () => {
+    //   const component = shallow(<Sources />);
+    //   const preventDefault = jest.fn();
+    //   component.setState({
+    //     items
+    //   });
+    //   component.find('form').simulate('submit', { preventDefault });
+    //   expect(toJson(component)).toMatchSnapshot();
+    //   expect(preventDefault).toBeCalled();
+    // });
 
     // it('should add all categories based on the value in the state', () => {
     //   const component = shallow(<Sources categories=""/>);

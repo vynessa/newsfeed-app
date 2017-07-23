@@ -63,13 +63,13 @@ describe('String Filter Class Test Suite', () => {
       });
 
       it('Then returns message when an array is passed into it', () => {
-        const oldStr =
+        const testObj =
           [
             {
               test: 'Date'
             }
           ];
-        const capitalizedStr = StringFilter.capitalize(oldStr);
+        const capitalizedStr = StringFilter.capitalize(testObj);
         expect(capitalizedStr).toEqual('Please enter a string');
       });
     });

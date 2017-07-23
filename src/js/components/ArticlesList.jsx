@@ -21,7 +21,6 @@ class ArticlesList extends React.Component {
     const sortBys = JSON.parse(localStorage.sortBys);
     const sortByAvailable = sortBys;
 
-    // const {  } = this.props.articles;
     const { articles, handleSort, sourceKey } = this.props;
 
     let result = [];
@@ -97,17 +96,17 @@ class ArticlesList extends React.Component {
 }
 
 ArticlesList.defaultProps = {
-  articles: [],
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
-  source: ''
+  source: '',
+  sourceKey: ''
 };
 
 ArticlesList.propTypes = {
-  articles: PropTypes.array,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
   source: PropTypes.string,
+  sourceKey: PropTypes.string
 };
 
 export default ArticlesList;

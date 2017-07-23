@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Sources Component Test Suite When the \`Sources\` component renders should a source based on the value in the state 1`] = `
+exports[`Sources Component Test Suite When the \`Sources\` component renders should contain all sources based on the value in the state 1`] = `
 <div
   className="sources"
 >
