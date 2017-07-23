@@ -14,11 +14,11 @@ class Articles extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.sourceKey = localStorage.getItem('sourceKey');
 
     this.state = {
       articles: ArticlesStore.getAll(),
     };
+    this.sourceKey = localStorage.getItem('sourceKey');
 
     this.onChange = this.onChange.bind(this);
     this.handleSort = this.handleSort.bind(this);

@@ -9,7 +9,7 @@ const sortCategories = categories.sortCategories(mockedSources);
 
 describe('Categories Class Test Suite', () => {
   describe('Given an array of objects', () => {
-    describe('When `getCategories` takes the object as params', () => {
+    describe('When `getCategories` takes the sources object as params', () => {
       const allCategories =
         ['general',
           'sport',

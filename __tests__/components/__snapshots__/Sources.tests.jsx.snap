@@ -48,7 +48,7 @@ exports[`Sources Component Test Suite When the \`Sources\` component renders sho
           </label>
         </div>
         <div
-          className="col input-field s12 m3"
+          className="col input-field s3 m6"
         >
           <label
             className="active"
@@ -68,7 +68,7 @@ exports[`Sources Component Test Suite When the \`Sources\` component renders sho
             <option
               value=""
             >
-              All Sources
+              All News Sources
             </option>
           </select>
         </div>

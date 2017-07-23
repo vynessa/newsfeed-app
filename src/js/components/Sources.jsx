@@ -60,7 +60,11 @@ class Sources extends React.Component {
     });
     this.getCategories();
   }
-
+  /**
+   * @description Get list of categories from SourcesStore
+   * @memberof Sources
+   * @returns {void}
+   */
   getCategories() {
     const sourcesData = SourcesStore.getAll();
     this.setState({

@@ -55,7 +55,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'e-Feedly',
       template: './src/index.html',
-      inject: true
+      inject: true,
     }),
 
     new ExtractTextPlugin({

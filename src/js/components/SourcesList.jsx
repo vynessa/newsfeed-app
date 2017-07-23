@@ -20,7 +20,8 @@ class SourcesList extends React.Component {
    * @memberof SourcesList
    */
   render() {
-    const { sources,
+    const {
+      sources,
       search,
       categories,
       updateSearch,
@@ -28,7 +29,7 @@ class SourcesList extends React.Component {
       sortCategory } = this.props;
 
     // Create All Sources option tag
-    const allSourcesOptionTag = (<option key="" value="">All Sources</option>);
+    const allSourcesOptionTag = (<option key="" value="">All News Sources</option>);
 
     /**
      * @description Maps categories array through an option tag
@@ -77,7 +78,8 @@ class SourcesList extends React.Component {
     });
 
     const checkSources = () => {
-      return (renderSources.length === 0) ?
+      return (renderSources.length === 0)
+      ?
       <div className="center-align">
         <h4>Oops! Search Term not found :(</h4>
       </div>
@@ -95,7 +97,7 @@ class SourcesList extends React.Component {
               label="Search Sources"
               value={search}
               onChange={updateSearch}/>
-            <Input m={3} s={12}
+            <Input m={6} s={3}
               onChange={sortCategory}
               type="select"
               label="Categories:"
@@ -105,7 +107,8 @@ class SourcesList extends React.Component {
           </Row>
         </div>
         <div className="row">
-          { (sources.length === 0) ?
+          {
+            (sources.length === 0) ?
               <div className="center-align">
                <Preloader />
               </div>
@@ -120,7 +123,6 @@ class SourcesList extends React.Component {
 }
 
 SourcesList.defaultProps = {
-  sources: [],
   search: '',
   categories: [],
   updateSearch: SourcesList.prototype.updateSearch,
@@ -129,7 +131,6 @@ SourcesList.defaultProps = {
 };
 
 SourcesList.propTypes = {
-  sources: PropTypes.array,
   search: PropTypes.string,
   categories: PropTypes.array,
   updateSearch: PropTypes.func,
