@@ -5,28 +5,28 @@ import StringFilter from '../../src/js/utils/stringFilter';
 const strFilter = new StringFilter();
 
 describe('String Filter Class Test Suite', () => {
-  describe('Given a String', () => {
-    describe('When `valueChecker` takes a parameter which is a string', () => {
-      it('Then returns true', () => {
+  describe('Given a class StringFilter', () => {
+    describe('When #typeCheck takes a parameter', () => {
+      it('Then returns true if the parameter is a string', () => {
         const oldStr = 'the old man';
-        const checker = StringFilter.valueChecker(oldStr);
+        const checker = StringFilter.typeCheck(oldStr);
         expect(checker).toBe(true);
       });
 
-      it('Then returns message if parameter is an object', () => {
+      it('Then returns message if the parameter is an object', () => {
         const oldStr = { name: 'Vanessa' };
-        const checker = StringFilter.valueChecker(oldStr);
+        const checker = StringFilter.typeCheck(oldStr);
         expect(checker).toEqual('Please enter a string');
       });
 
-      it('Then returns false if parameter is an empty string', () => {
+      it('Then returns false if the parameter is an empty string', () => {
         const emptyString = '';
-        const checker = StringFilter.valueChecker(emptyString);
+        const checker = StringFilter.typeCheck(emptyString);
         expect(checker).toBe(false);
       });
     });
 
-    describe('When `removeChar` takes a given string with special characters', () => {
+    describe('When #removeChar takes a given string with special characters', () => {
       it('Then returns a string with no special character', () => {
         const str = 'the-science-prOject';
         const removeCharacters = StringFilter.removeChar(str);
@@ -34,20 +34,20 @@ describe('String Filter Class Test Suite', () => {
         expect(newStr).toEqual(removeCharacters);
       });
 
-      it('Then returns a message when an empty string is passed into it', () => {
+      it('Then returns a message when the parameter is an empty string', () => {
         const str = '';
         const removeCharacters = StringFilter.removeChar(str);
         expect(removeCharacters).toEqual(false);
       });
 
-      it('Then returns a message when an array is passed into it', () => {
+      it('Then returns a message when the parameter is an array', () => {
         const str = [0.7, 'Hello'];
         const removeCharacters = StringFilter.removeChar(str);
         expect(removeCharacters).toEqual('Please enter a string');
       });
     });
 
-    describe('When `capitalize` takes in a string', () => {
+    describe('When #capitalize takes in a string', () => {
       const emptyStr = '';
       const oldStr = 'i want to eat';
       const newStr = 'I Want To Eat';
@@ -57,12 +57,12 @@ describe('String Filter Class Test Suite', () => {
         expect(newStr).toEqual(capitalizedStr);
       });
 
-      it('Then returns false when an empty string is passed into it', () => {
+      it('Then returns false when the paramter is an empty string', () => {
         const capitalizedStr = StringFilter.capitalize(emptyStr);
         expect(capitalizedStr).toEqual(false);
       });
 
-      it('Then returns message when an array is passed into it', () => {
+      it('Then returns message when the parameter is an array', () => {
         const testObj =
           [
             {
@@ -74,7 +74,7 @@ describe('String Filter Class Test Suite', () => {
       });
     });
 
-    describe('When `filteredStr` takes in a string with special characters to be capitalized',
+    describe('When #filteredStr takes in a string with special characters to be capitalized',
     () => {
       const emptyStr = '';
       const oldStr = 'the-science-prOjeCt';

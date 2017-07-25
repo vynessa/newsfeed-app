@@ -31,9 +31,13 @@ describe('Sources Store Test Suite', () => {
     expect(sourcesStore.sourcesData.sources.length).toEqual(0);
   });
 
-  it('should return the appropraite result', () => {
+  it('should return the length of all sources', () => {
     callback(sources);
     expect(sourcesStore.getAll().sources.length).toBe(8);
+  });
+
+  it('should return the appropriate sources array when #getAll is called', () => {
+    callback(sources);
     expect(sourcesStore.getAll().sources).toEqual(sourcesMock);
   });
 });

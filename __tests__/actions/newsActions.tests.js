@@ -21,51 +21,40 @@ const dispatchSpy = jest.spyOn(dispatcher, 'dispatch');
 
 const category = 'music';
 
-describe('NewsActions Test Suite', () => {
-  it('should call newsActions.getSources() on getSources', () => {
+describe('News Actions Test Suite', () => {
+  it('should call #getSources() on getSources', () => {
     newsActions.allSources();
     expect(newsApiGetSources.mock.calls.length).toBe(1);
   });
 
-  it('should call newsActions.getArticles()', () => {
+  it('should call #newsActions.getArticles()', () => {
     newsActions.allArticles();
     expect(newsApiGetArticles.mock.calls.length).toBe(1);
   });
 
-  it('should call newsActions.getSources(category) on getSources', () => {
+  it('should call #getSources(category) on getSources', () => {
     newsActions.allSources(category);
     expect(newsApiGetSources.mock.calls.length).toBe(2);
   });
 
-  it('should dispatch appropriate action type for allSources when called', () => {
+  it('should dispatch the appropriate action type for #allSources when called', () => {
     newsActions.allSources();
     const action = dispatchSpy.mock.calls[0][0];
     expect(dispatchSpy).toHaveBeenCalled();
     expect(action.type).toEqual(constants.sources);
   });
 
-  it('should dispatch appropriate action type for allArticles when called', () => {
+  it('should dispatch the appropriate action type for #allArticles when called', () => {
     newsActions.allArticles();
     const action = dispatchSpy.mock.calls[1][0];
     expect(dispatchSpy).toHaveBeenCalled();
     expect(action.type).toEqual(constants.articles);
   });
 
-  it('should dispatch appropriate action type for allSources when called', () => {
+  it('should dispatch the appropriate action type for #allSources when called', () => {
     newsActions.allSources(category);
     const action = dispatchSpy.mock.calls[0][0];
     expect(dispatchSpy).toHaveBeenCalled();
     expect(action.type).toEqual(constants.sources);
   });
 });
-
-// jest.mock('pathToFireBase', () => ({
-//    signInWithEmailAndPassword(email,password){
-//      if(password === 'correct') {
-//        return Promise.resolve({name: 'someUser'})
-//      } else {
-//        return Promise.reject({error: 'someError'})
-//      }
-//    }
-// }))
-

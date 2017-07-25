@@ -41,7 +41,7 @@ const NewsActions = {
   /**
    * @description Articles Action
    * @method
-   * @param {string} source
+   * @param {string} sourceId
    * @param {string} sortBy
    * @returns {object} articles
    */

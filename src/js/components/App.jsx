@@ -9,7 +9,7 @@ require('firebase/auth');
  */
 export default class App extends React.Component {
   /**
-   * Creates an instance of App.
+   * Creates an instance of App. Set firebase config
    * @memberof App
    */
   constructor() {

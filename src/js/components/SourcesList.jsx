@@ -15,6 +15,7 @@ const strFilter = new StringFilter();
  */
 class SourcesList extends React.Component {
   /**
+   * @method
    * @description
    * @returns {JSX.Element} SourcesList
    * @memberof SourcesList
@@ -29,21 +30,30 @@ class SourcesList extends React.Component {
       sortCategory } = this.props;
 
     // Create All Sources option tag
-    const allSourcesOptionTag = (<option key="" value="">All News Sources</option>);
+    const allSourcesOptionTag =
+      (
+        <option key=""
+          value="">All News Sources
+        </option>
+      );
 
     /**
+     * @function
      * @description Maps categories array through an option tag
      * @returns {array} displayCategories
      */
     const displayCategories = categories.map((category, index) => {
-      return <option key={index} value={category}>
+      return <option key={index}
+              value={category}>
               {strFilter.filteredStr(category)}
             </option>;
     });
 
+    // Insert all sources option tag at the index 0
     displayCategories.unshift(allSourcesOptionTag);
 
     /**
+     * @function
      * @description Filters through sources to
         return sources if search term index is true
      * @returns {object} filteredSearch
@@ -77,11 +87,16 @@ class SourcesList extends React.Component {
       );
     });
 
+    /**
+     * @function
+     * @description checkSources is use to display sources or a message when a
+      source is not found when searched
+     */
     const checkSources = () => {
       return (renderSources.length === 0)
       ?
       <div className="center-align">
-        <h4>Oops! Search Term not found :(</h4>
+        <h4>Oops! Source not found :(</h4>
       </div>
       :
       renderSources;

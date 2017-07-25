@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Component Test Suite should match the Nav snapshot 1`] = `
+exports[`NavBar Component Test Suite should match the NavBar snapshot 1`] = `
 <NavBar>
   <div
     className="navbar-fixed"

@@ -3,7 +3,7 @@
  * @class stringManipulation
  */
 class StringFilter {
-  static valueChecker(str) {
+  static typeCheck(str) {
     const message = 'Please enter a string';
     if (str.length === 0) {
       return false;
@@ -14,29 +14,29 @@ class StringFilter {
   }
 
   static removeChar(str) {
-    return StringFilter.valueChecker(str) === true ?
+    return StringFilter.typeCheck(str) === true ?
       str.replace(/([^a-z A-Z 0-9]+)/g, ' ').toLowerCase()
       :
-      StringFilter.valueChecker(str);
+      StringFilter.typeCheck(str);
   }
 
   static capitalize(str) {
-    return StringFilter.valueChecker(str) === true ?
+    return StringFilter.typeCheck(str) === true ?
     str.replace(/\b\w/g, (l) => {
       return l.toUpperCase();
     })
     :
-    StringFilter.valueChecker(str);
+    StringFilter.typeCheck(str);
   }
 
   filteredStr(str) {
-    if (StringFilter.valueChecker(str) === true) {
+    if (StringFilter.typeCheck(str) === true) {
       let newStr = '';
       newStr = StringFilter.removeChar(str);
       newStr = StringFilter.capitalize(newStr);
       return newStr;
     }
-    return StringFilter.valueChecker(str);
+    return StringFilter.typeCheck(str);
   }
 }
 

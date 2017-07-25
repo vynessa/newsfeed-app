@@ -47,9 +47,6 @@ class ArticlesStore extends EventEmitter {
     case constants.articles:
       this.getArticles(action.articles);
       break;
-    // case constants.articlesError:
-    //   this.getArticles(action.articlesError);
-    //   break;
     default:
     }
   }

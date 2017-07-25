@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Articles Component Test Suite should match the Articles snapshot 1`] = `
+exports[`Articles Component Test Suite should match the Articles component snapshot 1`] = `
 <Articles>
   <ArticlesList
     articles={Array []}
