@@ -3,7 +3,6 @@ e-Feedly is a modern RSS feed that gives a user access to view all headlines fro
 
 [![Code Climate](https://codeclimate.com/github/vynessa/newsfeed-app/badges/gpa.svg)](https://codeclimate.com/github/vynessa/newsfeed-app)
 [![Travis Build](https://img.shields.io/travis/vynessa/newsfeed-app/feature/feedback.svg)](https://travis-ci.org/vynessa/newsfeed-app)
-[![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/vynessa/newsfeed-app)
 [![Coverage Status](https://coveralls.io/repos/github/vynessa/newsfeed-app/badge.svg?branch=feature%2Ffeedback)](https://coveralls.io/github/vynessa/newsfeed-app?branch=feature%2Ffeedback)
 
 ## Introduction
