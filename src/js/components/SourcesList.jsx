@@ -112,7 +112,7 @@ class SourcesList extends React.Component {
               label="Search Sources"
               value={search}
               onChange={updateSearch}/>
-            <Input m={6} s={3}
+            <Input m={3} s={6}
               onChange={sortCategory}
               type="select"
               label="Categories:"
