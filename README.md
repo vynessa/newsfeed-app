@@ -8,7 +8,6 @@ e-Feedly is a modern RSS feed that gives a user access to view all headlines fro
 ## Introduction
 e-Feedly is a News Feed Application that makes use of an API to display various News Sources with their corresponding Headlines based on the various options: top and latest.
 
-
 ## Features
 Users can:
 - Search for News Source within the application
