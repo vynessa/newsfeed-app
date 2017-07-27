@@ -1,0 +1,18 @@
+engines:
+  duplications:
+    enabled: true
+    config:
+      languages:
+        javascript:
+          mass_threshold: 20
+  eslint:
+    enabled: true
+ratings:
+  paths:
+      - "**.jsx"
+exclude_paths:
+- "dist"
+- .gitignore
+- "test/"
+- "node_modules/"
+- "webpack.config.babel.js"
