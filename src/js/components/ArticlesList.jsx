@@ -1,40 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Row, Input, Col, Card, CardTitle } from 'react-materialize';
 import PropTypes from 'prop-types';
-import ShareArticleButtons from './ShareArticleButtons.jsx';
+import { Breadcrumb, Row,
+          Input, Col,
+          Card, CardTitle, MenuItem } from 'react-materialize';
+import StringFilter from '../utils/stringFilter';
+import Preloader from './Preloader.jsx';
 
+
+const strFilter = new StringFilter();
 /**
  * @description ArticlesList component
  * @class
  */
 class ArticlesList extends React.Component {
   /**
-   * 
-   * 
-   * @returns
+   * @returns {JSX.Element} ArticlesList
    * @memberof ArticlesList
    */
   render() {
-    const { articles, sortBy, sourceKey } = this.props.articles;
-    const { handleSort } = this.props;
+    const sortBys = JSON.parse(localStorage.sortBys);
+    const sortByAvailable = sortBys;
+
+    const { articles, handleSort, sourceKey } = this.props;
+
     let result = [];
-    let sortByAvailable = [];
-    let getSourceKey = '';
+
     if (this.props.articles !== undefined &&
       articles !== undefined) {
       result = articles;
-      sortByAvailable = sortBy;
-      getSourceKey = sourceKey;
     }
-    const renderArticles = result.map((article) => {
+
+    const renderArticles = result.map((article, index) => {
       return (
-        <Col key ={article.publishedAt} m={6} s={12}>
+        <Col key ={`col-${index}`} m={6} s={12}>
           <Card
-            className='small'
+            className="small"
             header={<CardTitle image={article.urlToImage}/>}
             actions={[
-              <div>
+              <div key={index}>
                 <a
                   className="btn"
                   target="_blank"
@@ -42,65 +45,68 @@ class ArticlesList extends React.Component {
                   href={article.url}>
                   View full article
                 </a>
-                <br/>
-                <br/>
-                <div className="col 6">
-                  <ShareArticleButtons />
-                </div>
               </div>
             ]}>
             <h5 className="article-title">{article.title}</h5>
             {article.description}
-            {/* <br/>
-            <br/>
-            <div>Published On: {article.publishedAt}</div>*/}
           </Card>
         </Col>
       );
     });
 
-    // const getSorted = () => {
-    //   NewsActions.allArticles(sourceKey, this.props.sortBy);
-    // };
-
-    const sortInput = sortByAvailable.map((tag) => {
-      return <option key={tag} value={tag}>{tag}</option>;
+    const sortInput = sortByAvailable.map((tag, index) => {
+      return <option key={`article-${index}`} value={tag}>
+                {strFilter.filteredStr(tag)}
+              </option>;
     });
 
-    // const sortOption = (e) => {
-    //   // e.preventdefault();
-    //   console.log(e.target.value);
-    //   return e.target.value;
-    // };
-
     return (
-      <div >
-        <h1 className="center-align" id="heading-text">Headlines from {getSourceKey}</h1>
-        <Row>
+      <div>
+        <div className="clearfix"/>
+        <Breadcrumb className="fixed">
+          <MenuItem id="sources" href="sources">Sources</MenuItem>
+          <MenuItem id="articles">Articles</MenuItem>
+        </Breadcrumb>
+        <h1
+        className="center-align"
+        id="heading-text">
+         Headlines from {strFilter.filteredStr(sourceKey)}
+        </h1>
+        <Row className="center-align">
           <Input m={6} s={12}
             type="select"
             onChange={handleSort}
-            label="Sort Articles By:">{sortInput}
+            label="Sort Articles By:">
+               { sortInput }
           </Input>
         </Row>
-        <div className="row">{renderArticles}</div>
+        <div className="row">
+          {
+            articles.length === 0 ?
+            <div className="center-align">
+               <Preloader />
+              </div>
+            :
+            renderArticles
+          }
+          </div>
       </div>
     );
   }
 }
 
 ArticlesList.defaultProps = {
-  articles: {},
   handleSort: ArticlesList.prototype.handleSort,
   sortBy: '',
+  source: '',
   sourceKey: ''
 };
 
 ArticlesList.propTypes = {
-  articles: PropTypes.object,
   handleSort: PropTypes.func,
   sortBy: PropTypes.string,
-  sourceKey: PropTypes.string,
+  source: PropTypes.string,
+  sourceKey: PropTypes.string
 };
 
 export default ArticlesList;

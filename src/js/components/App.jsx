@@ -2,13 +2,14 @@ import React from 'react';
 import Home from './Home.jsx';
 
 const firebase = require('firebase/app');
+require('firebase/auth');
 /**
  * @description Home Page Component
  * @class
  */
 export default class App extends React.Component {
   /**
-   * Creates an instance of App.
+   * Creates an instance of App. Set firebase config
    * @memberof App
    */
   constructor() {

@@ -1,8 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import NewsActions from '../actions/NewsActions.jsx';
-import SourcesStore from '../stores/SourcesStore.jsx';
-import AuthStore from '../stores/AuthStore.jsx';
+import NewsActions from '../actions/newsActions';
+import SourcesStore from '../stores/sourcesStore';
 import SourcesList from './SourcesList.jsx';
 
 /**
@@ -18,66 +17,65 @@ class Sources extends React.Component {
    */
   constructor(props) {
     super(props);
+    const sourcesData = SourcesStore.getAll();
     this.state = {
-      sources: SourcesStore.getAll(),
-      user: null,
-      search: ''
-      // currentPage: 1
+      sources: sourcesData.sources,
+      search: '',
+      categories: sourcesData.categoryList,
     };
     this.onChange = this.onChange.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
-    this.handleCategory = this.handleCategory.bind(this);
-    this.btnClick = this.btnClick.bind(this);
-    // this.sourceKey = ArticlesStore.getSourceKey() || localStorage.getItem('source_key');
+    this.sortCategory = this.sortCategory.bind(this);
+    this.storeItems = this.storeItems.bind(this);
+    this.getCategories = this.getCategories.bind(this);
   }
 
   /**
-   * 
-   * 
-   * @memberof Sources
-   */
-  componentWillMount() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.setState({
-      user
-    });
-  }
-  /**
-   * @description On Component Mount, sources actions are called and stores listen for change
+   * @description Sources actions are called and stores listen for change
    * @memberof Sources
    * @returns {void}
    */
   componentDidMount() {
-    if (this.state.user === null) {
-      browserHistory.push('/');
-    }
     NewsActions.allSources();
     SourcesStore.on('change', this.onChange);
   }
   /**
-   * 
-   * @description When Component unmounts, state is lost.
+   * @description When Component unmounts, state is cleared.
    * @memberof Sources
    * @returns {void}
    */
   componentWillUnmount() {
     SourcesStore.removeListener('change', this.onChange);
   }
+
   /**
-   * 
-   * 
+   * @description Change event to get all sources from stores
    * @memberof Sources
+   * @returns {void}
    */
   onChange() {
+    const sourcesData = SourcesStore.getAll();
     this.setState({
-      sources: SourcesStore.getAll()
+      sources: sourcesData.sources
+    });
+    this.getCategories();
+  }
+  /**
+   * @description Get list of categories from SourcesStore
+   * @memberof Sources
+   * @returns {void}
+   */
+  getCategories() {
+    const sourcesData = SourcesStore.getAll();
+    this.setState({
+      categories: sourcesData.categoryList
     });
   }
 
   /**
-   * 
-   * 
+   * @description Update search event which gets change immediately
    * @param {any} event
+   * @returns {void}
    * @memberof Sources
    */
   updateSearch(event) {
@@ -86,34 +84,33 @@ class Sources extends React.Component {
     });
   }
   /**
-   * @description
+   * @description Handles display of all articles for each source
    * @function
-   * @param {string} sourceKey
+   * @param {string} sourceId
    * @param {array} sortBy
+   * @returns {void}
    * @memberof Sources
    */
-  btnClick(sourceKey, sortBy) {
-    // localStorage.getItem('source_key');
-    // create an action to hold sourceID and Name
-    NewsActions.allArticles(sourceKey, sortBy);
+  storeItems(sourceId, sortBy) {
+    localStorage.setItem('sourceKey', sourceId);
+    localStorage.setItem('sortBys', JSON.stringify(sortBy));
+    browserHistory.push('/articles');
   }
 
   /**
-   * @description Get category using option value to filterc categories
+   * @description Get category using option value to filter categories
    * @function
    * @param {any} event
    * @returns {void}
    * @memberof Sources
    */
-  handleCategory(event) {
-    return (event.target.value === '1')
-    ? Materialize.toast('Select a valid category', 1000, 'rounded')
-    : NewsActions.getCategories(event.target.value);
+  sortCategory(event) {
+    return NewsActions.allSources(event.target.value);
   }
 
   /**
    * @description
-   * @returns {JSX.Element} Soutcrs
+   * @returns {JSX.Element} Sources
    * @memberof Sources
    */
   render() {
@@ -122,9 +119,10 @@ class Sources extends React.Component {
         <SourcesList
           sources={this.state.sources}
           search={this.state.search}
+          categories={this.state.categories}
           updateSearch={this.updateSearch}
-          btnClick={this.btnClick}
-          handleCategory={this.handleCategory} />
+          storeItems={this.storeItems}
+          sortCategory={this.sortCategory} />
       </div>
     );
   }

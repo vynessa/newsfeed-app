@@ -1,27 +1,28 @@
 /* global location localStorage*/
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, NotFoundRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from '../components/App.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
-import Template from '../components/Template.jsx';
+import Layout from '../components/Layout.jsx';
 
-const check = (nextState, replace, next) => {
-  const getUser = localStorage.getItem('user');
-  if (getUser !== null) {
+const checkUser = (nextState, replace, next) => {
+  const user = localStorage.getItem('user');
+  if (user !== null) {
     replace('/sources');
   }
   next();
 };
 
 const routes = (
-  <Route exact path="/" component={Template}>
-    <IndexRoute onEnter={check} component={App} />
-    <Route path="sources" component={Sources} />
-    <Route path="articles" component={Articles} />
-  </Route >
+  <Route exact path="/" component={Layout}>
+    <IndexRoute onEnter={checkUser} component={App} />
+      <Route path="sources"
+    component={localStorage.user ? Sources : browserHistory.push('/')} />
+    <Route path="articles"
+    component={localStorage.user ? Articles : browserHistory.push('/')} />
+  </Route>
 );
 
 /**

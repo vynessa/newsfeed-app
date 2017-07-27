@@ -1,27 +1,21 @@
 import React from 'react';
 
 /**
- * 
- * 
+ * @description Materialize Footer Component
  * @export
- * @class Footer
+ * @function
  * @extends {React.Component}
+ * @returns {JSX.Element} Footer
  */
-export default class Footer extends React.Component {
+const Footer = () => {
+  return (
+    <footer>
+      <div className="footer">
+        <p className="center-align">Designed by Vanessa Ejikeme</p>
+        <p className="center-align">© 2017 Copyright</p>
+      </div>
+    </footer>
+  );
+};
 
-  /**
-   * 
-   * @returns 
-   * @memberof Footer
-   */
-  render() {
-    return (
-      <footer>
-        <div className='footer'>
-          <p className='center-align'>Designed by Vanessa Ejikeme</p>
-          <p className='center-align'>© 2017 Copyright</p>
-        </div>
-      </footer>
-    );
-  }
-}
+export default Footer;

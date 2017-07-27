@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavBar from './NavBar.jsx';
 import Footer from './Footer.jsx';
 
@@ -7,7 +8,12 @@ import Footer from './Footer.jsx';
  * @param {object} props
  * @returns {JSX.Element} Template
  */
-const Template = (props) => {
+const Layout = (props) => {
+  /**
+   * @description Renders Layout component
+   * @returns {JSX.Element} Layout
+   * @memberof Layout
+   */
   return (
     <div>
       <NavBar />
@@ -17,4 +23,12 @@ const Template = (props) => {
   );
 };
 
-export default Template;
+Layout.defaultProps = {
+  children: {}
+};
+
+Layout.propTypes = {
+  children: PropTypes.object
+};
+
+export default Layout;

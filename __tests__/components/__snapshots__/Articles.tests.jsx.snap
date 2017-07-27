@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Articles Component Test Suite should match the Articles component snapshot 1`] = `
+<Articles>
+  <ArticlesList
+    articles={Array []}
+    handleSort={[Function]}
+    sortBy=""
+    source=""
+    sourceKey="al-jazeera-english"
+  >
+    <div>
+      <div
+        className="clearfix"
+      />
+      <Breadcrumb
+        className="fixed"
+        cols={12}
+      >
+        <nav
+          className="row"
+        >
+          <div
+            className="nav-wrapper"
+          >
+            <Col
+              s={12}
+            >
+              <div
+                className="col s12"
+              >
+                <MenuItem
+                  className="breadcrumb"
+                  href="sources"
+                  id="sources"
+                >
+                  <a
+                    className="breadcrumb"
+                    href="sources"
+                    id="sources"
+                  >
+                    Sources
+                  </a>
+                </MenuItem>
+                <MenuItem
+                  className="breadcrumb"
+                  id="articles"
+                >
+                  <a
+                    className="breadcrumb"
+                    id="articles"
+                  >
+                    Articles
+                  </a>
+                </MenuItem>
+              </div>
+            </Col>
+          </div>
+        </nav>
+      </Breadcrumb>
+      <h1
+        className="center-align"
+        id="heading-text"
+      >
+        Headlines from 
+        Al Jazeera English
+      </h1>
+      <Row
+        className="center-align"
+      >
+        <div
+          className="row center-align"
+        >
+          <Input
+            label="Sort Articles By:"
+            m={6}
+            onChange={[Function]}
+            s={12}
+            type="select"
+          >
+            <div
+              className="col input-field s12 m6"
+            >
+              <label
+                className="active"
+                htmlFor="input_0"
+              >
+                Sort Articles By:
+              </label>
+              <select
+                className=""
+                id="input_0"
+                onChange={[Function]}
+              >
+                <option
+                  value="top"
+                >
+                  Top
+                </option>
+                <option
+                  value="latest"
+                >
+                  Latest
+                </option>
+              </select>
+            </div>
+          </Input>
+        </div>
+      </Row>
+      <div
+        className="row"
+      >
+        <div
+          className="center-align"
+        >
+          <Preloader>
+            <div
+              className="preloader-wrapper big active"
+            >
+              <div
+                className="spinner-layer spinner-brown-only"
+              >
+                <div
+                  className="circle-clipper left"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="gap-patch"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+                <div
+                  className="circle-clipper right"
+                >
+                  <div
+                    className="circle"
+                  />
+                </div>
+              </div>
+            </div>
+          </Preloader>
+        </div>
+      </div>
+    </div>
+  </ArticlesList>
+</Articles>
+`;

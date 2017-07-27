@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants.jsx';
+import constants from '../constants/constants';
 
 /**
  * @description Articles store which recieves data dispatches from actions
@@ -14,7 +14,7 @@ class ArticlesStore extends EventEmitter {
    */
   constructor() {
     super();
-    this.articles = {};
+    this.articles = [];
   }
   /**
    * @description
@@ -44,13 +44,10 @@ class ArticlesStore extends EventEmitter {
    */
   updateArticles(action) {
     switch (action.type) {
-      case constants.articles:
-        this.getArticles(action.articles);
-        break;
-      case constants.articlesError:
-        this.getArticles(action.articlesError);
-        break;
-      default: // Finir
+    case constants.articles:
+      this.getArticles(action.articles);
+      break;
+    default:
     }
   }
 }

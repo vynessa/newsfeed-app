@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/js/client.jsx',
+  entry: './src/js/Client.jsx',
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'app.min.js',
@@ -26,6 +26,9 @@ const config = {
       {
         test: /\.(jpg|png|svg)$/,
         loader: 'url-loader',
+        options: {
+          limit: 25000,
+        },
       },
       {
         test: /\.scss$/,
@@ -38,7 +41,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'News Feed App',
+      title: 'e-Feedly',
       template: './src/index.html',
       inject: true
     }),
@@ -59,14 +62,14 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production'),
-        'NEWS_API_KEY': JSON.stringify(process.env.NEWS_API_KEY),
-        'API_KEY': JSON.stringify(process.env.apiKey),
-        'AUTH_DOMAIN': JSON.stringify(process.env.authDomain),
-        'DATABASE_URL': JSON.stringify(process.env.databaseURL),
-        'PROJECT_ID': JSON.stringify(process.env.projectId),
-        'STORAGE_BUCKET': JSON.stringify(process.env.storageBucket),
-        'MESSAGING_SENDER_ID': JSON.stringify(process.env.messagingSenderId)
+        NODE_ENV: JSON.stringify('production'),
+        NEWS_API_KEY: JSON.stringify(process.env.NEWS_API_KEY),
+        API_KEY: JSON.stringify(process.env.apiKey),
+        AUTH_DOMAIN: JSON.stringify(process.env.authDomain),
+        DATABASE_URL: JSON.stringify(process.env.databaseURL),
+        PROJECT_ID: JSON.stringify(process.env.projectId),
+        STORAGE_BUCKET: JSON.stringify(process.env.storageBucket),
+        MESSAGING_SENDER_ID: JSON.stringify(process.env.messagingSenderId)
 
       }
     }),

@@ -1,88 +1,124 @@
 $color-brown: #623b19;
-$color-teal: teal;
 $color-black: black;
-$color-white: #fff;
+$color-white: white;
 $color-dark-brown: brown;
+$color-light-brown: rgb(197,190,189);
+
+// Navigation Bar
+#app {
+  font-family: 'Lato', sans-serif;
+}
 
 .nav-wrapper {
   background-color: $color-brown
 }
 
+nav .brand-logo {
+  margin-left: 10px;
+}
+
 .right #login-btn {
+  width: 200px !important;
   margin-top: 8px;
   margin-right: 15px;
 }
 
 div #login-btn {
-  width: 195px;
+  background-color: $color-light-brown !important;
+  color: $color-white !important;
+  border-radius: 4px !important;
 }
 
-.btn{
-  background-color: $color-brown
+div #login-btn:hover, #logout-btn:hover {
+  background-color: $color-brown !important;
 }
 
-.waves-effect.waves-light.btn {
-  background-color: $color-teal
+.circle.responsive-img {
+  max-width: 100%;
+  height: 50px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
-.btn:hover {
-  background-color: $color-teal
+.row .nav-wrapper {
+  background-color: $color-light-brown;
 }
 
-.row {
-  margin: 0 auto;
-  width: 1000px;
+.breadcrumb {
+  color: #fff;
+  font-size: 13px;
 }
 
-.search-content {
-  align-content: center;
-}
-
-#app {
-  font-family: 'Lato', sans-serif;
+#sources.breadcrumb:hover {
+  color: $color-brown;
+  text-decoration: underline;
 }
 
 .article-title {
-  color: $color-teal;
+  color: $color-brown;
   font-weight: bold;
   font-size: 22px;
 }
 
 #heading-text {
-  color: $color-teal
+  color: $color-brown;
+  text-transform: capitalize;
 }
-// .card-image {
-//   opacity: 0.5;
-// }
 
 .card .card-image .card-title {
-  // font-size: 30px;
   color: $color-white;
   position: absolute;
   font-size: 24px;
   font-weight: 900px;
-  // background: rgba($color-white, 0.5);
 }
 
+.dropdown-content li>span {
+  color: $color-brown;
+}
 .card .card-image img {
   max-height: 400px !important;
 }
 
 .card.small {
-  height:700px;
+  height:600px;
   width: 100%;
   box-shadow: 
     0 4px 8px 0 rgba(0, 0, 0, 0.2), 
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-// Sources Styling
+// Sources Component
+.row {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.btn{
+  background-color: $color-brown 
+}
+
+.btn:hover {
+  background-color: $color-light-brown !important
+}
+
+.waves-effect.waves-light.btn {
+  background-color: $color-light-brown
+}
+
 .card {
   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-content {
-  height: 280px
+  height: 280px;
+}
+
+.card .card-content.white-text{
+  background: $color-light-brown;
+}
+
+.card .card-action {
+  background: $color-light-brown;
 }
 
 .card .card-title {
@@ -91,7 +127,11 @@ div #login-btn {
   font-weight: bold;
 }
 
+.search-content {
+  align-content: center;
+}
+
 // Footer
 footer {
-  color: $color-teal
+  color: $color-brown
 }

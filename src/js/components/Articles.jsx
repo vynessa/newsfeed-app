@@ -1,7 +1,6 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
-import NewsActions from '../actions/NewsActions.jsx';
-import ArticlesStore from '../stores/ArticlesStore.jsx';
+import NewsActions from '../actions/newsActions';
+import ArticlesStore from '../stores/articlesStore';
 import ArticlesList from './ArticlesList.jsx';
 
 /**
@@ -15,36 +14,23 @@ class Articles extends React.Component {
    */
   constructor(props) {
     super(props);
+
     this.state = {
       articles: ArticlesStore.getAll(),
-      sortBy: ''
     };
+    this.sourceKey = localStorage.getItem('sourceKey');
+
     this.onChange = this.onChange.bind(this);
-    this.updateSortBy = this.updateSortBy.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }
 
-  /**
-   * 
-   * 
-   * @memberof Sources
-   */
-  componentWillMount() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.setState({
-      user
-    });
-  }
   /**
    * @description Mount Component on every change
    * @method
    * @returns {void}
    */
   componentDidMount() {
-    if (this.state.user === null) {
-      browserHistory.push('/');
-    }
-    // NewsActions.allArticles(sourceKey, sortBy[0]);
+    NewsActions.allArticles(this.sourceKey);
     ArticlesStore.on('change', this.onChange);
   }
   /**
@@ -56,9 +42,8 @@ class Articles extends React.Component {
     ArticlesStore.removeListener('change', this.onChange);
   }
   /**
-   * @description Change state on user(s) request
+   * @description Change state on refresh or user(s) request
    * @method
-   * @returns {object} articles
    */
   onChange() {
     this.setState({
@@ -73,19 +58,8 @@ class Articles extends React.Component {
    * @returns {object} articles
    */
   handleSort(sourceKey, sortBy) {
+    sourceKey = this.sourceKey;
     return NewsActions.allArticles(sourceKey, sortBy);
-  }
-  /**
-   * @description Event handler function to update sort state
-   * @method
-   * @param {object} event
-   * @returns {string} sortBy
-   */
-  updateSortBy(event) {
-    const val = event.target.value;
-    this.setState({
-      sortBy: val
-    });
   }
   /**
    * @description render child component - ArticlesList
@@ -97,7 +71,7 @@ class Articles extends React.Component {
       <ArticlesList
         articles={this.state.articles}
         handleSort={this.handleSort}
-        sortBy = {this.state.sortBy} />
+        sourceKey = {this.sourceKey} />
     );
   }
 }

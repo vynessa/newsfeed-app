@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sources Component Test Suite When the \`Sources\` component renders should contain all sources based on the value in the state 1`] = `
+<div
+  className="sources"
+>
+  <SourcesList
+    categories={Array []}
+    search=""
+    sortCategory={[Function]}
+    sources={[TypeError: Cannot read property 'sources' of undefined]}
+    storeItems={[Function]}
+    updateSearch={[Function]}
+  />
+</div>
+`;
+
+exports[`Sources Component Test Suite When the \`Sources\` component renders should match its empty snapshot 1`] = `
+<div
+  className="sources"
+>
+  <div>
+    <div
+      className="center-align"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col input-field s3"
+        >
+          <input
+            className="search-content"
+            defaultValue={undefined}
+            id="input_0"
+            onChange={[Function]}
+            placeholder={undefined}
+            type="text"
+            value=""
+          />
+          <label
+            className=""
+            data-error={undefined}
+            data-success={undefined}
+            htmlFor="input_0"
+          >
+            Search Sources
+          </label>
+        </div>
+        <div
+          className="col input-field s3 m6"
+        >
+          <label
+            className="active"
+            data-error={undefined}
+            data-success={undefined}
+            htmlFor="input_1"
+          >
+            Categories:
+          </label>
+          <select
+            className=""
+            defaultValue=""
+            id="input_1"
+            multiple={undefined}
+            onChange={[Function]}
+          >
+            <option
+              value=""
+            >
+              All News Sources
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="center-align"
+      >
+        <div
+          className="preloader-wrapper big active"
+        >
+          <div
+            className="spinner-layer spinner-brown-only"
+          >
+            <div
+              className="circle-clipper left"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="gap-patch"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+            <div
+              className="circle-clipper right"
+            >
+              <div
+                className="circle"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="clearfix"
+    />
+  </div>
+</div>
+`;

@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
-import constants from '../constants/constants.jsx';
-
+import constants from '../constants/constants';
 
 /**
  * @description Source store which receives data dispatched from actions
@@ -15,7 +14,10 @@ class SourcesStore extends EventEmitter {
    */
   constructor() {
     super();
-    this.sources = [];
+    this.sourcesData = {
+      sources: [],
+      categoryList: []
+    };
   }
 
   /**
@@ -24,8 +26,11 @@ class SourcesStore extends EventEmitter {
    * @memberof SourcesStore
    * @returns {void}
    */
-  getSources(sources) {
-    this.sources = sources;
+  getSources(sources, categoryList) {
+    this.sourcesData.sources = sources;
+    if (categoryList !== undefined) {
+      this.sourcesData.categoryList = categoryList;
+    }
     this.emit('change');
   }
   /**
@@ -34,23 +39,20 @@ class SourcesStore extends EventEmitter {
    * @returns {object} this.sources
    */
   getAll() {
-    return this.sources;
+    return this.sourcesData;
   }
   /**
-   * @description Update sources method checks for action type and dispatches accordingly
+   * @description Update sources method checks for action type and dispatches data accordingly
    * @param {any} action
    * @memberof SourcesStore
    * @returns {void}
    */
   updateSources(action) {
     switch (action.type) {
-      case constants.sources:
-        this.getSources(action.sources);
-        break;
-      case constants.sourcesError:
-        this.getSources(action.sourcesError);
-        break;
-      default: // Finir
+    case constants.sources:
+      this.getSources(action.sources, action.categoryList);
+      break;
+    default:
     }
   }
 }
