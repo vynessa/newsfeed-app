@@ -75,53 +75,54 @@ class NavBar extends React.Component {
                 </a>
               </div>
               <ul className="right hide-on-med-and-down">
-                  {
-                    (user === null) ?
-                    <GoogleButton
-                    id="login-btn"
-                    type="light"
-                    onClick={this.login}/>
+                {
+                  (user === null) ?
+                    <li><GoogleButton
+                      id="login-btn"
+                      type="light"
+                      onClick={this.login}/>
+                    </li>
                   :
-                <div>
-                  <li>
-                    <img className="circle responsive-img"
-                    src={this.state.user.photoURL}/>
-                  </li>
-                  <li>{this.state.user.displayName}</li>
-                  <li>
-                    <a
-                    id="logout-btn"
-                    onClick ={this.signOut}
-                    className="waves-effect waves-light btn">Logout
-                    </a>
-                  </li>
-                </div>
-                  }
+                    <div>
+                      <li>
+                        <img className="circle responsive-img"
+                        src={this.state.user.photoURL}/>
+                      </li>
+                      <li>{this.state.user.displayName}</li>
+                      <li>
+                        <a
+                        id="logout-btn"
+                        onClick ={this.signOut}
+                        className="waves-effect waves-light btn">Logout
+                        </a>
+                      </li>
+                    </div>
+                }
               </ul>
               <ul className="side-nav" id="mobile-demo">
                 {
                   (user === null) ?
-                  <li>
-                    <GoogleButton
-                    id="login-btn"
-                    type="light"
-                    onClick={this.login}/>
-                  </li>
-                  :
-                  <div>
                     <li>
-                      <img className="circle responsive-img"
-                        src={this.state.user.photoURL}/>
-                      </li>
-                    <li>{this.state.user.displayName}</li>
-                    <li>
-                      <a
-                      id="logout-btn"
-                      onClick={this.signOut}
-                      className="waves-effect waves-light btn">Logout
-                      </a>
+                      <GoogleButton
+                      id="login-btn"
+                      type="light"
+                      onClick={this.login}/>
                     </li>
-                  </div>
+                  :
+                    <div>
+                      <li>
+                        <img className="circle responsive-img"
+                          src={this.state.user.photoURL}/>
+                        </li>
+                      <li>{this.state.user.displayName}</li>
+                      <li>
+                        <a
+                        id="logout-btn"
+                        onClick={this.signOut}
+                        className="waves-effect waves-light btn">Logout
+                        </a>
+                      </li>
+                    </div>
                 }
               </ul>
           </div>
