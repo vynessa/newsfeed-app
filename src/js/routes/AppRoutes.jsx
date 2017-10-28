@@ -2,7 +2,7 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import App from '../components/App.jsx';
+import HomePage from '../components/HomePage.jsx';
 import Sources from '../components/Sources.jsx';
 import Articles from '../components/Articles.jsx';
 import Layout from '../components/Layout.jsx';
@@ -17,7 +17,7 @@ const checkUser = (nextState, replace, next) => {
 
 const routes = (
   <Route exact path="/" component={Layout}>
-    <IndexRoute onEnter={checkUser} component={App} />
+    <IndexRoute onEnter={checkUser} component={HomePage} />
       <Route path="sources"
     component={localStorage.user ? Sources : browserHistory.push('/')} />
     <Route path="articles"
@@ -30,15 +30,8 @@ const routes = (
  * @class AppRoutes
  * @extends {React.Component}
  */
-class AppRoutes extends React.Component {
-  /**
-   * @description Define routes for components
-   * @memberof AppRoutes
-   * @returns {JSX.Element} AppRoutes
-   */
-  render() {
-    return <Router routes={routes} history={browserHistory} />;
-  }
-}
+const AppRoutes = () => {
+  return <Router routes={routes} history={browserHistory} />;
+};
 
 export default AppRoutes;
