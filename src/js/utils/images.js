@@ -3,10 +3,10 @@ import whatsNew from '../../../public/img/matt-lamers-261639.jpg';
 import theGoodNews from '../../../public/img/natalia-ostashova-142764.jpg';
 import newsWallpaper from '../../../public/img/oliver-thomas-klein-161835.jpg';
 
-const Images = [
+const images = [
   {
     image: business,
-    title: 'Welcome to e-Feeds',
+    title: 'Welcome to e-Feedly',
     text: 'View Latest feeds from different Sources'
   },
   {
@@ -26,4 +26,4 @@ const Images = [
   }
 ];
 
-export default Images;
+export default images;
