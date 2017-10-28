@@ -49,7 +49,7 @@ class SourcesList extends React.Component {
             </option>;
     });
 
-    // Insert all sources option tag at the index 0
+    // Insert all sources option tag at index 0
     displayCategories.unshift(allSourcesOptionTag);
 
     /**
@@ -90,7 +90,8 @@ class SourcesList extends React.Component {
     /**
      * @function
      * @description checkSources is use to display sources or a message when a
-      source is not found when searched
+     * source is not found when searched
+     * @returns {JSX.Element}
      */
     const checkSources = () => {
       return (renderSources.length === 0)

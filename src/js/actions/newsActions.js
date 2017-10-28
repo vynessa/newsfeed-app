@@ -2,8 +2,7 @@ import AppDispatcher from '../dispatcher';
 import constants from '../constants/constants';
 import NewsApi from '../utils/newsApi';
 import Categories from '../utils/getCategories';
-
-const firebase = require('firebase/app');
+import firebase from '../../../config/firebase';
 
 // Create new instance of Category class
 const categoryClass = new Categories();

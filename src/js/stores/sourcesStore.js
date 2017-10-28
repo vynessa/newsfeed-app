@@ -22,7 +22,8 @@ class SourcesStore extends EventEmitter {
 
   /**
    * @description Get sources and update this.sources global variable
-   * @param {any} sources
+   * @param {object} sources
+   * @param {array} categoryList
    * @memberof SourcesStore
    * @returns {void}
    */
@@ -42,7 +43,8 @@ class SourcesStore extends EventEmitter {
     return this.sourcesData;
   }
   /**
-   * @description Update sources method checks for action type and dispatches data accordingly
+   * @description Update sources method checks
+   * for action type and dispatches data accordingly
    * @param {any} action
    * @memberof SourcesStore
    * @returns {void}
