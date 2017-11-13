@@ -19,7 +19,6 @@ class Articles extends React.Component {
       articles: ArticlesStore.getAll(),
     };
     this.sourceKey = localStorage.getItem('sourceKey');
-
     this.onChange = this.onChange.bind(this);
     this.handleSort = this.handleSort.bind(this);
   }

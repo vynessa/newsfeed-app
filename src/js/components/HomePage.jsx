@@ -1,19 +1,19 @@
 import React from 'react';
 import { Slider, Slide } from 'react-materialize';
-import Images from '../utils/images';
+import images from '../utils/images';
 
 /**
  * @description Home component which contains slider and slide images for the landing page
  * @function Home
  * @returns {object} Home
  */
-const Home = () => {
+const HomePage = () => {
   /**
    * @description Returns JSX Home page Component
    * @returns {JSX.Element} Home
    * @memberof Home
    */
-  const allImages = Images.map((image, index) => {
+  const allImages = images.map((image, index) => {
     return <Slide
         key={index}
         src={image.image}
@@ -29,5 +29,5 @@ const Home = () => {
 };
 
 
-export default Home;
+export default HomePage;
 
