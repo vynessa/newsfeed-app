@@ -4,9 +4,7 @@ import GoogleButton from 'react-google-button';
 import NewsActions from '../actions/newsActions';
 import AuthStore from '../stores/authStore';
 
-
 const firebase = require('firebase/app');
-require('firebase/auth');
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -67,7 +65,7 @@ class NavBar extends React.Component {
         <nav className="brown">
           <div className="nav-wrapper">
               <div>
-                <a href="/" className="brand-logo">e-Feeds</a>
+                <a href="/" className="brand-logo">e-Feedly</a>
                 <a href="/"
                   data-activates="mobile-demo"
                   className="button-collapse">

@@ -48,7 +48,7 @@ exports[`Sources Component Test Suite When the \`Sources\` component renders sho
           </label>
         </div>
         <div
-          className="col input-field s3 m6"
+          className="col input-field s6 m3"
         >
           <label
             className="active"

@@ -1,5 +1,6 @@
 /**
- * @description Categories class to handle getting all categories for each source
+ * @description Categories class to handle getting all
+ * categories for each source
  * @class Categories
  */
 class Categories {
